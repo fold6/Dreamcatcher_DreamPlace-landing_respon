@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <title>Dream Places</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Jquery  -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+
+    <!-- CSS  -->
+    <link href="/css/font.css" rel="stylesheet">
+    <link href="/css/reset.css" rel="stylesheet">
+
+    <!-- 커서용 Jquery JS (안에 CDN 연결)-->
+    <script src="/lib/index.js"></script>
+
+    <!-- Google tag (gtag.js) -->
+    <!--✅✅✅✅✅✅✅✅ 구글 애널리틱스 넣기 ✅✅✅✅✅✅✅✅ -->
+
+    <style>
+        .overlay_info {
+            border-radius: 6px;
+            margin-bottom: 12px;
+            float: left;
+            position: relative;
+            border: 1px solid #ccc;
+            border-bottom: 2px solid #ddd;
+            background-color: #fff;
+        }
+
+        .overlay_info:nth-of-type(n) {
+            border: 0;
+            box-shadow: 0px 1px 2px #888;
+        }
+
+        .map_go:hover {
+            transition: ease-in-out 0.2s;
+            filter: brightness(125%);
+        }
+
+        .overlay_info a {
+            display: block;
+            background: #0059ff;
+            background: #0059ff url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png) no-repeat right 14px center;
+            text-decoration: none;
+            color: #fff;
+            padding: 10px 36px 10px 10px;
+            font-size: 14px;
+            border-radius: 6px 6px 0 0;
+        }
+
+        .overlay_info a strong {
+            padding: 10px 24px;
+            white-space: normal;
+        }
+
+        .overlay_info a strong.def_place {
+            background: url(/img/DC_ICON/icon_dc.png) no-repeat left 0 center;
+            background-size: 19px;
+        }
+
+        .overlay_info a strong.food_place {
+            background: url(/img/DC_ICON/icon_food.png) no-repeat left 0 center;
+            background-size: 19px;
+        }
+
+        .overlay_info a strong.cafe_place {
+            background: url(/img/DC_ICON/icon_cafe.png) no-repeat left 0 center;
+            background-size: 19px;
+        }
+
+        .overlay_info a strong.culture_place {
+            background: url(/img/DC_ICON/icon_culture.png) no-repeat left 0 center;
+            background-size: 19px;
+        }
+
+        .overlay_info a strong.drinks_place {
+            background: url(/img/DC_ICON/icon_drinks.png) no-repeat left 0 center;
+            background-size: 19px;
+        }
+
+        .overlay_info .desc {
+            padding: 8px;
+            position: relative;
+            min-width: 210px;
+            height: 60px;
+        }
+
+        .thum_wrap {
+            width: 90px;
+            height: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            box-sizing: border-box;
+            display: block;
+            position: relative;
+        }
+
+        .thum_wrap .thum_img {
+            border-radius: 5px;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            object-fit: cover;
+            object-position: center center;
+            box-sizing: border-box;
+        }
+
+        .overlay_info .mem_cate_wrap {
+            position: absolute;
+            left: 105px;
+            font-size: 10px;
+            top: 10px;
+        }
+
+        .overlay_info .mem_cate_wrap span {
+            display: inline-block;
+            margin-left: 3px;
+            background-color: #0059ff1a;
+            color: #0059ff;
+            padding: 0 6px;
+            height: 16px;
+            border-radius: 8px;
+            line-height: 17px;
+            white-space: normal;
+        }
+
+        .overlay_info .mem_cate_wrap span:first-child {
+            margin-left: 0;
+        }
+
+        .overlay_info .detail {
+            font-size: 13px;
+            color: #333;
+            position: absolute;
+            left: 108px;
+            top: 31px;
+            white-space: normal;
+            padding-right: 9px;
+        }
+
+        .play_btn {
+            position: absolute;
+            bottom: -15px;
+            right: -10px;
+            display: inline-block;
+            filter: drop-shadow(0px 0px 3px #33333393);
+            transition: ease-in-out 0.2s;
+        }
+
+        .play_btn:hover {
+            filter: drop-shadow(0px 0px 3px #303030);
+            transition: ease-in-out 0.2s;
+        }
+
+        .play_btn img {
+            width: 30px;
+        }
+
+        .overlay_info:after {
+            content: '';
+            position: absolute;
+            margin-left: -11px;
+            left: 50%;
+            bottom: -12px;
+            width: 22px;
+            height: 12px;
+            background: url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png) no-repeat 0 bottom;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map" style="width:100%;height:100vh"></div>
+
+    <!-- KAKAO map API -->
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7166c690e996b32aca00f91aa4705858">
+    </script>
+
+    <script>
+        var mapContainer = document.getElementById('map'),
+            mapCenter = new kakao.maps.LatLng(37.5111592, 127.044415),
+            mapOption = {
+                center: mapCenter,
+                level: 5
+            };
+
+        var map = new kakao.maps.Map(mapContainer, mapOption);
+
+        var places = [{
+                position: new kakao.maps.LatLng(37.5111592, 127.044415),
+                content: {
+                    url: "https://place.map.kakao.com/13031133",
+                    className: "def_place",
+                    title: "드림캐쳐 컴퍼니",
+                    thumbnail: "/img/DC_thum/dc_com_thum.jpg",
+                    members: ["드림캐쳐"],
+                    detail: "드림캐쳐의 소속회사",
+                    videoUrl: null
+                }
+            },
+            {
+                position: new kakao.maps.LatLng(37.5422245, 127.0584338),
+                content: {
+                    url: "https://place.map.kakao.com/1872275420",
+                    className: "culture_place",
+                    title: "리얼월드 성수",
+                    thumbnail: "/img/DC_thum/dc_1.jpg",
+                    members: ["드림캐쳐"],
+                    detail: "VersuS 방 탈출 체험",
+                    videoUrl: "https://youtu.be/Os-k4dSnx_s?si=e-Zkhor0GbkHRwkb"
+                }
+            },
+
+
+
+            // |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+            //           지유 Place Start!
+            // |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+            // \ (•◡•) /
+            {
+                position: new kakao.maps.LatLng(37.5804667, 126.9709336),
+                content: {
+                    url: "https://place.map.kakao.com/452731071",
+                    className: "food_place",
+                    title: "오카즈",
+                    thumbnail: "/img/DC_thum/jiu-aj1.jpg",
+                    members: ["지유", "가현"],
+                    detail: "어쮸! 어떤 거 먹쮸🍳 EP.01",
+                    videoUrl: "https://youtu.be/zSDg1UDvdNM?si=Zs-5R70FaRhqrJ9d"
+                }
+            },
+            {
+                position: new kakao.maps.LatLng(37.584216, 127.0020606),
+                content: {
+                    url: "https://place.map.kakao.com/731469845",
+                    className: "food_place",
+                    title: "하이디라오 대학로점",
+                    thumbnail: "/img/DC_thum/jiu-aj2.jpg",
+                    members: ["지유", "다미", "한동"],
+                    detail: "어쮸! 어떤 거 먹쮸🍳 EP.02",
+                    videoUrl: "https://youtu.be/cauAje6vL-w?si=A2I-tMvKdBpMcEPL"
+                }
+            },
+            {
+                position: new kakao.maps.LatLng(37.5240337, 127.0380456),
+                content: {
+                    url: "https://naver.me/IFKXMlbp",
+                    className: "cafe_place",
+                    title: "애니오케이션",
+                    thumbnail: "/img/DC_thum/jiu-aj3-1.jpg",
+                    members: ["지유"],
+                    detail: "어쮸! 어떤 거 먹쮸🍳 EP.03",
+                    videoUrl: "https://youtu.be/y6cdBbKEz7A?si=JrUfhe_-J9wSwglA&t=26"
+                }
+            },
+            {
+                position: new kakao.maps.LatLng(37.5175704, 127.0205381),
+                content: {
+                    url: "https://place.map.kakao.com/1487092810",
+                    className: "food_place",
+                    title: "심퍼티쿠시 가로수길점",
+                    thumbnail: "/img/DC_thum/jiu-aj3-2.jpg",
+                    members: ["지유"],
+                    detail: "어쮸! 어떤 거 먹쮸🍳 EP.03",
+                    videoUrl: "https://youtu.be/y6cdBbKEz7A?si=WBDtvLUJMCF8IQrc&t=462"
+                }
+            },
+            {
+                position: new kakao.maps.LatLng(37.486347, 127.0535696),
+                content: {
+                    url: "https://place.map.kakao.com/1302325998",
+                    className: "culture_place",
+                    title: "양제천 벚꽃길",
+                    thumbnail: "/img/DC_thum/jiu-aj3-3.jpg",
+                    members: ["지유"],
+                    detail: "어쮸! 어떤 거 먹쮸🍳 EP.03",
+                    videoUrl: "https://youtu.be/y6cdBbKEz7A?si=5O8fhZjdBGTZvbYU&t=930"
+                }
+            },
+            {
+                position: new kakao.maps.LatLng(37.5089919, 127.0226938),
+                content: {
+                    url: "https://place.map.kakao.com/1003721572",
+                    className: "drinks_place",
+                    title: "두비두바",
+                    thumbnail: "/img/DC_thum/jiu-aj4.jpg",
+                    members: ["지유", "수아"],
+                    detail: "어쮸! 어떤 거 먹쮸🍳 EP.04",
+                    videoUrl: "https://youtu.be/89Fp1ltz85k?si=vhrdIbxroJ4X8Y0t"
+                }
+            },
+            {
+                position: new kakao.maps.LatLng(37.5400001, 126.8654752),
+                content: {
+                    url: "https://place.map.kakao.com/272875608",
+                    className: "food_place",
+                    title: "육회가연어댁",
+                    thumbnail: "/img/DC_thum/jiu-aj5.jpg",
+                    members: ["지유", "시연", "유현"],
+                    detail: "어쮸! 어떤 거 먹쮸🍳 EP.05",
+                    videoUrl: "https://youtu.be/lC3zKdPUTho?si=vQFgG2O4OkkHbgP5"
+                }
+            },
+
+            
+            
+            // |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+            //           유현 Place Start!
+            // |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+            // \ (•◡•) /
+            {
+                position: new kakao.maps.LatLng(37.5207781,127.0267394),
+                content: {
+                    url: "https://place.map.kakao.com/1000190491",
+                    className: "culture_place",
+                    title: "다락 세라믹 스튜디오",
+                    thumbnail: "/img/DC_thum/yoo-wayd1.jpg",
+                    members: ["유현"],
+                    detail: "What Are YOO Doing EP.01",
+                    videoUrl: "https://youtu.be/6_uSMl60I7I?si=XdHnT0KJ9VeyOvXz"
+                }
+            },
+
+            
+            
+            // |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+            //           가현 Place Start!
+            // |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+            // \ (•◡•) /
+            {
+                position: new kakao.maps.LatLng(37.5040416,127.0361704),
+                content: {
+                    url: "https://place.map.kakao.com/615486058",
+                    className: "culture_place",
+                    title: "컬러 플레이스",
+                    thumbnail: "/img/DC_thum/gah-anda1.jpg",
+                    members: ["가현"],
+                    detail: "안녕하세요 이가현입니다: 퍼스널컬러편",
+                    videoUrl: "https://youtu.be/-W2yOM3ARsg?si=Z8Ch0MIDpKdaYsPh"
+                }
+            },
+            {
+                position: new kakao.maps.LatLng(37.7853231,126.7031231),
+                content: {
+                    url: "https://place.map.kakao.com/8173212",
+                    className: "def_place",
+                    title: "경기미래교육 파주캠퍼스",
+                    thumbnail: "/img/DC_thum/gah-mv1.jpg",
+                    members: ["가현"],
+                    detail: "Playground MV <br>촬영지",
+                    videoUrl: "https://youtu.be/iYvErpLnQ-8?si=dWprY3sdAa6-lgOJ"
+                }
+            },
+            
+            // |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+            //           수아 Place Start!
+            // |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+            // \ (•◡•) /
+            {
+                position: new kakao.maps.LatLng(37.5540297,126.9295191),
+                content: {
+                    url: "https://place.map.kakao.com/13597493",
+                    className: "culture_place",
+                    title: "테이블에이",
+                    thumbnail: "/img/DC_thum/sua-ceci1.jpg",
+                    members: ["수아"],
+                    detail: "[해결솨] 1화 사육솨",
+                    videoUrl: "https://youtu.be/SiSxj2PItAc?si=H-3B9imogII1I8QS"
+                }
+            },
+            {
+                position: new kakao.maps.LatLng(37.6315487,127.0575003),
+                content: {
+                    url: "https://place.map.kakao.com/950047297",
+                    className: "culture_place",
+                    title: "월계주짓수",
+                    thumbnail: "/img/DC_thum/sua-ceci2.jpg",
+                    members: ["수아"],
+                    detail: "[해결솨] 2화 주짓솨",
+                    videoUrl: "https://youtu.be/shSALbJrg2o?si=Hh0zTA4Do8OwKpwg"
+                }
+            },
+            {
+                position: new kakao.maps.LatLng(37.5746219,126.9417431),
+                content: {
+                    url: "https://place.map.kakao.com/26335540",
+                    className: "culture_place",
+                    title: "안산 숲속무대",
+                    thumbnail: "/img/DC_thum/sua-ceci3.jpg",
+                    members: ["수아"],
+                    detail: "[트래블 서울] 수아 영천시장 편-안산",
+                    videoUrl: "https://youtu.be/a1cvNr-uBg8?si=7QWVOzyB4eGOCJ4C&t=297"
+                }
+            },
+            {
+                position: new kakao.maps.LatLng(37.570653,126.9612097),
+                content: {
+                    url: "https://place.map.kakao.com/10640966",
+                    className: "culture_place",
+                    title: "영천시장",
+                    thumbnail: "/img/DC_thum/sua-ceci3-2.jpg",
+                    members: ["수아"],
+                    detail: "[트래블 서울] 수아 영천시장 편-영천시장",
+                    videoUrl: "https://youtu.be/a1cvNr-uBg8?si=Lsr92-noF6zm8GFH&t=369"
+                }
+            },
+            {
+                position: new kakao.maps.LatLng(37.5698808,126.9620461),
+                content: {
+                    url: "https://place.map.kakao.com/1651890956",
+                    className: "food_place",
+                    title: "영천시장-최가상회",
+                    thumbnail: "/img/DC_thum/sua-ceci3-3.jpg",
+                    members: ["수아"],
+                    detail: "[트래블 서울] 수아 영천시장 편-최가상회",
+                    videoUrl: "https://youtu.be/a1cvNr-uBg8?si=n-Or8xQ7OjTCQNMx&t=738"
+                }
+            },
+        ];
+
+
+
+
+
+
+        // places 배열의 각 요소에 대해 커스텀 오버레이를 생성하고 지도에 추가
+        places.forEach(function (place) {
+            var content = '<div class="overlay_info">';
+            content += '    <a class="map_go" href="' + place.content.url +
+                '" target="_blank"><strong class="' + place.content.className + '">' + place.content.title +
+                '</strong></a>';
+            content += '    <div class="desc" onclick="window.open(\'' + (place.content.videoUrl || place
+                .content.url) + '\', \'_blank\')">';
+            if (place.content.videoUrl) {
+                content += '        <div class="play_btn"><img src="/img/play_btn.png"></div>';
+            }
+            content += '        <div class="thum_wrap"><img class="thum_img" src="' + place.content.thumbnail +
+                '"></div>';
+            content += '        <div class="mem_cate_wrap">' + place.content.members.map(function (member) {
+                return '<span>' + member + '</span>';
+            }).join('') + '</div>';
+            content += '        <span class="detail">' + place.content.detail + '</span>';
+            content += '    </div>';
+            content += '</div>';
+
+            var overlay = new kakao.maps.CustomOverlay({
+                position: place.position,
+                content: content,
+                xAnchor: 0.5,
+                yAnchor: 1.1
+            });
+            overlay.setMap(map);
+        });
+    </script>
+</body>
+
+</html>

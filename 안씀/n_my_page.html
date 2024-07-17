@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="kr">
+
+<head>
+    <title>N 마이페이지</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/library/FontAwesome/css/all.min.css">
+    <link rel="stylesheet" href="/library/Slick/slick.css">
+    <link rel="stylesheet" href="/library/Slick/slick-theme.css">
+    <script src="/library/jQuery/jQuery.min.js"></script>
+
+    <script src="/library/Slick/slick.js"></script>
+
+    <link href="/library/css/n_font.css" rel="stylesheet">
+    <link href="/library/css/n_reset.css" rel="stylesheet">
+    <link href="/library/css/n_common.css?ver=23" rel="stylesheet">
+    <link href="/library/css/n_my_page.css?ver=23" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- 백엔드
+          |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+              화면에서 로딩이 떠야 할때는 loading 을 block시키면 됩니당
+          |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+               \ (•◡•) /
+     -->
+
+    <!-- 풀화면 로딩시 띄움 -->
+    <div class="sheet_wrap loading" style="display: none;">
+        <div class="loading_wrap_inner">
+            <img src="/asset/n_asset_anicon/loading.gif">
+        </div>
+        <!-- 원래 아래꺼 살려야됨 테스트용 -->
+        <div class="bk_common_bg_only_loading"></div>
+    </div>
+
+
+
+
+
+
+    <!-- 종목 팝업눌렀을때 띄움 -->
+    <!-- 종목 팝업눌렀을때 띄움 -->
+    <!-- 종목 팝업눌렀을때 띄움 -->
+
+    <div class="sports_kind_wrap_on sheet_wrap top_sports_sel_sheet" style="display: none;">
+        <div class="sports_kind_wrap_inner">
+            <div class="only_side_wrap">
+                <div class="sports_kind">
+                    <!-- 스포츠/E스포츠 선택 -->
+                    <div class="s_e_select_wrap">
+                        <a class="s_sports s_theme_bg ripple">SPORTS</a>
+                        <a class="e_sports ripple">E-SPORTS</a>
+                    </div>
+
+
+                    <!-- 백엔드
+                    |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+                    
+                         [종목 선택됐을시]
+                         sports_kind_btn에 sports_selected 와 s_theme_bg가 붙어있는데, 
+                         E스포츠일 경우 sports_selected다음에 e_theme_bg 로 붙혀주셔야 합니다.
+
+                         [E스포츠 변경시]
+                         - img src = e_sports_icon_종목이름영어.png로 바꿈<원래 스포팅 이름과 같음)
+                         - sports_name안의 글자를 종목이름으로 바꿈
+
+                         <E스포츠 게임이름 순서>
+                        LOL,PUBG,FC온라인,오버워치,서든어택,발로란트
+                        ,스타크레프트,로스트아크,리니지,사이퍼즈,던전&파이터,
+                        마인크래프트,로블록스,메이플스토리
+                         
+
+                    |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+                         \ (•◡•) /
+                    -->
+
+
+                    <!-- 종목별 선택 -->
+                    <div class="select_line">
+                        <div class="sports_kind_btn sports_selected s_theme_bg ripple">
+                            <img src="/asset/n_asset_select_icon/sports_icon_bil.png" style="display: none;">
+                            <p class="sports_name">당구</p>
+                        </div>
+                        <div class="sports_kind_btn ripple"><img
+                                src="/asset/n_asset_select_icon/sports_icon_bowling.png">
+                            <p class="sports_name">볼링</p>
+                        </div>
+                        <div class="sports_kind_btn ripple"><img
+                                src="/asset/n_asset_select_icon/sports_icon_tennis.png">
+                            <p class="sports_name">테니스</p>
+                        </div>
+                        <div class="sports_kind_btn ripple"><img src="/asset/n_asset_select_icon/sports_icon_bad.png">
+                            <p class="sports_name">배드민턴</p>
+                        </div>
+                        <div class="sports_kind_btn ripple"><img
+                                src="/asset/n_asset_select_icon/sports_icon_soccer.png">
+                            <p class="sports_name">축구</p>
+                        </div>
+
+                        <div class="sports_kind_btn ripple"><img src="/asset/n_asset_select_icon/sports_icon_golf.png">
+                            <p class="sports_name">골프</p>
+                        </div>
+                        <div class="sports_kind_btn ripple"><img
+                                src="/asset/n_asset_select_icon/sports_icon_futsal.png">
+                            <p class="sports_name">풋살</p>
+                        </div>
+                        <div class="sports_kind_btn ripple"><img
+                                src="/asset/n_asset_select_icon/sports_icon_pingpong.png">
+                            <p class="sports_name">탁구</p>
+                        </div>
+                        <div class="sports_kind_btn ripple"><img
+                                src="/asset/n_asset_select_icon/sports_icon_basketball.png">
+                            <p class="sports_name">농구</p>
+                        </div>
+                        <div class="sports_kind_btn ripple"><img
+                                src="/asset/n_asset_select_icon/sports_icon_parkgolf.png">
+                            <p class="sports_name">파크골프</p>
+                        </div>
+
+                        <div class="sports_kind_btn ripple"><img src="/asset/n_asset_select_icon/sports_icon_box.png">
+                            <p class="sports_name">복싱</p>
+                        </div>
+                        <div class="sports_kind_btn ripple"><img
+                                src="/asset/n_asset_select_icon/sports_icon_baseball.png">
+                            <p class="sports_name">야구</p>
+                        </div>
+                        <div class="sports_kind_btn ripple"><img
+                                src="/asset/n_asset_select_icon/sports_icon_volleyballs.png">
+                            <p class="sports_name">배구</p>
+                        </div>
+                        <div class="sports_kind_btn ripple"><img
+                                src="/asset/n_asset_select_icon/sports_icon_football_val.png">
+                            <p class="sports_name">족구</p>
+                        </div>
+                        <div class="sports_kind_btn ripple"><img
+                                src="/asset/n_asset_select_icon/sports_icon_health.png">
+                            <p class="sports_name">헬스&PT</p>
+                        </div>
+
+                        <div class="sports_kind_btn ripple"><img
+                                src="/asset/n_asset_select_icon/sports_icon_pilates.png">
+                            <p class="sports_name">필라테스</p>
+                        </div>
+                        <div class="sports_kind_btn ripple"><img
+                                src="/asset/n_asset_select_icon/sports_icon_archery.png">
+                            <p class="sports_name">활쏘기</p>
+                        </div>
+                        <div class="sports_kind_btn ripple"><img
+                                src="/asset/n_asset_select_icon/sports_icon_taekwondo.png">
+                            <p class="sports_name">태권도</p>
+                        </div>
+
+
+                    </div>
+
+
+
+                </div>
+
+                <div class="sports_kind_wrap_close sheet_close_btn">
+                    <a class="sports_kind_wrap_close_btn">
+                        <img src="/asset/n_asset_select_icon/select_close.png">
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="bk_common_bg"></div>
+    </div>
+
+
+
+
+
+
+
+    <header class="not_ham original_path" style="display: block;">
+        <div class="header_in">
+            <!-- 왼쪽 -->
+            <div class="header_left">
+                <img src="/asset/n_asset/header_my_location.png">
+
+                <a class="location">부산 금정구 서동ㄴㅇㄴㅇ ㅇㄴ2324124121</a>
+
+            </div>
+
+            <!-- 중앙 : 종목 -->
+            <!-- 백엔드
+                         |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+                              -선택한 종목으로 바꾸기
+                              -esports로 바뀌면 .header_center 에 .e_sports 추가
+                         |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+                              \ (•◡•) /
+                    -->
+            <div class="header_center ripple">
+                <a class="sports_kind_wrap">
+                    당구
+                </a>
+                <div class="pull">
+                    <img src="/asset/n_asset/sports_pull_more.png">
+                </div>
+            </div>
+
+            <!-- 오른쪽 -->
+            <div class="header_right">
+                <!-- 헤더 알림벨 -->
+                <!-- sandbox 기존걸로 연결 -->
+                <a class="header_bell" href="https://sandbox.sporting.place/source/sp/alert.html"><img
+                        src="/asset/n_asset/header_ringbell.png">
+                    <div class="header_new_dots_alert" style="display:block;">
+                        <p class="alert_num">3</p>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </header>
+
+
+    <!-- 튜토리얼 박스  -->
+    <div class="tutorial_box" style="display: none;">
+        <div class="bubble">
+            <p class="bubble_text">필요하면 튜토리얼 씀
+                <div class="bubble_x"><img src="/asset/n_asset/bk_x.png"></div>
+            </p>
+        </div>
+    </div>
+
+
+
+
+
+
+    <!--
+     |￣￣￣￣￣￣￣￣￣￣|
+          main 내용
+     |＿＿＿＿＿＿＿＿＿＿|
+          \ (•◡•) /
+     -->
+
+    <section class="main_wrap">
+        <div class="only_side_wrap">
+            <div class="main_top_margin">
+
+                <a href="https://sandbox.sporting.place/source/sp/login.html" class="my_friend_match ripple">로그인</a>
+
+                <!-- 윗  사진닉넴플필  -->
+                <div class="top_proflie">
+                    <div class="profile_wrap ripple" onclick="location.href='n_profile_view.html'">
+                        <div class="img_crop">
+                            <img src="/asset/n_asset_ai프로필이미지/g1.png">
+                        </div>
+                        <div class="edit_btn">
+                            <img src="/asset/n_asset/edit_pen.png">
+                        </div>
+                    </div>
+
+                    <p class="name">스포팅 <span class="age">25</span> <span class="girl">여</span></p>
+                </div>
+
+                <!-- 중간선 -->
+
+            </div>
+
+        </div>
+        <div class="info_title_btm_line"></div>
+        <div class="only_side_wrap scroll_padding_bottom">
+
+
+            <!-- 인포 박스 1개 씩 : 리더보드 -->
+            <div class="info_box info_time_box" style="display: block;">
+                <p class="info_box_title">리더보드
+                    <span class="go_to_more" onclick="location.href='n_my_leader.html'">더보기 <img
+                            src="/asset/n_asset/header_back.png"></span>
+                </p>
+
+                <!--백엔드: 아무 목록 없을시 -->
+                <div class="n_empty_box" style="display:block">
+                    <p class="n_empty_text">아직 없어요</p>
+                </div>
+
+
+
+
+                <div class="info_box_inner_my" style="display: ;">
+                    <div class="wrap_my_x_scroll">
+
+                        <!-- 백엔드
+          |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+            아래 내역 ( one_box ) 는 최대 3개 표기합니다
+          |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+               \ (•◡•) /
+     -->
+
+                        <!-- 1개 -->
+
+                        <div class="one_box leader_box s_theme_bg ripple" onclick="location.href='n_my_leader.html'">
+                            <div class="intext_top_my">
+                                <p class="intext_title">전국랭킹</p>
+                                <div class="intext_sub_title_wrap">
+                                    <p class="intext_sub_title">50등</p>
+
+                                    <span class="go_icon">
+                                        <img src="/asset/n_asset/header_back.png">
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <!-- 1개 -->
+                        <div class="one_box leader_box  ripple" onclick="location.href='n_my_leader.html'">
+                            <div class="intext_top_my">
+                                <p class="intext_title">랭킹전 랭킹
+                                    <span class="intext_title_mini">땡큐캐롬 당구장</span>
+                                </p>
+                                <div class="intext_sub_title_wrap">
+                                    <p class="intext_sub_title">4등</p>
+
+                                    <span class="go_icon">
+                                        <img src="/asset/n_asset/header_back.png">
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- 1개 -->
+                        <div class="one_box leader_box  ripple" onclick="location.href='n_my_leader.html'">
+                            <div class="intext_top_my">
+                                <p class="intext_title">랭킹전 랭킹
+                                    <span class="intext_title_mini">서면마제스티오 당구장</span>
+                                </p>
+                                <div class="intext_sub_title_wrap">
+                                    <p class="intext_sub_title">2등</p>
+
+                                    <span class="go_icon">
+                                        <img src="/asset/n_asset/header_back.png">
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+            </div>
+
+
+
+
+
+
+            <!-- 인포 박스 1개 씩 : 예약내역 -->
+            <div class="info_box info_time_box" style="display: block;">
+                <p class="info_box_title">예약내역
+                    <span class="go_to_more" onclick="location.href='n_my_reserve.html'">더보기 <img
+                            src="/asset/n_asset/header_back.png"></span>
+                </p>
+
+                <!--백엔드: 아무 목록 없을시 -->
+                <div class="n_empty_box" style="display:block">
+                    <p class="n_empty_text">아직 없어요</p>
+                </div>
+
+                <div class="info_box_inner_my" style="display: block;">
+
+                    <div class="wrap_my_x_scroll">
+
+                        <!-- 백엔드
+          |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+            아래 내역 ( one_box ) 는 최대 3개 표기합니다
+          |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+               \ (•◡•) /
+     -->
+
+                        <!-- 1개 -->
+                        <div class="one_box ripple" onclick="location.href='n_my_reserve.html'">
+                            <div class="intext_top_my">
+                                <p class="intext_title">땡큐해피 당구장</p>
+                                <div class="intext_sub_title_wrap">
+                                    <p class="intext_sub_title">11월 15일 13시 30분</p>
+
+                                    <!-- 백엔드
+          |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+            [예약관련 badge 별 이름과 추가할 클래스]
+            -예약승인 대기중   reserv_acc_wait
+            -예약완료   reserv_succ
+            -예약거절  reserv_acc_deny
+            -예약취소 reserv_cancel
+          |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+               \ (•◡•) /
+     -->
+                                    <span class="badge reserv_acc_wait">
+                                        <p class="badge_text">예약승인 대기중</p>
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- 1개 -->
+                        <div class="one_box ripple" onclick="location.href='n_my_reserve.html'">
+                            <div class="intext_top_my">
+                                <p class="intext_title">땡큐해피 당구장</p>
+                                <div class="intext_sub_title_wrap">
+                                    <p class="intext_sub_title">11월 15일 13시 30분</p>
+                                    <span class="badge reserv_acc_deny">
+                                        <p class="badge_text">예약거절</p>
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- 1개 -->
+                        <div class="one_box ripple" onclick="location.href='n_my_reserve.html'">
+                            <div class="intext_top_my">
+                                <p class="intext_title">땡큐해피 당구장</p>
+                                <div class="intext_sub_title_wrap">
+                                    <p class="intext_sub_title">11월 15일 13시 30분</p>
+                                    <span class="badge reserv_acc_deny">
+                                        <p class="badge_text">예약거절</p>
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+
+            </div>
+
+
+
+
+
+            <!-- 인포 박스 1개 씩 : 나의 토너먼트 -->
+            <div class="info_box tourna_box" style="display: block;">
+                <p class="info_box_title">토너먼트
+                    <span class="go_to_more" onclick="location.href='n_my_tourna.html'">더보기 <img
+                            src="/asset/n_asset/header_back.png"></span>
+                </p>
+
+                <!--백엔드: 아무 목록 없을시 -->
+                <div class="n_empty_box" style="display:block">
+                    <p class="n_empty_text">아직 없어요</p>
+                </div>
+
+                <div class="info_box_inner_my" style="display: block;">
+
+                    <div class="wrap_my_x_scroll">
+
+                        <!-- 백엔드
+          |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+            아래 내역 ( one_box ) 는 최대 3개 표기합니다
+          |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+               \ (•◡•) /
+     -->
+
+                        <!-- 1개 : 내가만든거 관리-->
+                        <div class="one_box ripple"
+                            onclick="location.href='https://sandbox.sporting.place/source/sp/league_my_room_info.html'">
+                            <div class="intext_top_my">
+
+                                <!-- 갖고옴 -->
+                                <div class="article_box">
+                                    <a class="free_box_inner">
+                                        <div class="left_boxes">
+                                            <div class="inner_text">
+                                                <span class="small_box_text">8강</span>
+                                                <p class="board_title">만든경기 입니다</p>
+                                                <div class="board_detail_wrap">
+                                                    <div class="board_detail">
+                                                        <p class="board_location"><img
+                                                                src="/asset/n_asset/location_icon.png">해피당구장
+                                                        </p>
+                                                        <p class="board_date"><img src="/asset/n_asset/cal_icon.png">
+                                                            12.25
+                                                            06:00</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a class="join_btn setting">
+                                            <p>관리</p>
+                                        </a>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 백엔드
+          |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+          [버튼 join_btn 표기] 
+            -종료된 토너먼트 일 경우,
+            join_btn setting 에 joinend_end 클래스 추가 ,글자는 ('종료' 로 표기)
+            article_box 에 .end_list 추가
+
+            -내가만든 토너먼트 일 경우, 기존 /sp/league_my_room_info.html 사용
+            join_btn setting 만 붙음 ( 글자는 '관리'로 표기)
+
+            -내가참가한 토너먼트 일 경우, 기존 /sp/league_room_info.html 사용
+              join_btn setting  에  s_theme_bg / e_theme_bg 가 붙음 ( 글자는 '상세'로 표기)
+
+          |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+               \ (•◡•) /
+     -->
+                        <!-- 1개 : 내가 참가한거 상세-->
+                        <div class="one_box ripple"
+                            onclick="location.href='https://sandbox.sporting.place/source/sp/league_room_info.html'">
+                            <div class="intext_top_my">
+
+                                <!-- 갖고옴 -->
+                                <div class="article_box">
+                                    <a class="free_box_inner">
+                                        <div class="left_boxes">
+                                            <div class="inner_text">
+                                                <span class="small_box_text">8강</span>
+                                                <p class="board_title">참가한경기 입니다</p>
+                                                <div class="board_detail_wrap">
+                                                    <div class="board_detail">
+                                                        <p class="board_location"><img
+                                                                src="/asset/n_asset/location_icon.png">스마일당구장
+                                                        </p>
+                                                        <p class="board_date"><img src="/asset/n_asset/cal_icon.png">
+                                                            12.25
+                                                            06:00</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a class="join_btn setting joinend_end">
+                                            <p>종료</p>
+                                        </a>
+                                        <!-- 내결과 -->
+                                        <div class="league_reslut" style="display: block;">
+                                            <p class="my_league_text">
+                                                내 결과
+                                            </p>
+                                            <p class="my_league_reslut">
+                                                <img src="/asset/n_asset/trophy_icon.png"></i>2위</p>
+                                        </div>
+
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 1개 : 내가 참가한거 상세-->
+                        <div class="one_box ripple"
+                            onclick="location.href='https://sandbox.sporting.place/source/sp/league_room_info.html'">
+                            <div class="intext_top_my">
+
+                                <!-- 갖고옴 -->
+                                <div class="article_box">
+                                    <a class="free_box_inner">
+                                        <div class="left_boxes">
+                                            <div class="inner_text">
+                                                <span class="small_box_text">8강</span>
+                                                <p class="board_title">참가한경기 입니다</p>
+                                                <div class="board_detail_wrap">
+                                                    <div class="board_detail">
+                                                        <p class="board_location"><img
+                                                                src="/asset/n_asset/location_icon.png">땡큐해피당구장
+                                                        </p>
+                                                        <p class="board_date"><img src="/asset/n_asset/cal_icon.png">
+                                                            12.25
+                                                            06:00</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a class="join_btn setting s_theme_bg">
+                                            <p>상세</p>
+                                        </a>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+
+            </div>
+
+
+
+
+        </div>
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+    <nav>
+
+        <div class="nav_menu_wrap">
+            <div class="nav_menu">
+                <a class="menu1" href="/source/sp/n_index.html">
+                    <img src="/asset/n_asset/nav_home.png"><span class="menu_name">홈</span></a>
+
+                <a class="menu2" href="/source/sp/n_ranking_list.html">
+                    <img src="/asset/n_asset/nav_ranking.png"><span class="menu_name">랭킹전</span></a>
+
+
+                <!-- 백엔드
+          |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+             새 알림 있을 시, new_dots 보이게 함
+          |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+               \ (•◡•) /
+          -->
+                <a class="menu3" href="/source/sp/n_match_find.html">
+                    <img src="/asset/n_asset/nav_matching.png">
+                    <div class="new_dots" style="display: block;"></div>
+                    <span class="menu_name">파트너매칭</span>
+                </a>
+
+                <a class="menu4" href="/source/sp/n_matchlist_invited.html">
+                    <img src="/asset/n_asset/nav_matching_list.png">
+                    <div class="new_dots" style="display: block;"></div>
+                    <span class="menu_name">매칭현황</span>
+                </a>
+                <a class="menu5" href="/source/sp/n_my_page.html"><img src="/asset/n_asset/nav_my_on.png"><span
+                        class="menu_name">마이</span></a>
+            </div>
+        </div>
+    </nav>
+
+
+
+
+
+
+
+
+
+    <script>
+        /* =================================닫기================================= */
+        /* =================================닫기================================= */
+        /* =================================닫기================================= */
+
+
+        // |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+        //       흑필터 공통닫기
+        // |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+        //      \ (•◡•) /
+
+        $(document).ready(function () {
+            $(".bk_common_bg").on("click", function () {
+                $(this).closest(".sheet_wrap").hide();
+                /* 일반 바텀시트 */
+                $('.bottom_sheet_wrap_inner').css('bottom', '-100%');
+                /* 스포츠 종목처럼 탑시트 */
+                $('.sports_kind_wrap_inner').css('top', '-100%');
+            });
+        });
+
+        // |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+        //      닫기버튼 공통 닫기
+        //      sheet_close_btn (닫기 ) 누르면 가장가까운
+        //      sheet_wrap 닫힘 (sheet_close_btn 가 sheet_wrap
+        //      안에 들어있어서 하나만 닫힘)
+        // |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+        //      \ (•◡•) /
+
+        $(document).ready(function () {
+            $(".sheet_close_btn").on("click", function () {
+                $(this).closest(".sheet_wrap").hide();
+                /* 일반 바텀시트 */
+                $('.bottom_sheet_wrap_inner').css('bottom', '-100%');
+                /* 스포츠 종목처럼 탑시트 */
+                $('.sports_kind_wrap_inner').css('top', '-100%');
+
+            });
+        });
+
+
+
+
+        /* =================================열기================================= */
+        /* =================================열기================================= */
+        /* =================================열기================================= */
+
+
+        // |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+        // 튜토리얼 닫기
+        // tutorial_box(튜토리얼 말풍선) : 최초 실행시 나오며, 말풍선을
+        // 누르면 숨겨짐 (한 번 숨기면 재실행 후에도 못 봄)
+        // |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+        // \ (•◡•) /
+
+
+        $(document).ready(function () {
+            $(".tutorial_box").on("click", function () {
+                $(".tutorial_box").hide();
+            });
+        });
+
+
+
+
+
+        // |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+        //      종목선택 : 종목선택 창 열기
+        // |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+        //      \ (•◡•) /
+
+        $(document).ready(function () {
+            $(".header_center").on("click", function () {
+                $(".sheet_wrap.top_sports_sel_sheet").show(0);
+                $(".sports_kind_wrap_inner").animate({
+                    top: "0"
+                }, 200);
+            });
+        });
+
+
+
+
+
+
+
+
+
+        // |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+        //      스포츠/E스포츠 선택
+        // |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+        //      \ (•◡•) /
+
+
+        $(document).ready(function () {
+            $(".s_sports").on("click", function () {
+                $(this).addClass("s_theme_bg");
+                if ($(this).hasClass("s_theme_bg")) {
+                    $(".e_sports").removeClass("e_theme_bg");
+                }
+            });
+
+            $(".e_sports").on("click", function () {
+                $(this).addClass("e_theme_bg");
+                if ($(this).hasClass("e_theme_bg")) {
+                    $(".s_sports").removeClass("s_theme_bg");
+                }
+            });
+        });
+
+
+        // |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+        //      종목선택 : 클릭한 종목 활성화
+        // |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+        //      \ (•◡•) /
+
+        $(document).ready(function () {
+            $(".sports_kind_btn.sports_selected.s_theme_bg").on("click", function () {
+                $(".sports_kind_btn").removeClass("sports_selected s_theme_bg");
+                $(this).find("img").show();
+            });
+
+
+            $(".sports_kind_btn").on("click", function () {
+                $(".sports_kind_btn").removeClass("sports_selected s_theme_bg");
+                $(this).addClass("sports_selected s_theme_bg");
+                $(".sports_kind_btn").find("img").show();
+                $(this).find("img").hide();
+            });
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+        //      -스크롤 올렸을 시, NAV를 아래로 숨기기
+        //      -스크롤 내렸을 시, NAV를 위로 보이기
+        // |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+        //      \ (•◡•) /
+
+        $(function () {
+
+            // 스크롤시에 사용자가 스크롤했다는 것을 알림 
+            var didScroll;
+            var lastScrollTop = 0;
+            var delta = 5;
+            // 동작의 구현이 시작되는 위치 
+            var navbarHeight = $('nav').outerHeight();
+            // 영향을 받을 요소를 선택
+            // outerHeight 요소의 내부높이 + padding + border
+            $(window).scroll(function (event) {
+                didScroll = true;
+            });
+            // hasScrolled()를 실행하고 didScroll 상태를 재설정
+            setInterval(function () {
+                if (didScroll) {
+                    hasScrolled();
+                    didScroll = false;
+                }
+            }, 250);
+
+            // 이하동작을 구현
+            function hasScrolled() {
+                var st = $(this).scrollTop();
+                // 접근하기 쉽게 현재 스크롤의 위치를 저장한다.
+                console.log(navbarHeight);
+                console.log('-----------이 위는 navbarHeight-------------');
+
+                if (Math.abs(lastScrollTop - st) <= delta)
+                    return;
+                // 설정한 delta 값보다 더 스크롤되었는지를 확인한다.
+
+                if (st > lastScrollTop && st > navbarHeight) {
+                    // 헤더의 높이보다 더 스크롤되었는지 확인하고 스크롤의 방향이 위인지 아래인지를 확인한다.
+                    // Scroll Down
+                    $('nav').addClass('scroll_nav_down');
+                } else {
+                    // Scroll Up
+                    if (st + $(window).height() < $(document).height()) {
+                        $('nav').removeClass('scroll_nav_down');
+                    }
+                }
+                // lastScrollTop 에 현재 스크롤위치를 지정한다.
+                lastScrollTop = st;
+            }
+
+        });
+    </script>
+
+
+</body>
+
+
+
+</html>

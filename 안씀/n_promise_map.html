@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="kr">
+
+<head>
+    <title>N 약속잡기</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/library/FontAwesome/css/all.min.css">
+    <script src="/library/jQuery/jQuery.min.js"></script>
+
+    <link href="/library/css/n_font.css" rel="stylesheet">
+    <link href="/library/css/n_reset.css?ver=23" rel="stylesheet">
+    <link href="/library/css/n_common.css?ver=23" rel="stylesheet">
+    <link href="/library/css/n_promise_map.css?ver=23" rel="stylesheet">
+
+</head>
+
+<body>
+
+
+
+
+    <!-- 백엔드
+          |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+              화면에서 로딩이 떠야 할때는 loading 을 block시키면 됩니당
+          |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+               \ (•◡•) /
+     -->
+
+    <!-- 풀화면 로딩시 띄움 -->
+    <div class="sheet_wrap loading" style="display: none;">
+        <div class="loading_wrap_inner">
+            <img src="/asset/n_asset_anicon/loading.gif">
+        </div>
+        <!-- 원래 아래꺼 살려야됨 테스트용 -->
+        <div class="bk_common_bg_only_loading"></div>
+        <!-- <div class="bk_common_bg"></div> -->
+    </div>
+
+
+
+
+
+
+    <!-- 랭킹전 띄움 -->
+    <!-- 랭킹전 띄움 -->
+    <!-- 랭킹전 띄움 -->
+
+    <!-- 옵션바텀시트 : 선택 가능한 옵션라인 일때 -->
+
+    <div class="sheet_wrap select_opt_wrap do_promise" style="display: none;">
+        <div class="bottom_sheet_wrap_inner">
+            <div class="footer_btn_wrap">
+                <div class="only_side_wrap">
+
+                    <div class="sheet_top">
+                        <p class="sheet_title opt_small">빌리어드 당구장</p>
+                        <p class="sheet_sub_title">예약시간 전 취소가능 (당일예약시 현장상황에 따라 대기시간 발생)</p>
+                    </div>
+
+                    <div class="opt_wrap">
+
+                        <!-- 옵션라인 1줄씩 -->
+                        <div class="opt_line">
+                            <p class="title_line">일시</p>
+                            <div class="line_intext">
+
+                                <div class="line_intext_value select_wrap">
+                                    <input class="line_intext_value " type="date" value="2023-12-11">
+                                    <span class="pulldown_icon_sel_position"><img
+                                            src="/asset/n_asset/header_back.png"></span>
+                                </div>
+
+
+                                <div class="line_intext_value select_wrap">
+                                    <select>
+                                        <option>
+                                            09:00
+                                        </option>
+                                        <option>
+                                            09:30
+                                        </option>
+                                        <option>
+                                            10:00
+                                        </option>
+
+                                    </select>
+                                    <span class="pulldown_icon_sel_position"><img
+                                            src="/asset/n_asset/header_back.png"></span>
+                                </div>
+
+                            </div>
+
+                            <p class="reserv_poss_time" style="display: none;">평일: <span class="weekday_poss_time">09:00
+                                    ~ 8:00</span> 주말: <span class="weekend_poss_time">09:00 ~ 18:00</span> </p>
+                        </div>
+
+                        <!-- 예약하기 체크박스 -->
+                        <div class="n_check_box_wrap">
+                            <input type="checkbox" id="ranking_check_btn" />
+                            <label class="n_check_box_text" for="ranking_check_btn"> 예약하기</label>
+                        </div>
+
+                        <!-- 예약하기 체크했을시 아래 보여줌 -->
+                        <div class="reserv_check_wrap" style="display: none;">
+                            <!-- 옵션라인 1줄씩 -->
+                            <div class="opt_line">
+                                <p class="title_line">사용시설</p>
+                                <div class="line_intext">
+
+                                    <div class="line_intext_value select_wrap">
+                                        <select>
+                                            <option>
+                                                중대 (3개 보유)
+                                            </option>
+                                            <option>
+                                                대대 (3개 보유)
+                                            </option>
+                                            <option>
+                                                포켓 (3개 보유)
+                                            </option>
+
+                                        </select>
+                                        <span class="pulldown_icon_sel_position"><img
+                                                src="/asset/n_asset/header_back.png"></span>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- 옵션라인 1줄씩 -->
+                            <div class="opt_line">
+                                <p class="title_line">결제방식</p>
+                                <div class="line_intext">
+
+                                    <div class="line_intext_value select_wrap">
+                                        <select>
+                                            <option>
+                                                현장결제
+                                            </option>
+                                            <option>
+                                                선불결제
+                                            </option>
+                                        </select>
+                                        <span class="pulldown_icon_sel_position"><img
+                                                src="/asset/n_asset/header_back.png"></span>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                            <!-- 반반결제 체크박스 -->
+                            <div class="n_check_box_wrap_half_pay">
+                                <input type="checkbox" id="half_pay_btn" />
+                                <label class="n_check_box_text_half_pay" for="half_pay_btn"> 반반결제</label>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+
+
+                    <!-- 푸터버튼 컴포넌트 -->
+                    <p class="one_text" style="display: none;">한 줄 설명</p>
+                    <div class="footer_btn close_or_accept">
+                        <a class="footer_fir_close_btn sheet_close_btn ripple">취소</a>
+    <!-- 백엔드
+        |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+            약속하기 나 예약신청을 누르면 (예약신청은 결제 후)
+            해당 채팅방으로 갑니다 (상세는 채팅방 상단에 띄움)
+        |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+             \ (•◡•) /
+   -->
+   
+
+                        <a class="footer_sec_btn promise_go_btn s_theme_bg ripple ">약속잡기</a>
+                        <!-- 예약체크 했을 시 보여줌 -->
+                        <a class="footer_sec_btn reserv_succ_btn s_theme_bg ripple" style="display: none;">예약하기</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 흑 필터 -->
+        <div class="bk_common_bg"></div>
+    </div>
+
+
+
+
+    <!-- 예약신청 완료 띄움 -->
+    <!-- 예약신청 완료 띄움 -->
+    <!-- 예약신청 완료 띄움 -->
+
+
+    <!-- 
+        |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+             결제하고 나면 아래 예약신청 완료 떠야합니다 < 안씀
+        |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+             \ (•◡•) /
+   -->
+
+    <!-- 바텀시트 공통 이미지도 들어갈시 (머머하기/완료)-->
+    <!--     <div class="sheet_wrap reserv_succ" style="display:none;">
+        <div class="bottom_sheet_wrap_inner">
+            <div class="footer_btn_wrap">
+                <div class="only_side_wrap">
+                    <div class="sheet_top_img">
+                        <img class="calendar_chk_gif" src="/asset/n_asset_anicon/calendar_chk.gif">
+                    </div>
+
+                    <div class="sheet_top">
+                        <p class="sheet_title">예약신청 완료!</p>
+                        <p class="sheet_sub_title">예약현황은 마이 - 예약내역에서 확인 할 수 있어요!</p>
+                    </div>
+
+
+                    <p class="one_text" style="display: none;">한 줄 설명</p>
+                    <div class="footer_btn close_or_accept">
+                        <a class="footer_fir_close_btn sheet_close_btn ripple">닫기</a>
+                        <a href="n_matchlist_alone.html" class="footer_sec_btn ripple s_theme_bg">목록에서 확인하기</a>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="bk_common_bg"></div>
+    </div> -->
+
+
+
+
+
+
+
+    <!-- 혼자놀 준비 완료 띄움 -->
+    <!-- 혼자놀 준비 완료 띄움 -->
+    <!-- 혼자놀 준비 완료 띄움 -->
+
+
+    <!-- 
+        |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+             예약하지 않고 연습기록하기 / 랭킹전하기 완료시 뜹니다 < 안씀
+        |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+             \ (•◡•) /
+   -->
+
+    <!-- 바텀시트 공통 이미지도 들어갈시 (머머하기/완료)-->
+    <!--     <div class="sheet_wrap alone_succ" style="display:none;">
+        <div class="bottom_sheet_wrap_inner">
+            <div class="footer_btn_wrap">
+                <div class="only_side_wrap">
+                    <div class="sheet_top_img">
+                        <img class="calendar_chk_gif" src="/asset/n_asset_anicon/anicon_chk.gif">
+                    </div>
+
+                    <div class="sheet_top">
+                        <p class="sheet_title">혼자 놀 준비완료!</p>
+                        <p class="sheet_sub_title">혼자하기 목록은 매칭현황에서 확인 할 수 있어요!</p>
+                    </div>
+
+
+                    <p class="one_text" style="display: none;">한 줄 설명</p>
+                    <div class="footer_btn close_or_accept">
+                        <a class="footer_fir_close_btn sheet_close_btn ripple">닫기</a>
+                        <a href="n_matchlist_alone.html" class="footer_sec_btn ripple s_theme_bg">목록에서 확인하기</a>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="bk_common_bg"></div>
+    </div>
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- 타이틀만 있는 헤더일 시 -->
+    <header>
+        <div class="header_in just_header_in">
+            <!-- 왼쪽 -->
+            <div class="header_left just_header_left " onclick="history.back(); return false;">
+                <img src="/asset/n_asset/header_back.png">
+            </div>
+
+            <div class="header_center just_center_title ">
+                <p class="just_center_title_p">
+                    내 근처 지도
+                </p>
+            </div>
+
+
+        </div>
+    </header>
+
+
+    <!--백엔드
+     |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+     - map_here   안에 지도가 들어갑니다(녹색) 
+
+    - 지도 아이콘 경로 /n_asset_map_mark + sports_icon_종목명.png 
+
+    - 맵 안의 아이콘을 클릭하면 해당 지점에 대한 정보 .main_wrap 가 .show(100) 됩니다
+    .map_here 의 div를 클릭하면 .main_wrap 가 display: block 되는 제이쿼리 
+
+    -지도 안에 맵 아이콘 이미지 사이즈는 아래와 같이 나타나면 됩니다
+     # 랭킹전/대회 둘 다 없는 장소    img class="map_img_default" style="width: 50px;" 
+      # 랭킹전만 되는 장소            img class="map_img_rank_only" style="width: 50px;" 
+      # 랭킹전+대회 둘 다 되는 장소   img class="map_img_rank_league"  style="width: 58px;"
+    -
+     |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+          \ (•◡•) /
+     -->
+
+    <!-- 임시 지도 -->
+    <div class="map_here" style="background-color: rgb(3, 129, 20); width: 100%; height: 100%; position: fixed;">
+
+        <!-- 지도 안 맵 아이콘 : 랭킹전/대회 둘 다 없는 장소-->
+        <div style="position: fixed; top: 50px;">
+            <img class="map_img_default" style="width: 50px;" src="/asset/n_asset_map_mark/sports_icon_bil_mark.png">
+        </div>
+
+
+        <!-- 지도 안 맵 아이콘 : 랭킹전만 되는 장소-->
+        <div style="position: fixed; top: 50px; left: 50px;">
+            <img class="map_img_rank_only" style="width: 50px;"
+                src="/asset/n_asset_map_mark/sports_icon_bil_mark_rank.png">
+        </div>
+
+
+        <!-- 지도 안 맵 아이콘 : 랭킹전+대회 둘 다 되는 장소-->
+        <div style="position: fixed; top: 50px;  left: 100px;">
+            <img class="map_img_rank_league" style="width: 58px;"
+                src="/asset/n_asset_map_mark/sports_icon_bil_mark_rank_league.png">
+        </div>
+    </div>
+
+
+
+
+
+    <!-- 튜토리얼 박스  -->
+    <div class="tutorial_box" style="display: none;">
+        <div class="bubble">
+            <p class="bubble_text">신청을 수락하면 채팅방에서 대화 할 수 있어요
+                <div class="bubble_x"><img src="/asset/n_asset/bk_x.png"></div>
+            </p>
+        </div>
+    </div>
+
+
+
+
+
+
+    <!--
+     |￣￣￣￣￣￣￣￣￣￣|
+          main 내용
+     |＿＿＿＿＿＿＿＿＿＿|
+          \ (•◡•) /
+     -->
+
+
+
+
+
+    <!-- 백엔드
+     |￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+          내 위치로 돌아가기
+     |＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+          \ (•◡•) /
+     -->
+    <div class="location_cross ripple" style="bottom: 20px;">
+        <img src="/asset/n_asset/location_crosshair_icon.png">
+    </div>
+
+    <!-- 백엔드 
+     |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+        -지도에서 맵 아이콘을 터치 했을때 .main_wrap (시설)나타남
+        -지도에서 맵 아이콘을 터치 했을때 .location_cross 
+        (내 위치로 돌아가기) 의 bottom: 160px; 됨
+     |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+          \ (•◡•) /
+     -->
+
+    <section class="main_wrap" style="display: none;">
+
+
+
+        <div class="only_side_wrap">
+            <div class="place_bottom_wrap">
+
+                <div class="place_box_top " >
+
+                    <div class="place_box_inner_left">
+                        <div class="place_img_wrap">
+                            <img src="/asset/n_asset_place_default/place_default_01.png">
+                        </div>
+                    </div>
+
+                    <div class="place_box_inner_center">
+
+                        <div class="place_title_info">
+                            <div class="place_name_wrap">
+                                <p class="place_name">땡큐베리 해피 당구장</p>
+                            </div>
+
+                            <!--백엔드
+     |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+          대대/중대 등 시설은 badge_text 의 글자변경
+     |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+          \ (•◡•) /
+     -->
+                            <div class="place_badge">
+                                <div class="badge ranking_badge">
+                                    <p class="badge_text">대대</p>
+                                </div>
+                                <!-- <p class="go_to_p_info">상세보기
+                                    <img src="/asset/n_asset/header_back.png">
+                                </p> -->
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!--백엔드
+     |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+          - 랭킹전이 안되는 곳일 경우, promise_btn  (랭킹전하기) 를 none합니당
+          - E스포츠 일 경우, s_theme_bg 를 e_theme_bg 로 변경
+     |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+          \ (•◡•) /
+     -->
+
+                <!-- 푸터버튼 컴포넌트 -->
+                <div class="footer_btn close_or_accept">
+                    <a class="footer_sec_btn promise_btn s_theme_bg ripple" style="display: block;">여기서 약속잡기</a>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+    <script>
+        /* =================================열기================================= */
+        /* =================================열기================================= */
+        /* =================================열기================================= */
+
+
+
+
+
+
+        // |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+        //      랭킹전하기 버튼 눌렀을시
+        // |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+        //      \ (•◡•) /
+
+        $(document).ready(function () {
+            $(".promise_btn").on("click", function () {
+                $(".sheet_wrap.do_promise").show();
+                $(".bottom_sheet_wrap_inner").animate({
+                    bottom: "0"
+                }, 200);
+            });
+        });
+
+
+
+
+
+
+
+        // |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+        //  랭킹전하기의   예약하기 체크시 
+        //  -예약관련 항목 보여줌
+        //  -버튼 예약하기 버튼 보여줌
+        // |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+        //      \ (•◡•) /
+
+        $(document).ready(function () {
+
+            $(".n_check_box_wrap input[type='checkbox']").change(function () {
+                var isChecked = $(this).is(":checked");
+                $(".do_promise .reserv_check_wrap").css("display", isChecked ? "block" : "none");
+                $(".do_promise .reserv_poss_time").css("display", isChecked ? "block" : "none");
+                $(".do_promise .reserv_succ_btn ").css("display", isChecked ? "block" : "none");
+                $(".do_promise .sheet_sub_title ").css("display", isChecked ? "block" : "none");
+                $(".do_promise .promise_go_btn ").css("display", isChecked ? "none" : "block");
+            });
+        });
+
+
+
+
+
+
+
+
+        // |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+        //      예약완료 열기
+        // |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+        //      \ (•◡•) /
+
+        $(document).ready(function () {
+            $(".reserv_succ_btn").on("click", function () {
+                $(".sheet_wrap.reserv_succ").show();
+                $(".bottom_sheet_wrap_inner").animate({
+                    bottom: "0"
+                }, 200);
+                /* 가장가까운 .sheet_wrap 을 .hide(0); */
+                $(this).closest(".sheet_wrap").hide();
+            });
+        });
+
+
+
+        // |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+        //      혼자 놀 준비 완료 열기
+        // |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+        //      \ (•◡•) /
+
+        $(document).ready(function () {
+            $(".alone_practice_btn ,.promise_go_btn ").on("click", function () {
+                $(".sheet_wrap.alone_succ").show();
+                $(".bottom_sheet_wrap_inner").animate({
+                    bottom: "0"
+                }, 200);
+                /* 가장가까운 .sheet_wrap 을 .hide(0); */
+                $(this).closest(".sheet_wrap").hide();
+            });
+        });
+
+
+
+
+
+
+        // |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+        //     시간 선택했을때 샐렉트 바텀 뜸 (안쓰고 그냥 셀렉트 박스로함) (추후사용)
+        // |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+        //      \ (•◡•) /
+
+        // $(document).ready(function () {
+        //     $(".time_value").on("click", function () {
+        //         $(".sheet_wrap.select_bottom").show();
+        //         $(".bottom_sheet_wrap_inner").animate({
+        //             bottom: "0"
+        //         }, 200);
+        //         /* 가장가까운 .sheet_wrap 을 .hide(0); */
+        //         $(this).closest(".sheet_wrap").hide();
+        //     });
+        // });
+
+
+
+
+
+
+
+        // 백엔드
+        // |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+        //      지도 맵 아이콘 클릭시
+        //    -지도의 맵 아이콘 클릭시 해당 지점 상세뜸
+        //    -지도에서 맵 아이콘을 터치 했을때 .location_cross 
+        //    (내 위치로 돌아가기) 의 bottom: 160px; 됨
+        // |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+        //      \ (•◡•) /
+
+
+        $(document).ready(function () {
+            $(".map_here div").click(function () {
+                $(".main_wrap").show(100);
+                $(" .location_cross ").css('bottom', '160px');
+            });
+        });
+
+
+
+
+
+
+
+
+
+
+
+        /* =================================닫기================================= */
+        /* =================================닫기================================= */
+        /* =================================닫기================================= */
+
+
+        // |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+        //       흑필터 공통닫기
+        // |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+        //      \ (•◡•) /
+
+        $(document).ready(function () {
+            $(".bk_common_bg").on("click", function () {
+                $(this).closest(".sheet_wrap").hide();
+                /* 일반 바텀시트 */
+                $('.bottom_sheet_wrap_inner').css('bottom', '-100%');
+            });
+        });
+
+        // |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+        //      닫기버튼 공통 닫기
+        //      sheet_close_btn (닫기 ) 누르면 가장가까운
+        //      sheet_wrap 닫힘 (sheet_close_btn 가 sheet_wrap
+        //      안에 들어있어서 하나만 닫힘)
+        // |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+        //      \ (•◡•) /
+
+        $(document).ready(function () {
+            $(".sheet_close_btn").on("click", function () {
+                $(this).closest(".sheet_wrap").hide();
+                /* 일반 바텀시트 */
+                $('.bottom_sheet_wrap_inner').css('bottom', '-100%');
+            });
+
+
+
+        });
+    </script>
+
+
+</body>
+
+
+
+</html>

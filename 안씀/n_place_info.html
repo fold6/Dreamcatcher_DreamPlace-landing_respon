@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="kr">
+
+<head>
+    <title>N 시설상세</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/library/FontAwesome/css/all.min.css">
+    <link rel="stylesheet" href="/library/Slick/slick.css">
+    <link rel="stylesheet" href="/library/Slick/slick-theme.css">
+    <script src="/library/jQuery/jQuery.min.js"></script>
+
+    <script src="/library/Slick/slick.js"></script>
+
+    <link href="/library/css/n_font.css" rel="stylesheet">
+    <link href="/library/css/n_reset.css" rel="stylesheet">
+    <link href="/library/css/n_common.css?ver=23" rel="stylesheet">
+    <link href="/library/css/n_place_info.css?ver=23" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- 백엔드
+          |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+              화면에서 로딩이 떠야 할때는 loading 을 block시키면 됩니당
+          |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+               \ (•◡•) /
+     -->
+
+    <!-- 풀화면 로딩시 띄움 -->
+    <div class="sheet_wrap loading" style="display: none;">
+        <div class="loading_wrap_inner">
+            <img src="/asset/n_asset_anicon/loading.gif">
+        </div>
+        <!-- 원래 아래꺼 살려야됨 테스트용 -->
+        <div class="bk_common_bg_only_loading"></div>
+        <!-- <div class="bk_common_bg"></div> -->
+    </div>
+
+
+
+
+
+    <!-- ===============================바텀시트=============================== -->
+    <!-- ===============================바텀시트=============================== -->
+
+
+
+    <!-- 랭킹전 띄움 -->
+    <!-- 랭킹전 띄움 -->
+    <!-- 랭킹전 띄움 -->
+
+    <!-- 옵션바텀시트 : 선택 가능한 옵션라인 일때 -->
+
+    <div class="sheet_wrap select_opt_wrap do_reserve" style="display: none;">
+        <div class="bottom_sheet_wrap_inner">
+            <div class="footer_btn_wrap">
+                <div class="only_side_wrap">
+
+                    <div class="sheet_top">
+                        <p class="sheet_title opt_small">빌리어드 당구장</p>
+                        <p class="sheet_sub_title">예약시간 전 취소가능 (당일예약시 현장상황에 따라 대기시간 발생)</p>
+                    </div>
+
+                    <div class="opt_wrap">
+
+                        <!-- 옵션라인 1줄씩 -->
+                        <div class="opt_line">
+                            <p class="title_line">일시</p>
+                            <div class="line_intext">
+
+                                <div class="line_intext_value select_wrap">
+                                    <input class="line_intext_value " type="date" value="2023-12-11">
+                                    <span class="pulldown_icon_sel_position"><img
+                                            src="/asset/n_asset/header_back.png"></span>
+                                </div>
+
+
+                                <div class="line_intext_value select_wrap">
+                                    <select>
+                                        <option>
+                                            09:00
+                                        </option>
+                                        <option>
+                                            09:30
+                                        </option>
+                                        <option>
+                                            10:00
+                                        </option>
+
+                                    </select>
+                                    <span class="pulldown_icon_sel_position"><img
+                                            src="/asset/n_asset/header_back.png"></span>
+                                </div>
+
+                            </div>
+
+                            <p class="reserv_poss_time" style="display: none;">평일: <span class="weekday_poss_time">09:00
+                                    ~ 8:00</span> 주말: <span class="weekend_poss_time">09:00 ~ 18:00</span> </p>
+                        </div>
+
+                        
+
+                        <!-- 예약하기 체크했을시 아래 보여줌 -->
+                        <div class="reserv_check_wrap" style="display: block;">
+                            <!-- 옵션라인 1줄씩 -->
+                            <div class="opt_line">
+                                <p class="title_line">사용시설</p>
+                                <div class="line_intext">
+
+                                    <div class="line_intext_value select_wrap">
+                                        <select>
+                                            <option>
+                                                중대 (3개 보유)
+                                            </option>
+                                            <option>
+                                                대대 (3개 보유)
+                                            </option>
+                                            <option>
+                                                포켓 (3개 보유)
+                                            </option>
+
+                                        </select>
+                                        <span class="pulldown_icon_sel_position"><img
+                                                src="/asset/n_asset/header_back.png"></span>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- 옵션라인 1줄씩 -->
+                            <div class="opt_line">
+                                <p class="title_line">결제방식</p>
+                                <div class="line_intext">
+
+                                    <div class="line_intext_value select_wrap">
+                                        <select>
+                                            <option>
+                                                현장결제
+                                            </option>
+                                            <option>
+                                                선불결제
+                                            </option>
+                                        </select>
+                                        <span class="pulldown_icon_sel_position"><img
+                                                src="/asset/n_asset/header_back.png"></span>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                            
+                        </div>
+
+
+                    </div>
+
+
+
+
+                    <!-- 푸터버튼 컴포넌트 -->
+                    <p class="one_text" style="display: none;">한 줄 설명</p>
+                    <div class="footer_btn close_or_accept">
+                        <a class="footer_fir_close_btn sheet_close_btn ripple">취소</a>
+    <!-- 백엔드
+        |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+            약속하기 나 예약신청을 누르면 (예약신청은 결제 후)
+            해당 채팅방으로 갑니다 (상세는 채팅방 상단에 띄움)
+        |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+             \ (•◡•) /
+   -->
+   
+
+                        <a class="footer_sec_btn reserv_succ_btn s_theme_bg ripple">예약하기</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 흑 필터 -->
+        <div class="bk_common_bg"></div>
+    </div>
+
+
+
+
+    <!-- ===============================바텀시트=============================== -->
+    <!-- ===============================바텀시트=============================== -->
+    <!-- 예약신청 완료 띄움 -->
+    <!-- 예약신청 완료 띄움 -->
+    <!-- 예약신청 완료 띄움 -->
+
+
+    <!-- 
+        |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+             결제하고 나면 아래 예약신청 완료 떠야합니다
+        |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+             \ (•◡•) /
+   -->
+
+    <!-- 바텀시트 공통 이미지도 들어갈시 (머머하기/완료)-->
+    <div class="sheet_wrap reserv_succ" style="display:none;">
+        <div class="bottom_sheet_wrap_inner">
+            <div class="footer_btn_wrap">
+                <div class="only_side_wrap">
+                    <div class="sheet_top_img">
+                        <img class="calendar_chk_gif" src="/asset/n_asset_anicon/calendar_chk.gif">
+                    </div>
+
+                    <div class="sheet_top">
+                        <p class="sheet_title">예약신청 완료!</p>
+                        <p class="sheet_sub_title">예약현황은 마이 - 예약내역에서 확인 할 수 있어요!</p>
+                    </div>
+
+
+                    <p class="one_text" style="display: none;">한 줄 설명</p>
+                    <div class="footer_btn close_or_accept">
+                        <a class="footer_fir_close_btn sheet_close_btn ripple">닫기</a>
+                        <a href="n_my_reserve.html" class="footer_sec_btn ripple s_theme_bg">예약내역 보러가기</a>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="bk_common_bg"></div>
+    </div>
+
+
+
+
+    <!-- ===============================바텀시트=============================== -->
+    <!-- ===============================바텀시트=============================== -->
+
+    <!-- 예약취소 확인메세지 띄움 -->
+    <!-- 예약취소 확인메세지 띄움 -->
+    <!-- 예약취소 확인메세지 띄움 -->
+
+    <div class="sheet_wrap reserv_cancel_ask" style="display:none;">
+        <div class="bottom_sheet_wrap_inner">
+            <div class="footer_btn_wrap">
+                <div class="only_side_wrap">
+
+                    <div class="sheet_top">
+                        <p class="sheet_title">정말 예약을 취소할까요?</p>
+                        <p class="sheet_sub_title">지불한 금액이 있다면 환불돼요</p>
+                    </div>
+
+
+
+                    <!-- 백엔드
+          |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+              '취소할게요' 로 예약취소 할시
+              - 해당 badge 에 reserv_cancel 이 붙고 '예약취소' 로 변경
+              - 터치했을때 나오는 상세정보의 예약취소버튼 ( intext_top_btn_sec ) 를 none
+          |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+               \ (•◡•) /
+     -->
+
+                    <!-- 푸터버튼 컴포넌트 -->
+                    <p class="one_text" style="display: none;">한 줄 설명</p>
+                    <div class="footer_btn close_or_accept">
+                        <a class="footer_fir_close_btn sheet_close_btn ripple">닫기</a>
+                        <a class="footer_sec_btn sheet_close_btn ripple">취소할게요</a>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="bk_common_bg"></div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- 투명한 헤더일 시 -->
+    <header class="opacity_header">
+        <div class="header_in just_header_in">
+            <!-- 왼쪽 -->
+            <div class="header_left just_header_left " onclick="history.back(); return false;">
+                <img src="/asset/n_asset/header_back.png">
+            </div>
+
+            <div class="header_center just_center_title ">
+                <p class="just_center_title_p">
+                    <!-- 임시 시설상세 -->
+                </p>
+            </div>
+
+
+        </div>
+    </header>
+
+
+
+
+
+
+
+
+    <!--
+     |￣￣￣￣￣￣￣￣￣￣|
+          main 내용
+     |＿＿＿＿＿＿＿＿＿＿|
+          \ (•◡•) /
+     -->
+
+
+
+    <section class="main_wrap">
+
+
+
+        <!-- 백엔드
+     |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+          아래 시설사진 10장까지만 가능(첫번째 사진이 메인 나머지 9장은 시설이미지)
+     |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+          \ (•◡•) /
+     -->
+        <!-- 슬라이드 이미지 -->
+        <div class="place_pic_slide_wrap">
+            <!-- 시설사진 1장 -->
+            <div class="inner_slick_pic ">
+                <div class="one_img">
+                    <img src="/asset/n_asset_place_default/test_시설이미지예시 375x220.jpg">
+                </div>
+            </div>
+
+            <!-- 시설사진 1장 -->
+            <div class="inner_slick_pic">
+                <div class="one_img">
+                    <img src="https://newsimg.sedaily.com/2019/06/05/1VKAT192CI_1.jpg">
+                </div>
+            </div>
+            <!-- 시설사진 1장 -->
+            <div class="inner_slick_pic">
+                <div class="one_img">
+                    <img src="/asset/n_asset_place_default/place_default_01.png">
+                </div>
+            </div>
+            <!-- 시설사진 1장 -->
+            <div class="inner_slick_pic">
+                <div class="one_img">
+                    <img src="/asset/n_asset_place_default/place_default_01.png">
+                </div>
+            </div>
+            <!-- 시설사진 1장 -->
+            <div class="inner_slick_pic">
+                <div class="one_img">
+                    <img src="/asset/n_asset_place_default/place_default_01.png">
+                </div>
+            </div>
+            <!-- 시설사진 1장 -->
+            <div class="inner_slick_pic">
+                <div class="one_img">
+                    <img src="/asset/n_asset_place_default/place_default_01.png">
+                </div>
+            </div>
+            <!-- 시설사진 1장 -->
+            <div class="inner_slick_pic">
+                <div class="one_img">
+                    <img src="/asset/n_asset_place_default/place_default_01.png">
+                </div>
+            </div>
+            <!-- 시설사진 1장 -->
+            <div class="inner_slick_pic">
+                <div class="one_img">
+                    <img src="/asset/n_asset_place_default/place_default_01.png">
+                </div>
+            </div>
+            <!-- 시설사진 1장 -->
+            <div class="inner_slick_pic">
+                <div class="one_img">
+                    <img src="/asset/n_asset_place_default/place_default_01.png">
+                </div>
+            </div>
+            <!-- 시설사진 1장 -->
+            <div class="inner_slick_pic">
+                <div class="one_img">
+                    <img src="/asset/n_asset_place_default/place_default_01.png">
+                </div>
+            </div>
+        </div>
+
+
+        <!-- 당구장 정보 시작 -->
+        <!-- 당구장 정보 시작 -->
+        <!-- 시설이름 top 부분만 가로여백 따로줌 (아랫선때문) -->
+        <div class="info_top_box only_side_wrap">
+            <!-- 당구장 이름 -->
+            <div class="info_top_title">
+                <p class="info_top_name">스마일 러브당구장</p>
+                <div class="room_line_inner_right">
+                    <div class="tag_stat">
+
+                        <div class="badge ranking_badge">
+                            <p class="badge_text">랭킹전</p>
+                        </div>
+
+                        <div class="badge league_badge">
+                            <p class="badge_text">대회</p>
+                        </div>
+                    </div>
+                </div>
+                <p class="info_top_sub_text"><img class="call_icon" src="/asset/n_asset/call.png">010 - 5545 - 5872</p>
+
+            </div>
+        </div>
+        <div class="info_title_btm_line"></div>
+
+
+
+        <div class="only_side_wrap scroll_padding_bottom">
+
+
+
+            <!-- 백엔드
+     |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+          개최된 시설의 대회가 없을시 .league_info_box 를 none
+     |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+          \ (•◡•) /
+     -->
+
+            <!-- 인포 박스 1개 씩 : 시설리그 -->
+            <div class="info_box league_info_box" style="display: block;">
+                <!-- 리그 있을시 리그 -->
+                <div class="place_league_slide_wrap">
+
+                    <!-- 리그 이미지 1장 -->
+                    <div class="inner_slick_pic">
+                        <div class="one_img ripple" onclick="location.href='n_ranking_inner.html'">
+                            <div class="league_text_wrap">
+                                <!-- 백엔드
+     |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+          [대회관련 뱃지별 이름과 추가할 클래스]
+          (.badge 뒤에추가)
+          -진행중  ranking_badge_ing
+          -종료 ranking_badge_end
+          -예정 ranking_badge_wait
+     |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+          \ (•◡•) /
+     -->
+                                <!-- 뱃지 -->
+                                <div class="room_line_inner_right_top">
+                                    <div class="tag_stat">
+
+                                        <div class="badge ranking_badge_ing">
+                                            <p class="badge_text">진행중</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <p class="place_league_title">2023 스마일러브당구장 제3회 랭킹전</p>
+                                <div class="place_league_sub_title_wrap">
+
+                                    <p class="place_league_sub_title_left">
+                                        <img src="/asset/n_asset/location_icon.png">
+                                        스마일 러브 당구장
+                                    </p>
+
+                                    <p class="place_league_sub_title_right">
+                                        <img src="/asset/n_asset/cal_icon.png">
+                                        10.01 ~ 10.31
+                                    </p>
+
+                                </div>
+
+                            </div>
+                            <img src="/asset/n_asset_place_default/test_랭킹전이미지예시 320x120.jpg">
+                        </div>
+                    </div>
+
+
+                    <!-- 리그 이미지 1장 -->
+                    <div class="inner_slick_pic">
+                        <div class="one_img ripple" onclick="location.href='n_ranking_inner.html'">
+                            <div class="league_text_wrap">
+                                <!-- 뱃지 -->
+                                <div class="room_line_inner_right_top">
+                                    <div class="tag_stat">
+
+                                        <div class="badge ranking_badge_wait">
+                                            <p class="badge_text">예정</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <p class="place_league_title">2023 스마일러브당구장 제3회 랭킹전</p>
+                                <div class="place_league_sub_title_wrap">
+
+                                    <p class="place_league_sub_title_left">
+                                        <img src="/asset/n_asset/location_icon.png">
+                                        스마일 러브 당구장
+                                    </p>
+
+                                    <p class="place_league_sub_title_right">
+                                        <img src="/asset/n_asset/cal_icon.png">
+                                        12.01 ~ 12.31
+                                    </p>
+
+                                </div>
+                            </div>
+                            <img src="/asset/n_asset_place_default/league_place_default_sports.png">
+                        </div>
+                    </div>
+
+                    <!-- 리그 이미지 1장 -->
+                    <div class="inner_slick_pic">
+                        <div class="one_img ripple" onclick="location.href='n_ranking_inner.html'">
+                            <div class="league_text_wrap">
+                                <!-- 뱃지 -->
+                                <div class="room_line_inner_right_top">
+                                    <div class="tag_stat">
+
+                                        <div class="badge ranking_badge_end">
+                                            <p class="badge_text">종료</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <p class="place_league_title">2023 스마일러브당구장 제3회 랭킹전</p>
+                                <div class="place_league_sub_title_wrap">
+
+                                    <p class="place_league_sub_title_left">
+                                        <img src="/asset/n_asset/location_icon.png">
+                                        스마일 러브 당구장
+                                    </p>
+
+                                    <p class="place_league_sub_title_right">
+                                        <img src="/asset/n_asset/cal_icon.png">
+                                        01.01 ~ 01.31
+                                    </p>
+
+                                </div>
+                            </div>
+                            <img src="/asset/n_asset_place_default/league_place_default_sports.png">
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+
+
+            <!-- 백엔드
+     |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+         소개글은 500자(공백포함)까지 입력가능
+     |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+          \ (•◡•) /
+     -->
+            <!-- 인포 박스 1개 씩 : 시설소개-->
+            <div class="info_box info_text_box" style="display: block;">
+                <p class="info_box_title">소개</p>
+                <div class="info_box_inner">
+                    <!--   <p class="info_text_default">
+                       ㄴㅇㄴ
+                    </p> -->
+                    <p class="info_text_default">
+                        환영합니다! 여러분을 위한 당구의 즐거운 세계한 당구의 즐거운 세계한 당구의 즐거운 세계한 당구의 즐거운 세계한 당구의 즐거운 세계한 당구의 즐거운 세계한 당구의 즐거운
+                        세계한 당구의 즐거운 세계한 당구의 즐거운 세계한 당구의 즐거운 세계한 당구의 즐거운 세계한 당구의 즐거운 세계
+                    </p>
+                </div>
+                <p class="more_less_btn more_btn" style="display: block;">펼치기 <img class="more_img"
+                        src="/asset/n_asset/header_back.png"></p>
+                <p class="more_less_btn less_btn" style="display: none;">접기<img class="less_img"
+                        src="/asset/n_asset/header_back.png"></p>
+            </div>
+
+
+
+            <!-- 백엔드
+     |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+         -장비 추가/제거시 dot_line_wrap 를 추가 / none 합니다
+     |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+          \ (•◡•) /
+     -->
+
+            <!-- 인포 박스 1개 씩 : 시설현황 -->
+            <div class="info_box info_things_box" style="display: block;">
+                <p class="info_box_title">시설현황</p>
+                <div class="info_box_inner">
+                    <!--  1줄씩 -->
+                    <div class="dot_line_wrap">
+                        <p class="dot_left">대대</p>
+                        <p class="dot_middle"></p>
+                        <p class="dot_right">6개</p>
+                    </div>
+
+
+                    <!--  1줄씩 -->
+                    <div class="dot_line_wrap">
+                        <p class="dot_left">대대</p>
+                        <p class="dot_middle"></p>
+                        <p class="dot_right">6개</p>
+                    </div>
+
+                    <!--  1줄씩 -->
+                    <div class="dot_line_wrap">
+                        <p class="dot_left">대대</p>
+                        <p class="dot_middle"></p>
+                        <p class="dot_right">6개</p>
+                    </div>
+
+                    <!--  1줄씩 -->
+                    <div class="dot_line_wrap">
+                        <p class="dot_left">대대</p>
+                        <p class="dot_middle"></p>
+                        <p class="dot_right">6개</p>
+                    </div>
+                    <!--  1줄씩 -->
+                    <div class="dot_line_wrap">
+                        <p class="dot_left">대대</p>
+                        <p class="dot_middle"></p>
+                        <p class="dot_right">6개</p>
+                    </div>
+
+
+                </div>
+                <p class="more_less_btn more_btn" style="display: block;">펼치기 <img class="more_img"
+                        src="/asset/n_asset/header_back.png"></p>
+                <p class="more_less_btn less_btn" style="display: none;">접기<img class="less_img"
+                        src="/asset/n_asset/header_back.png"></p>
+            </div>
+
+
+
+
+            <!-- 백엔드
+     |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+         - 예약가능시간 한 줄 추가/제거시 dot_line_wrap 를 추가 / none 합니다
+     |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+          \ (•◡•) /
+     -->
+
+            <!-- 인포 박스 1개 씩 : 예약가능 시간 -->
+            <div class="info_box info_time_box" style="display: block;">
+                <p class="info_box_title">예약가능 시간</p>
+                <div class="info_box_inner">
+                    <!--  1줄씩 -->
+                    <div class="dot_line_wrap">
+                        <p class="dot_left">평일</p>
+                        <p class="dot_middle"></p>
+                        <p class="dot_right">09:00 ~ 18:00</p>
+                    </div>
+
+
+                    <!--  1줄씩 -->
+                    <div class="dot_line_wrap">
+                        <p class="dot_left">주말</p>
+                        <p class="dot_middle"></p>
+                        <p class="dot_right">09:00 ~ 18:00</p>
+                    </div>
+
+
+
+                </div>
+                <p class="more_less_btn more_btn" style="display: block;">펼치기 <img class="more_img"
+                        src="/asset/n_asset/header_back.png"></p>
+                <p class="more_less_btn less_btn" style="display: none;">접기<img class="less_img"
+                        src="/asset/n_asset/header_back.png"></p>
+            </div>
+
+
+
+
+
+
+
+
+
+            <!-- 인포 박스 1개 씩 : 내 예약현황 -->
+            <div class="info_box info_time_box" style="display: block;">
+                <p class="info_box_title">내 예약내역
+                    <span class="go_to_more"  onclick="location.href='n_my_reserve.html'">더보기 <img src="/asset/n_asset/header_back.png"></span>
+                </p>
+
+                <div class="info_box_inner">
+                    <div class="reserve_history_wrap">
+                        <!-- 장소/시간 등 -->
+                        <div class="intext_top">
+                            <p class="intext_title">땡큐해피 당구장</p>
+                            <div class="intext_sub_title_wrap">
+                                <p class="intext_sub_title">11월 15일 13시 30분</p>
+
+                                <!-- 백엔드
+          |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+            [예약관련 badge 별 이름과 추가할 클래스]
+            -예약승인 대기중   reserv_acc_wait
+            -예약완료   reserv_succ
+            -예약거절  reserv_acc_deny
+            -예약취소 reserv_cancel
+          |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+               \ (•◡•) /
+     -->
+                                <span class="badge reserv_acc_wait">
+                                    <p class="badge_text">예약승인 대기중</p>
+                                </span>
+                            </div>
+
+                        </div>
+
+
+
+
+
+                        <div class="intext_middle" style="display: block;">
+
+                            <!-- 상세내역 1줄씩 -->
+                            <div class="intext_middle_line_wrap">
+                                <p class="intext_middle_left">접수일시</p>
+                                <p class="intext_middle_right">11월 15일 01시 25분</p>
+                            </div>
+
+                            <!-- 상세내역 1줄씩 -->
+                            <div class="intext_middle_line_wrap">
+                                <p class="intext_middle_left">사용시설</p>
+                                <p class="intext_middle_right">중대</p>
+                            </div>
+
+                            <!-- 상세내역 1줄씩 -->
+                            <div class="intext_middle_line_wrap">
+                                <p class="intext_middle_left">결제방식</p>
+                                <p class="intext_middle_right">선불결제</p>
+                            </div>
+
+                            <!-- 상세내역 1줄씩 -->
+                            <div class="intext_middle_line_wrap">
+                                <p class="intext_middle_left">결제금액</p>
+                                <p class="intext_middle_right">1500원</p>
+                            </div>
+
+                            <!-- 마지막 주의설명 -->
+                            <!-- 상세내역 1줄씩 -->
+                            <p class="intext_middle_right_notice">* 카드사에 따라 환불날짜가 상이합니다</p>
+
+
+                        </div>
+
+
+                        <!-- 시설상세,예약취소 -->
+
+                        <div class="intext_bottom_wrap">
+                            <div class="intext_btn_wrap">
+                                <!-- <p class="intext_top_btn_first ripple" onclick="location.href='n_place_info.html'">시설상세</p> -->
+                                <p class="intext_top_btn_sec reserv_cancel_btn ripple" style="display: block;">예약취소하기
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+
+
+            <!-- 백엔드
+     |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+         - 한 줄 글 ( one_text )이 필요없으면 평소에는 none 상태
+     |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+          \ (•◡•) /
+     -->
+
+
+            <!-- 푸터버튼 컴포넌트 -->
+            <div class="footer_fixed_com">
+                <p class="one_text" style="display: block;">현재 시설사정으로 인해 예약을 받지않고 있어요</p>
+                <div class="footer_btn close_or_accept">
+                    <!-- <a class="footer_fir_close_btn sheet_close_btn ripple">닫기</a> -->
+                    <a class="footer_sec_btn reserv_succ_btn s_theme_bg ripple">예약하기</a>
+                </div>
+            </div>
+
+
+
+
+
+
+        </div>
+
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+    <script>
+        /* =================================닫기================================= */
+        /* =================================닫기================================= */
+        /* =================================닫기================================= */
+
+
+        // |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+        //       흑필터 공통닫기
+        // |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+        //      \ (•◡•) /
+
+        $(document).ready(function () {
+            $(".bk_common_bg").on("click", function () {
+                $(this).closest(".sheet_wrap").hide();
+                /* 일반 바텀시트 */
+                $('.bottom_sheet_wrap_inner').css('bottom', '-100%');
+                /* 스포츠 종목처럼 탑시트 */
+                $('.sports_kind_wrap_inner').css('top', '-100%');
+            });
+        });
+
+        // |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+        //      닫기버튼 공통 닫기
+        //      sheet_close_btn (닫기 ) 누르면 가장가까운
+        //      sheet_wrap 닫힘 (sheet_close_btn 가 sheet_wrap
+        //      안에 들어있어서 하나만 닫힘)
+        // |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+        //      \ (•◡•) /
+
+
+        $(document).ready(function () {
+            $(".sheet_close_btn").on("click", function () {
+                $(this).closest(".sheet_wrap").hide();
+                /* 일반 바텀시트 */
+                $('.bottom_sheet_wrap_inner').css('bottom', '-100%');
+                /* 스포츠 종목처럼 탑시트 */
+                $('.sports_kind_wrap_inner').css('top', '-100%');
+
+            });
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+        /* =================================열기================================= */
+        /* =================================열기================================= */
+        /* =================================열기================================= */
+
+
+        // |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+        //      접기 펼치기 버튼 (가까운거만)< 소개,시설현황만 사이즈 같음
+        // |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+        //      \ (•◡•) /
+
+
+        $(document).ready(function () {
+            var originalHeight; // 전역 변수로 선언
+
+            $(".more_btn").click(function () {
+                var infoTextDefault = $(this).siblings('.info_box_inner');
+                var moreBtn = $(this);
+                var lessBtn = $(this).siblings('.less_btn');
+
+                // 원래 높이 저장
+                originalHeight = infoTextDefault.height();
+
+                infoTextDefault.css('height', '100%');
+                moreBtn.hide();
+                lessBtn.show();
+
+                // 원래 높이 활용 시 필요한 작업 수행
+                console.log("원래 높이:", originalHeight);
+            });
+
+            $(".less_btn").click(function () {
+                var infoTextDefault = $(this).siblings('.info_box_inner');
+                var moreBtn = $(this).siblings('.more_btn');
+                var lessBtn = $(this);
+
+                // 원래 높이로 복원
+                infoTextDefault.css('height', originalHeight);
+                moreBtn.show();
+                lessBtn.hide();
+            });
+        });
+
+
+
+        // |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+        //   소개글의 글줄이 6줄이하면 펼치기버튼 숨김
+        // |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+        //      \ (•◡•) /
+
+
+        $(document).ready(function () {
+            var infoTextBox = $('.info_box.info_text_box');
+            var infoTextDefault = infoTextBox.find('.info_text_default');
+            var moreLessBtn = infoTextBox.find('.more_less_btn');
+
+            // 글의 줄 수를 계산하여 6줄 이하이면 펼치기 버튼 숨김
+            var lineCount = infoTextDefault.height() / parseFloat(infoTextDefault.css('line-height'));
+            if (lineCount <= 6) {
+                moreLessBtn.hide();
+            }
+
+
+        });
+
+
+
+
+        // |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+        //   시설현황 (.info_things_box) 에 장비 (.dot_line_wrap) 이 4개이하이면 
+        //  -시설현황 안의 펼치기 버튼 (.more_less_btn) 을  숨김 (접고 펼칠게 없으므로 숨김)
+        //  - 글 들어갈 높이값도 100%
+        // |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+        //      \ (•◡•) /
+
+
+
+        $(document).ready(function () {
+            // .dot_line_wrap의 개수를 확인
+            var dotLineCount = $('.info_things_box .dot_line_wrap').length;
+
+            if (dotLineCount <= 4) {
+                $('.info_things_box .more_less_btn').hide();
+                $('.info_things_box .info_box_inner').css('height', '100%');
+            }
+        });
+
+        // |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+        //   예약가능 시간의 줄수가 3개 이하면 펼치기 버튼 숨김
+        // |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+        //      \ (•◡•) /
+
+
+
+        $(document).ready(function () {
+            // .dot_line_wrap의 개수를 확인
+            var dotLineCount = $('.info_time_box .dot_line_wrap').length;
+
+            if (dotLineCount <= 3) {
+                $('.info_time_box .more_less_btn').hide();
+                // .info_box_inner의 높이를 100%로 조절
+                $('.info_time_box .info_box_inner').css('height', '100%');
+            }
+        });
+
+
+
+
+
+        
+        // |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+        //      시설상세 내에서 예약하기 버튼 눌렀을시 예약옵션뜸
+        // |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+        //      \ (•◡•) /
+
+        $(document).ready(function () {
+            $(".footer_sec_btn.reserv_succ_btn").on("click", function () {
+                $(".sheet_wrap.do_reserve").show();
+                $(".bottom_sheet_wrap_inner").animate({
+                    bottom: "0"
+                }, 200);
+            });
+        });
+
+
+
+
+        // |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+        //      예약옵션 선택후에 예약하기 눌렀을시 예약완료 열기
+        // |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+        //      \ (•◡•) /
+
+        $(document).ready(function () {
+            $(".sheet_wrap.do_reserve .reserv_succ_btn").on("click", function () {
+                $(".sheet_wrap.reserv_succ").show();
+                $(".bottom_sheet_wrap_inner").animate({
+                    bottom: "0"
+                }, 200);
+                /* 가장가까운 .sheet_wrap 을 .hide(0); */
+                $(this).closest(".sheet_wrap").hide();
+            });
+        });
+
+
+
+
+        // |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+        //     시설상세 내에서 예약취소 버튼 클릭시 취소확인메세지 열기
+        // |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+        //      \ (•◡•) /
+
+        $(document).ready(function () {
+            $(".reserv_cancel_btn").on("click", function () {
+                $(".sheet_wrap.reserv_cancel_ask").show();
+                $(".bottom_sheet_wrap_inner").animate({
+                    bottom: "0"
+                }, 200);
+                $(".alone_info").hide(0);
+            });
+        });
+
+
+
+
+
+
+        ////////////////////////////////////////////////////////////////////
+        //
+        //  슬릭슬라이드 1108
+        //
+        ////////////////////////////////////////////////////////////////////
+
+        // 시설이미지
+        $(function () {
+            $('.place_pic_slide_wrap').slick({
+                // variableWidth: true,
+                dots: true,
+                infinite: true,
+                speed: 200,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: false,
+            });
+        });
+
+
+        // 리그이미지
+        $(function () {
+            $('.place_league_slide_wrap').slick({
+                // variableWidth: true,
+                dots: true,
+                infinite: true,
+                speed: 200,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: false,
+            });
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+        //      -스크롤 올렸을 시, NAV를 아래로 숨기기
+        //      -스크롤 내렸을 시, NAV를 위로 보이기
+        // |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+        //      \ (•◡•) /
+
+        $(function () {
+
+            // 스크롤시에 사용자가 스크롤했다는 것을 알림 
+            var didScroll;
+            var lastScrollTop = 0;
+            var delta = 5;
+            // 동작의 구현이 시작되는 위치 
+            var navbarHeight = $('nav').outerHeight();
+            // 영향을 받을 요소를 선택
+            // outerHeight 요소의 내부높이 + padding + border
+            $(window).scroll(function (event) {
+                didScroll = true;
+            });
+            // hasScrolled()를 실행하고 didScroll 상태를 재설정
+            setInterval(function () {
+                if (didScroll) {
+                    hasScrolled();
+                    didScroll = false;
+                }
+            }, 250);
+
+            // 이하동작을 구현
+            function hasScrolled() {
+                var st = $(this).scrollTop();
+                // 접근하기 쉽게 현재 스크롤의 위치를 저장한다.
+                console.log(navbarHeight);
+                console.log('-----------이 위는 navbarHeight-------------');
+
+                if (Math.abs(lastScrollTop - st) <= delta)
+                    return;
+                // 설정한 delta 값보다 더 스크롤되었는지를 확인한다.
+
+                if (st > lastScrollTop && st > navbarHeight) {
+                    // 헤더의 높이보다 더 스크롤되었는지 확인하고 스크롤의 방향이 위인지 아래인지를 확인한다.
+                    // Scroll Down
+                    $('nav').addClass('scroll_nav_down');
+                } else {
+                    // Scroll Up
+                    if (st + $(window).height() < $(document).height()) {
+                        $('nav').removeClass('scroll_nav_down');
+                    }
+                }
+                // lastScrollTop 에 현재 스크롤위치를 지정한다.
+                lastScrollTop = st;
+            }
+
+        });
+    </script>
+
+
+</body>
+
+
+
+</html>

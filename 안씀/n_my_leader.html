@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="kr">
+
+<head>
+    <title>N My-리더보드</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/library/FontAwesome/css/all.min.css">
+    <link rel="stylesheet" href="/library/Slick/slick.css">
+    <link rel="stylesheet" href="/library/Slick/slick-theme.css">
+    <script src="/library/jQuery/jQuery.min.js"></script>
+    <script src="/library/Slick/slick.js"></script>
+
+    <link href="/library/css/n_font.css" rel="stylesheet">
+    <link href="/library/css/n_reset.css" rel="stylesheet">
+    <link href="/library/css/n_common.css?ver=23" rel="stylesheet">
+
+    <link href="/library/css/n_my_leader.css?ver=23" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.min.css">
+
+</head>
+
+<body>
+
+
+
+
+    <!-- 백엔드
+          |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+              화면에서 로딩이 떠야 할때는 loading 을 block시키면 됩니당
+          |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+               \ (•◡•) /
+     -->
+
+    <!-- 풀화면 로딩시 띄움 -->
+    <div class="sheet_wrap loading" style="display: none;">
+        <div class="loading_wrap_inner">
+            <img src="/asset/n_asset_anicon/loading.gif">
+        </div>
+        <div class="bk_common_bg_only_loading"></div>
+    </div>
+
+
+
+
+
+
+
+
+    <!-- 타이틀만 있는 헤더일 시 -->
+    <header>
+        <div class="header_in just_header_in">
+            <!-- 왼쪽 -->
+            <div class="header_left just_header_left " onclick="history.back(); return false;">
+                <img src="/asset/n_asset/header_back.png">
+            </div>
+
+            <div class="header_center just_center_title ">
+                <p class="just_center_title_p">
+                    리더보드
+                </p>
+            </div>
+
+
+        </div>
+    </header>
+
+
+    <!-- 튜토리얼 박스  -->
+    <div class="tutorial_box" style="display: none;">
+        <div class="bubble">
+            <p class="bubble_text">튜토리얼 필요하면 씀
+                <div class="bubble_x"><img src="/asset/n_asset/bk_x.png"></div>
+            </p>
+        </div>
+    </div>
+
+
+
+
+
+
+    <!--
+     |￣￣￣￣￣￣￣￣￣￣|
+          main 내용
+     |＿＿＿＿＿＿＿＿＿＿|
+          \ (•◡•) /
+     -->
+
+    <section class="main_wrap">
+
+        <!--리더보드 -->
+        <div class="top_margin">
+
+            <!--백엔드: 아무 목록 없을시 -->
+            <div class="n_empty_dot" style="display:none">
+                <img src="/asset/n_asset/empty_dots.png">
+                <p class="n_empty_text">아직 없어요</p>
+            </div>
+
+
+            <div class="slide_wrap">
+
+                <!-- 리더보드 1개 : 시설 리더보드 5위까지 표기-->
+                <div class="sec_tap_inner default_inner" style="display: block;">
+
+
+                    <div class="main_top_margin">
+                        <div class="top_title_wrap">
+                            <p class="top_title">제1회 ㅇㅇ 당구장 랭킹대회</p>
+                        </div>
+                        <div class="top_dday">
+                            <p class="ing_day s_theme_bg">3일차 진행중 <span class="dday">D-10</span></p>
+                        </div>
+
+                        <div class="own_wrap">
+                            <p class="own_notice"><i class="fas fa-trophy"></i> 자체적인 랭킹시상이 있는 당구장입니다</p>
+                        </div>
+
+                        <div class="leader_table">
+                            <table class="scrolltable" cellpadding="0" cellspacing="0">
+                                <thead>
+                                    <tr>
+
+                                        <th class="head_num">등 수</th>
+                                        <th class="head_num">승/무/패</th>
+                                        <th class="head_totalnum">총 점</th>
+                                        <th class="head_name">닉네임</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+
+
+                                    <tr class="">
+                                        <td class="rank_num">1<span>등</span></td>
+                                        <td class="rank_num">---</td>
+                                        <td class="rank_num">0 <span>점</span></td>
+                                        <td class="rank_title">---</td>
+                                    </tr>
+
+
+                                    <tr class="">
+                                        <td class="rank_num">2<span>등</span></td>
+                                        <td class="rank_num">---</td>
+                                        <td class="rank_num">0 <span>점</span></td>
+                                        <td class="rank_title">---</td>
+                                    </tr>
+
+
+                                    <tr class="">
+                                        <td class="rank_num">3<span>등</span></td>
+                                        <td class="rank_num">---</td>
+                                        <td class="rank_num">0 <span>점</span></td>
+                                        <td class="rank_title">---</td>
+                                    </tr>
+
+
+                                    <tr class="">
+                                        <td class="rank_num">4<span>등</span></td>
+                                        <td class="rank_num">---</td>
+                                        <td class="rank_num">0 <span>점</span></td>
+                                        <td class="rank_title">---</td>
+                                    </tr>
+
+
+                                    <tr class="">
+                                        <td class="rank_num">5<span>등</span></td>
+                                        <td class="rank_num">---</td>
+                                        <td class="rank_num">0 <span>점</span></td>
+                                        <td class="rank_title">---</td>
+                                    </tr>
+
+
+
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <!-- 내가 top10안에 들어있을시, 클래스추가 부각 -->
+                        <div class="myrank_line">
+                            <p class="myrank_num">22<span>등</span></p>
+                            <p class="myrank_win">42</p>
+                            <p class="myrank_title">344 <span>점</span></p>
+                            <p class="myrank_nickname">내 닉네임</p>
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+
+                <!-- 스포팅 리더보드 10위까지 표기-->
+                <div class="sec_tap_inner sporting_inner" style="display: block;">
+
+                    <div class="main_top_margin">
+                        <div class="top_title_wrap">
+                            <p class="top_title">N월 스포팅 랭킹전</p>
+                        </div>
+                        <div class="top_dday">
+                            <p class="ing_day s_theme_bg">3일차 진행중 <span class="dday">D-10</span></p>
+                        </div>
+
+
+
+                        <div class="leader_table">
+                            <table class="scrolltable" cellpadding="0" cellspacing="0">
+                                <thead>
+                                    <tr>
+
+                                        <th class="head_num">등 수</th>
+                                        <th class="head_num">승/무/패</th>
+                                        <th class="head_totalnum">총 점</th>
+                                        <th class="head_name">닉네임</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+
+
+                                    <tr class="">
+                                        <td class="rank_num">1<span>등</span></td>
+                                        <td class="rank_num">---</td>
+                                        <td class="rank_num">0 <span>점</span></td>
+                                        <td class="rank_title">---</td>
+                                    </tr>
+
+
+                                    <tr class="">
+                                        <td class="rank_num">2<span>등</span></td>
+                                        <td class="rank_num">---</td>
+                                        <td class="rank_num">0 <span>점</span></td>
+                                        <td class="rank_title">---</td>
+                                    </tr>
+
+
+                                    <tr class="">
+                                        <td class="rank_num">3<span>등</span></td>
+                                        <td class="rank_num">---</td>
+                                        <td class="rank_num">0 <span>점</span></td>
+                                        <td class="rank_title">---</td>
+                                    </tr>
+
+
+                                    <tr class="">
+                                        <td class="rank_num">4<span>등</span></td>
+                                        <td class="rank_num">---</td>
+                                        <td class="rank_num">0 <span>점</span></td>
+                                        <td class="rank_title">---</td>
+                                    </tr>
+
+
+                                    <tr class="">
+                                        <td class="rank_num">5<span>등</span></td>
+                                        <td class="rank_num">---</td>
+                                        <td class="rank_num">0 <span>점</span></td>
+                                        <td class="rank_title">---</td>
+                                    </tr>
+
+
+                                    <tr class="">
+                                        <td class="rank_num">6<span>등</span></td>
+                                        <td class="rank_num">---</td>
+                                        <td class="rank_num">0 <span>점</span></td>
+                                        <td class="rank_title">---</td>
+                                    </tr>
+
+
+                                    <tr class="">
+                                        <td class="rank_num">7<span>등</span></td>
+                                        <td class="rank_num">---</td>
+                                        <td class="rank_num">0 <span>점</span></td>
+                                        <td class="rank_title">---</td>
+                                    </tr>
+
+
+                                    <tr class="">
+                                        <td class="rank_num">8<span>등</span></td>
+                                        <td class="rank_num">---</td>
+                                        <td class="rank_num">0 <span>점</span></td>
+                                        <td class="rank_title">---</td>
+                                    </tr>
+
+
+                                    <tr class="">
+                                        <td class="rank_num">9<span>등</span></td>
+                                        <td class="rank_num">---</td>
+                                        <td class="rank_num">0 <span>점</span></td>
+                                        <td class="rank_title">---</td>
+                                    </tr>
+
+
+                                    <tr class="">
+                                        <td class="rank_num">10<span>등</span></td>
+                                        <td class="rank_num">---</td>
+                                        <td class="rank_num">0 <span>점</span></td>
+                                        <td class="rank_title">---</td>
+                                    </tr>
+
+
+
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <!-- 내가 top10안에 들어있을시, 클래스추가 부각 -->
+                        <div class="myrank_line">
+                            <p class="myrank_num">22<span>등</span></p>
+                            <p class="myrank_win">42</p>
+                            <p class="myrank_title">344 <span>점</span></p>
+                            <p class="myrank_nickname">fftd</p>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+        <!-- 탭2 리더보드 끝-->
+
+
+
+
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js"></script>
+    <script>
+        /* 백엔드 */
+        // |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+        // 튜토리얼 닫기
+        // tutorial_box(튜토리얼 말풍선) : 최초 실행시 나오며, 말풍선을
+        // 누르면 숨겨짐 (한 번 숨기면 재실행 후에도 못 봄)
+        // |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+        // \ (•◡•) /
+
+
+        $(document).ready(function () {
+            $(".tutorial_box").on("click", function () {
+                $(".tutorial_box").hide();
+            });
+        });
+
+
+
+
+
+
+
+        ////////////////////////////////////////////////////////////////////
+        //
+        //  슬릭슬라이드 1108
+        //
+        ////////////////////////////////////////////////////////////////////
+
+        //메인이미지 슬라이드 MO
+        $(function () {
+            $('.slide_wrap ').slick({
+                // variableWidth: true,
+                dots: true,
+                infinite: true,
+                speed: 200,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: false,
+                // responsive: [{
+                //             breakpoint: 1024,
+                //             settings: {
+                //                 slidesToShow: 1,
+                //                 slidesToScroll: 1,
+                //                 infinite: false,
+                //                 dots: false
+                //             }
+                //     },
+                //     {
+                //             breakpoint: 600,
+                //             settings: {
+                //                 slidesToShow: 1,
+                //                 slidesToScroll: 1
+                //             }
+                //     },
+                //     {
+                //             breakpoint: 360,
+                //             settings: {
+                //                 slidesToShow: 1,
+                //                 slidesToScroll: 1
+                //             }
+                //     }
+                // ]
+            });
+        });
+    </script>
+
+
+</body>
+
+
+
+</html>

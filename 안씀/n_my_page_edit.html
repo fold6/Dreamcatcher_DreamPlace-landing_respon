@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="kr">
+
+<head>
+    <title>N 프로필수정</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/library/FontAwesome/css/all.min.css">
+    <script src="/library/jQuery/jQuery.min.js"></script>
+
+    <link href="/library/css/n_font.css" rel="stylesheet">
+    <link href="/library/css/n_reset.css?ver=23" rel="stylesheet">
+    <link href="/library/css/n_common.css?ver=23" rel="stylesheet">
+    <link href="/library/css/n_my_page_edit.css?ver=23" rel="stylesheet">
+
+</head>
+
+<body>
+
+
+
+
+    <!-- 백엔드
+          |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+              화면에서 로딩이 떠야 할때는 loading 을 block시키면 됩니당
+          |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+               \ (•◡•) /
+     -->
+
+    <!-- 풀화면 로딩시 띄움 -->
+    <div class="sheet_wrap loading" style="display: none;">
+        <div class="loading_wrap_inner">
+            <img src="/asset/n_asset_anicon/loading.gif">
+        </div>
+        <!-- 원래 아래꺼 살려야됨 테스트용 -->
+        <div class="bk_common_bg_only_loading"></div>
+        <!-- <div class="bk_common_bg"></div> -->
+    </div>
+
+
+
+    <div class="sheet_wrap select_opt_wrap" style="display: none;">
+        <div class="bottom_sheet_wrap_inner">
+            <div class="footer_btn_wrap">
+                <div class="only_side_wrap">
+
+                    <div class="sheet_top">
+                        <p class="sheet_title opt_small">프로필 사진</p>
+                        <p class="sheet_sub_title">원하는 AI프로필을 선택하거나 내 사진을 업로드 해보세요!</p>
+                    </div>
+        <!-- 백엔드
+     |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+        카메라 버튼 ( edit_btn ) 을 누르면 
+        아래 바텀시트가 나오는데
+          
+          -내사진 업로드 (my_pic_upload_btn) 누르면 폰 갤러리 에서
+          사진 선택 직후 이미지 칸 ( one_img ) 의 img 에 들어감
+          -ai이미지 누르면 ai이미지 직후 이미지 칸 ( one_img ) 의 img 에 들어감
+
+     |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+          \ (•◡•) /
+     -->
+
+                    <div class="opt_wrap">
+                        <!-- 탭전환 -->
+                        <!-- AI이미지 탭별로 남/녀 들어감 -->
+                        <div class="top_tap">
+                            <div class="top_tap_wrap">
+                                <p class="first_tap tap_on">남성</p>
+                                <p class="sec_tap">여성</p>
+                            </div>
+                        </div>
+
+
+                        <!-- 탭1 남성 -->
+                            <div class="first_tap_inner" style="display: block;">
+                                    <div class="choice_wrapper">
+                                        <img src="/asset/n_asset_ai프로필이미지/m1.png">
+                                        <img src="/asset/n_asset_ai프로필이미지/m2.png">
+                                        <img src="/asset/n_asset_ai프로필이미지/m3.png">
+                                        <img src="/asset/n_asset_ai프로필이미지/m4.png">
+                                        <img src="/asset/n_asset_ai프로필이미지/m5.png">
+                                        <img src="/asset/n_asset_ai프로필이미지/m6.png">
+                                        <img src="/asset/n_asset_ai프로필이미지/m7.png">
+                                        <img src="/asset/n_asset_ai프로필이미지/m8.png">
+                                        <img src="/asset/n_asset_ai프로필이미지/m9.png">
+                                        <img src="/asset/n_asset_ai프로필이미지/m10.png">
+                                        <img src="/asset/n_asset_ai프로필이미지/m11.png">
+                                        <img src="/asset/n_asset_ai프로필이미지/m12.png">
+                                        <img src="/asset/n_asset_ai프로필이미지/m13.png">
+                                        <img src="/asset/n_asset_ai프로필이미지/m14.png">
+                                        <img src="/asset/n_asset_ai프로필이미지/m15.png">
+                                        <img src="/asset/n_asset_ai프로필이미지/m16.png">
+                                        <img src="/asset/n_asset_ai프로필이미지/m17.png">
+                                        <img src="/asset/n_asset_ai프로필이미지/m18.png">
+                                        <img src="/asset/n_asset_ai프로필이미지/m19.png">
+                                        <img src="/asset/n_asset_ai프로필이미지/m20.png">
+                                    </div>
+                            </div>
+
+
+
+                        <!-- 탭2 여성 -->
+                            <div class="sec_tap_inner" style="display: none;">
+                                    <div class="choice_wrapper">
+                                        <img src="/asset/n_asset_ai프로필이미지/g1.png">
+                                        <img src="/asset/n_asset_ai프로필이미지/g2.png">
+                                        <img src="/asset/n_asset_ai프로필이미지/g3.png">
+                                        <img src="/asset/n_asset_ai프로필이미지/g4.png">
+                                        <img src="/asset/n_asset_ai프로필이미지/g5.png">
+                                        <img src="/asset/n_asset_ai프로필이미지/g6.png">
+                                        <img src="/asset/n_asset_ai프로필이미지/g7.png">
+                                        <img src="/asset/n_asset_ai프로필이미지/g8.png">
+                                        <img src="/asset/n_asset_ai프로필이미지/g9.png">
+                                        <img src="/asset/n_asset_ai프로필이미지/g10.png">
+                                        <img src="/asset/n_asset_ai프로필이미지/g11.png">
+                                        <img src="/asset/n_asset_ai프로필이미지/g12.png">
+                                        <img src="/asset/n_asset_ai프로필이미지/g13.png">
+                                        <img src="/asset/n_asset_ai프로필이미지/g14.png">
+                                        <img src="/asset/n_asset_ai프로필이미지/g15.png">
+                                        <img src="/asset/n_asset_ai프로필이미지/g16.png">
+                                        <img src="/asset/n_asset_ai프로필이미지/g17.png">
+                                        <img src="/asset/n_asset_ai프로필이미지/g18.png">
+                                        <img src="/asset/n_asset_ai프로필이미지/g19.png">
+                                        <img src="/asset/n_asset_ai프로필이미지/g20.png">
+                                    </div>
+                            </div>
+                        </div>
+
+                    <!-- 푸터버튼 컴포넌트 -->
+                    <p class="one_text" style="display: none;">한 줄 설명</p>
+                    <div class="footer_btn close_or_accept">
+                        <a class="footer_fir_close_btn sheet_close_btn ripple">취소</a>
+                        <a class="footer_sec_btn my_pic_upload_btn s_theme_bg ripple">
+                            <input type="file" id="inputfile" name="img" accept="image/*">
+                            내 사진 업로드</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 흑 필터 -->
+        <div class="bk_common_bg"></div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <!-- 타이틀만 있는 헤더일 시 -->
+    <header>
+        <div class="header_in just_header_in">
+            <!-- 왼쪽 -->
+            <div class="header_left just_header_left " onclick="history.back(); return false;">
+                <img src="/asset/n_asset/header_back.png">
+            </div>
+
+            <div class="header_center just_center_title ">
+                <p class="just_center_title_p">
+                    프로필 수정
+                </p>
+
+
+            </div>
+
+
+        </div>
+    </header>
+
+
+
+
+    <!--
+     |￣￣￣￣￣￣￣￣￣￣|
+          main 내용
+     |＿＿＿＿＿＿＿＿＿＿|
+          \ (•◡•) /
+     -->
+    <section class="main_wrap">
+
+        <!-- 슬라이드 이미지 -->
+        <div class="my_pic_wrap">
+            <!-- 사진 1장 -->
+            <div class="inner_slick_pic">
+                <div class="one_img">
+                    <img src="/asset/n_asset/default_user_profile.png">
+                </div>
+            </div>
+        </div>
+        <!-- 백엔드
+     |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+          카메라 버튼 ( edit_btn ) 을 누르면 
+          바텀시트 나오는데
+          
+          내사진 업로드 (my_pic_upload_btn) 누르면 폰 갤러리 에서
+          사진 선택 직후 이미지 칸 ( one_img ) 의 img 에 들어갑니당
+     |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+          \ (•◡•) /
+     -->
+
+        <div class="info_top_box only_side_wrap">
+            <!-- 프사바꾸기 -->
+            <div class="edit_btn ripple">
+                <img src="/asset/n_asset/edit_cam.png">
+            </div>
+
+            <div class="info_top_title">
+                <div class="input_title_wrap">
+                    <input type="text" id="nickname" name="nickname" maxlength="7" placeholder="닉네임을 입력해주세요">
+                    <div class="charCount" id="nicknameCharCount">0/7</div>
+
+                </div>
+                <div class="input_sub_title_wrap">
+                    <textarea type="text" id="detail_text" name="detail_text" maxlength="45"
+                        placeholder="소개글을 입력해주세요"></textarea>
+                    <div class="charCount" id="detail_textCharCount">0/45</div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="info_title_btm_line"></div>
+
+
+
+        <div class="only_side_wrap scroll_padding_bottom">
+
+            <div class="opt_wrap">
+                <!-- 옵션라인 1줄씩 -->
+                <div class=" info_box">
+                    <p class="info_box_title">종목수준</p>
+                    <div class="line_intext">
+
+                        <div class="line_intext_value select_wrap">
+                            <select>
+                                <option>
+                                    미정
+                                </option>
+                                <option>
+                                    하수
+                                </option>
+                                <option>
+                                    중수
+                                </option>
+                                <option>
+                                    고수
+                                </option>
+
+                            </select>
+                            <span class="pulldown_icon_sel_position"><img src="/asset/n_asset/header_back.png"></span>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="reserv_check_wrap" style="display: block;">
+                    <!-- 옵션라인 1줄씩 -->
+                    <div class=" info_box">
+                        <p class="info_box_title">활동시간</p>
+                        <div class="line_intext">
+
+                            <div class="line_intext_value select_wrap">
+                                <select>
+                                    <option>
+                                        미정
+                                    </option>
+                                    <option>
+                                        주말
+                                    </option>
+                                    <option>
+                                        평일
+                                    </option>
+
+                                </select>
+                                <span class="pulldown_icon_sel_position"><img
+                                        src="/asset/n_asset/header_back.png"></span>
+
+                            </div>
+
+                            <div class="line_intext_value select_wrap">
+                                <select>
+                                    <option>
+                                        미정
+                                    </option>
+                                    <option>
+                                        오후
+                                    </option>
+                                    <option>
+                                        오전
+                                    </option>
+
+                                </select>
+
+                                <span class="pulldown_icon_sel_position"><img
+                                        src="/asset/n_asset/header_back.png"></span>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <!-- 백엔드
+     |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+         2023 성인나이 기준으로 100까지 나열해주시면 될듯합니다
+     |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+          \ (•◡•) /
+     -->
+                    <!-- 옵션라인 1줄씩 -->
+                    <div class=" info_box">
+                        <p class="info_box_title">출생연도</p>
+                        <div class="line_intext">
+
+                            <div class="line_intext_value select_wrap">
+                                <select>
+                                    <option>
+                                        미정
+                                    </option>
+                                    <option>
+                                        2004
+                                    </option>
+                                    <option>
+                                        2003
+                                    </option>
+                                    <option>
+                                        2002
+                                    </option>
+                                    <option>
+                                        2001
+                                    </option>
+                                    <option>
+                                        2000
+                                    </option>
+                                    <option>
+                                        1999
+                                    </option>
+                                    <option>
+                                        1998
+                                    </option>
+                                </select>
+                                <span class="pulldown_icon_sel_position"><img
+                                        src="/asset/n_asset/header_back.png"></span>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+                    <!-- 옵션라인 1줄씩 -->
+                    <div class=" info_box">
+                        <p class="info_box_title">성별</p>
+                        <div class="line_intext">
+
+                            <div class="line_intext_value select_wrap">
+                                <select>
+                                    <option>
+                                        미정
+                                    </option>
+                                    <option>
+                                        여성
+                                    </option>
+                                    <option>
+                                        남성
+                                    </option>
+                                </select>
+                                <span class="pulldown_icon_sel_position"><img
+                                        src="/asset/n_asset/header_back.png"></span>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+            <!-- 푸터버튼 컴포넌트 -->
+            <div class="footer_fixed_com">
+                <p class="one_text" style="display: none;">한 줄 설명</p>
+                <div class="footer_btn close_or_accept">
+                    <a class="footer_fir_close_btn sheet_close_btn ripple"
+                        onclick="history.back(); return false;">취소</a>
+                    <a class="footer_sec_btn s_theme_bg ripple">저장</a>
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+    <script>
+        // |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+        //   탭전환 별 탭내용 보여주는 부분
+        // |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+        // \ (•◡•) /
+
+        $(document).ready(function () {
+            $(".top_tap_wrap p").click(function () {
+                $(".top_tap_wrap p").removeClass("tap_on");
+                $(this).addClass("tap_on");
+
+                // 해당 탭에 따른 내용 표시
+                $(".first_tap_inner, .sec_tap_inner").hide();
+                var selectedTabClass = $(this).attr("class").split(" ")[0] + "_inner";
+                // 선택된 탭에 해당하는 클래스 추출
+                $("." + selectedTabClass).show();
+                // 선택된 탭에 해당하는 내용 표시
+
+
+            });
+        });
+
+
+        // |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+        //       글자수 세기+제한
+        // |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+        //      \ (•◡•) /
+
+
+        $(function () {
+            // Input
+            $('input').on('input', function () {
+                const maxLength = $(this).attr('maxlength');
+                let value = $(this).val();
+
+                if (value.length > maxLength) {
+                    value = value.substring(0, maxLength); // 초과된 부분을 잘라냄
+                    $(this).val(value);
+                }
+
+                const currentLength = value.length;
+                $('#' + this.id + 'CharCount').text(`${currentLength}/${maxLength}`);
+            });
+
+            // Textarea
+            $('textarea').on('input', function () {
+                const maxLength = $(this).attr('maxlength');
+                let value = $(this).val();
+
+                if (value.length > maxLength) {
+                    value = value.substring(0, maxLength); // 초과된 부분을 잘라냄
+                    $(this).val(value);
+                }
+
+                const currentLength = value.length;
+                $('#' + this.id + 'CharCount').text(`${currentLength}/${maxLength}`);
+            });
+        });
+
+
+
+
+        
+
+        /* =================================열기================================= */
+        /* =================================열기================================= */
+        /* =================================열기================================= */
+
+
+
+          //    위 아래 시트나오는 애니메
+
+          $(document).ready(function () {
+               $(".edit_btn ").on("click", function () {
+                    $(".sheet_wrap.select_opt_wrap").show(0);
+                    $(".bottom_sheet_wrap_inner").animate({
+                         bottom: "0"
+                    }, 200);
+               });
+          });
+
+
+
+
+
+
+        /* =================================닫기================================= */
+        /* =================================닫기================================= */
+        /* =================================닫기================================= */
+
+
+        // |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+        //       흑필터 공통닫기
+        // |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+        //      \ (•◡•) /
+
+        $(document).ready(function () {
+            $(".bk_common_bg").on("click", function () {
+                $(this).closest(".sheet_wrap").hide();
+                /* 일반 바텀시트 */
+                $('.bottom_sheet_wrap_inner').css('bottom', '-100%');
+            });
+        });
+
+        // |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+        //      닫기버튼 공통 닫기
+        //      sheet_close_btn (닫기 ) 누르면 가장가까운
+        //      sheet_wrap 닫힘 (sheet_close_btn 가 sheet_wrap
+        //      안에 들어있어서 하나만 닫힘)
+        // |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+        //      \ (•◡•) /
+
+        $(document).ready(function () {
+            $(".sheet_close_btn").on("click", function () {
+                $(this).closest(".sheet_wrap").hide();
+                /* 일반 바텀시트 */
+                $('.bottom_sheet_wrap_inner').css('bottom', '-100%');
+            });
+
+
+        });
+
+
+    </script>
+
+
+</body>
+
+
+
+</html>

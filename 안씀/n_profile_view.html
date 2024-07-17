@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="kr">
+
+<head>
+    <title>N 프로필</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/library/FontAwesome/css/all.min.css">
+    <script src="/library/jQuery/jQuery.min.js"></script>
+
+    <link href="/library/css/n_font.css" rel="stylesheet">
+    <link href="/library/css/n_reset.css?ver=23" rel="stylesheet">
+    <link href="/library/css/n_common.css?ver=23" rel="stylesheet">
+    <link href="/library/css/n_profile_view.css?ver=23" rel="stylesheet">
+
+</head>
+
+<body>
+
+
+
+
+    <!-- 백엔드
+          |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+              화면에서 로딩이 떠야 할때는 loading 을 block시키면 됩니당
+          |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+               \ (•◡•) /
+     -->
+
+    <!-- 풀화면 로딩시 띄움 -->
+    <div class="sheet_wrap loading" style="display: none;">
+        <div class="loading_wrap_inner">
+            <img src="/asset/n_asset_anicon/loading.gif">
+        </div>
+        <!-- 원래 아래꺼 살려야됨 테스트용 -->
+        <div class="bk_common_bg_only_loading"></div>
+        <!-- <div class="bk_common_bg"></div> -->
+    </div>
+
+
+
+
+
+
+
+
+
+    <!-- 타이틀만 있는 헤더일 시 -->
+    <header>
+        <div class="header_in just_header_in">
+            <!-- 왼쪽 -->
+            <div class="header_left just_header_left " onclick="history.back(); return false;">
+                <img src="/asset/n_asset/header_back.png">
+            </div>
+
+            <div class="header_center just_center_title ">
+                <p class="just_center_title_p">
+                    프로필
+                </p>
+            </div>
+
+
+        </div>
+    </header>
+
+
+
+
+    <!--
+     |￣￣￣￣￣￣￣￣￣￣|
+          main 내용
+     |＿＿＿＿＿＿＿＿＿＿|
+          \ (•◡•) /
+     -->
+    <section class="main_wrap">
+
+        <!-- 슬라이드 이미지 -->
+        <div class="my_pic_wrap">
+            <!-- 사진 1장 -->
+            <div class="inner_slick_pic">
+                <div class="one_img">
+                    <img src="/asset/n_asset_ai프로필이미지/g9.png">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="info_top_box only_side_wrap">
+            <div class="info_top_title">
+                <p class="name">스포팅 <span class="age">25</span> <span class="girl">여</span></p>
+                <div class="room_line_inner_right">
+                    <div class="edit_btn ripple" onclick="location.href='n_my_page_edit.html'">
+                        <img src="/asset/n_asset/edit_pen.png">
+                    </div>
+                </div>
+                <p class="intro_text">안녕하세요 45자 제한입니다 이렇게 저렇게 하고요 초보도 상관없습니다 반가워요~</p>
+
+            </div>
+        </div>
+        <div class="info_title_btm_line"></div>
+
+
+
+        <div class="only_side_wrap scroll_padding_bottom">
+
+
+
+
+            <!-- 인포 박스 1개 씩  -->
+            <div class="info_box info_time_box" style="display: block;">
+                <p class="info_box_title">종목수준</p>
+                <div class="info_box_inner">
+                    <!--  1줄씩 -->
+                    <div class="dot_line_wrap">
+                        <p class="dot_left">당구</p>
+                        <p class="dot_middle"></p>
+                        <p class="dot_right">중수</p>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- 인포 박스 1개 씩  -->
+            <div class="info_box info_time_box" style="display: block;">
+                <p class="info_box_title">활동시간</p>
+                <div class="info_box_inner">
+                    <!--  1줄씩 -->
+                    <div class="dot_line_wrap">
+                        <p class="dot_right">평일 오후</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- 인포 박스 1개 씩  -->
+            <div class="info_box info_time_box" style="display: block;">
+                <p class="info_box_title">출생연도</p>
+                <div class="info_box_inner">
+                    <!--  1줄씩 -->
+                    <div class="dot_line_wrap">
+                        <p class="dot_right">1998</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- 인포 박스 1개 씩  -->
+            <div class="info_box info_time_box" style="display: block;">
+                <p class="info_box_title">성별</p>
+                <div class="info_box_inner">
+                    <!--  1줄씩 -->
+                    <div class="dot_line_wrap">
+                        <p class="dot_right">여성</p>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+    <script>
+        /* =================================열기================================= */
+        /* =================================열기================================= */
+        /* =================================열기================================= */
+
+
+
+
+
+
+
+
+
+
+
+
+        /* =================================닫기================================= */
+        /* =================================닫기================================= */
+        /* =================================닫기================================= */
+
+
+        // |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+        //       흑필터 공통닫기
+        // |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+        //      \ (•◡•) /
+
+        $(document).ready(function () {
+            $(".bk_common_bg").on("click", function () {
+                $(this).closest(".sheet_wrap").hide();
+                /* 일반 바텀시트 */
+                $('.bottom_sheet_wrap_inner').css('bottom', '-100%');
+            });
+        });
+
+        // |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+        //      닫기버튼 공통 닫기
+        //      sheet_close_btn (닫기 ) 누르면 가장가까운
+        //      sheet_wrap 닫힘 (sheet_close_btn 가 sheet_wrap
+        //      안에 들어있어서 하나만 닫힘)
+        // |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+        //      \ (•◡•) /
+
+        $(document).ready(function () {
+            $(".sheet_close_btn").on("click", function () {
+                $(this).closest(".sheet_wrap").hide();
+                /* 일반 바텀시트 */
+                $('.bottom_sheet_wrap_inner').css('bottom', '-100%');
+            });
+
+
+
+        });
+    </script>
+
+
+</body>
+
+
+
+</html>
