@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>방명록 댓글</title>
+  <!-- CSS  -->
+  <link href="/css/font.css" rel="stylesheet">
+  <link href="/css/reset.css" rel="stylesheet">
+
+</head>
+
+<style>
+  .wrap {
+    max-width: 1280px;
+    width: calc(100% - 80px);
+    margin: 0 auto;
+    /* background-color: #333; */
+    margin-top: 40px;
+  }
+
+  /* #disqus_thread:before {
+    white-space: pre-line;
+    content: "안녕하세요 썸냐들! 방명록을 자유롭게 작성해보세요";
+    font-size: 16px;
+    overflow-wrap: break-word;
+    color: #333;
+    text-align: center;
+    display: block;
+    margin-bottom: 50px;
+  } */
+
+
+  #disqus_thread a {
+    color: #0059ff;
+  }
+</style>
+
+<body>
+  <div class="wrap">
+    <div id="disqus_thread"></div>
+  </div>
+
+  <script>
+    (function () { // DON'T EDIT BELOW THIS LINE
+      var d = document,
+        s = d.createElement('script');
+      s.src = 'https://dreamplace-1.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <!--  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
+      Disqus.</a></noscript> -->
+
+  <!-- 댓글 수 표기 : /body에 넣어야함-->
+  <script id="dsq-count-scr" src="//dreamplace-1.disqus.com/count.js" async></script>
+</body>
+
+</html>
