@@ -2,7 +2,7 @@
 <html lang="ko">
 
 <head>
-    <title>Dream Places</title>
+    <title>Dream Places🗺️</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -175,30 +175,90 @@
         }
 
         /* 댓글 */
-        .comments_btn{
+        .comments_btn {
             position: fixed;
             right: 20px;
             bottom: 20px;
-            z-index: 999;  filter: drop-shadow(0px 0px 3px #33333393);
+            z-index: 999;
+            filter: drop-shadow(0px 0px 3px #33333393);
             transition: ease-in-out 0.2s;
         }
-        .comments_btn img{
+
+        .comments_btn img {
             width: 50px;
         }
+
         .comments_btn:hover {
             filter: drop-shadow(0px 0px 3px #001e55);
             transition: ease-in-out 0.2s;
         }
 
+        /* 멤버 필터 버튼 */
+        /* 버튼 스타일 */
+
+
+        .filter_btn {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 10;
+            overflow-x: auto;
+            white-space: nowrap;
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        .filter_btn button {
+            background-color: white;
+            border: none;
+            box-shadow: 0px 0px 6px rgb(0 0 0 / 50%);
+            /* border: 1px solid rgb(218, 218, 218); */
+            box-sizing: border-box;
+            color: #333;
+            padding: 6px 13px 7px 10px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            margin:4px;
+        }
+
+        .filter_btn button.active,
+        .filter_btn button:hover {
+            background-color: #333;
+            color: white;
+        }
+        .filter_btn button:last-child{
+            margin-right: 25px;
+        }
+
+
+    </style>
+
     </style>
 </head>
 
 <body>
-    <a class="comments_btn" href="/comment.html" target="_blank" >
+
+    <!-- 멤버 필터 버튼 -->
+    <div class="filter_btn">
+        <button class="active" data-filter="ALL">ALL</button>
+        <button data-filter="지유">🐰지유</button>
+        <button data-filter="수아">🐥수아</button>
+        <button data-filter="시연">🐺시연</button>
+        <button data-filter="한동">🐱한동</button>
+        <button data-filter="유현">🐶유현</button>
+        <button data-filter="다미">🐼다미</button>
+        <button data-filter="가현">🦊가현</button>
+        <button data-filter="드림캐쳐">드림캐쳐</button>
+    </div>
+
+    <!-- 방명록 버튼 -->
+    <a class="comments_btn" href="/comment.html" target="_blank">
         <img src="/img/comment_btn.png">
     </a>
 
-    <div id="map" style="width:100%;height:100vh"></div>
+    <div id="map" style="width:100%;height:100vh;"></div>
 
     <!-- KAKAO map API -->
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7166c690e996b32aca00f91aa4705858">
@@ -213,6 +273,8 @@
             };
 
         var map = new kakao.maps.Map(mapContainer, mapOption);
+
+        var overlays = []; // 커스텀 오버레이를 저장할 배열
 
         var places = [{
                 position: new kakao.maps.LatLng(37.5111592, 127.044415),
@@ -478,7 +540,47 @@
                 yAnchor: 1.1
             });
             overlay.setMap(map);
+
+            // 오버레이와 관련된 멤버 정보를 저장
+            overlays.push({
+                overlay: overlay,
+                members: place.content.members
+            });
         });
+
+        // 멤버 필터버튼 클릭 이벤트 핸들러
+        // overlays 배열: 각 오버레이와 관련된 멤버 정보를 저장합니다.이렇게 하면 필터를 적용할 때 참조할 수 있습니다.
+        // places.forEach: 각 장소에 대해 커스텀 오버레이를 생성하고 overlays 배열에 추가합니다.
+        // 필터 버튼 클릭 이벤트: 버튼 클릭 시 선택된 필터에 따라 오버레이를 지도에 표시하거나 숨깁니다.
+        document.addEventListener('DOMContentLoaded', function () {
+            // 모든 버튼을 선택합니다.
+            const buttons = document.querySelectorAll('.filter_btn button');
+
+            // 각 버튼에 클릭 이벤트 리스너를 추가합니다.
+            buttons.forEach(button => {
+                button.addEventListener('click', function () {
+                    // 클릭된 버튼의 data-filter 속성 값을 가져옵니다.
+                    const filter = this.getAttribute('data-filter');
+
+                    // 모든 버튼에서 active 클래스를 제거합니다.
+                    buttons.forEach(btn => btn.classList.remove('active'));
+
+                    // 클릭된 버튼에 active 클래스를 추가합니다.
+                    this.classList.add('active');
+
+                    // 필터링 로직
+                    overlays.forEach(item => {
+                        if (filter === 'ALL' || item.members.includes(filter)) {
+                            item.overlay.setMap(map); // 필터 조건에 맞는 오버레이를 지도에 표시합니다.
+                        } else {
+                            item.overlay.setMap(null); // 필터 조건에 맞지 않는 오버레이를 지도에서 숨깁니다.
+                        }
+                    });
+                });
+            });
+        });
+
+        
     </script>
 </body>
 
