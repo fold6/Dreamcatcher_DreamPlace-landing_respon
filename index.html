@@ -22,6 +22,89 @@
     <!--✅✅✅✅✅✅✅✅ 구글 애널리틱스 넣기 ✅✅✅✅✅✅✅✅ -->
 
     <style>
+        /* 모바일 맵 grab */
+        #map {
+            width: 100%;
+            height: 100vh;
+            touch-action: none;
+        }
+
+        /* 헤더 */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 99;
+            background-color: #ffffffb8;
+            height: 35px;
+            line-height: 35px;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0px 0px 5px rgb(0 0 0 / 70%);
+            -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
+        }
+        .header_title {
+            text-align: center;
+            font-weight: 500;
+            color: #333;
+            font-size: 14px;
+        }
+        .header_right{
+            position: absolute;
+            right: 10px;
+            top: 5px;
+            width: 25px;
+        }
+        .header_right img{
+            width: 100%;
+        }
+        .header_right:hover {
+            filter: drop-shadow(0px 0px 2px #3333334f);
+            transition: ease-in-out 0.2s;
+        }
+
+        /* 멤버 필터 버튼 */
+        /* 버튼 스타일 */
+        .filter_btn {
+            position: fixed;
+            top: 40px;
+            left: 10px;
+            z-index: 10;
+            overflow-x: auto;
+            white-space: nowrap;
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        .filter_btn button {
+            background-color: white;
+            border: none;
+            box-shadow: 0px 0px 4px rgb(0 0 0 / 40%);
+            /* border: 1px solid rgb(218, 218, 218); */
+            box-sizing: border-box;
+            color: #333;
+            padding: 6px 13px 7px 10px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            margin: 4px;
+
+        }
+
+        .filter_btn button.active,
+        .filter_btn button:hover {
+            background-color: #333;
+            color: white;
+        }
+
+        .filter_btn button:last-child {
+            margin-right: 25px;
+        }
+
+
+        /* 지도 마커 */
         .overlay_info {
             border-radius: 6px;
             margin-bottom: 12px;
@@ -31,12 +114,9 @@
             border-bottom: 2px solid #ddd;
             background-color: #fff;
             cursor: pointer;
-
-        }
-
-        .overlay_info:nth-of-type(n) {
             border: 0;
             box-shadow: 0px 1px 2px #888;
+
         }
 
         .map_go:hover {
@@ -168,7 +248,7 @@
             position: absolute;
             margin-left: -11px;
             left: 50%;
-            bottom: -12px;
+            bottom: -11px;
             width: 22px;
             height: 12px;
             background: url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png) no-repeat 0 bottom;
@@ -193,52 +273,48 @@
             transition: ease-in-out 0.2s;
         }
 
-        /* 멤버 필터 버튼 */
-        /* 버튼 스타일 */
 
+        /* Tb. Ver. */
+        @media (max-width:768px) {
+            .filter_btn button {
+                font-size: 14px;
+            }
+        }
 
-        .filter_btn {
+        .guide_wrap{
             position: fixed;
-            top: 10px;
-            left: 10px;
-            z-index: 10;
-            overflow-x: auto;
-            white-space: nowrap;
-            box-sizing: border-box;
-            width: 100%;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 40px);
+            z-index: 99;
+            background-color: #ffffffef;
+            height: 300px;
+            border-radius:  10px;
+            box-shadow: 0px 0px 5px rgb(0 0 0 / 50%);
+            -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
         }
-
-        .filter_btn button {
-            background-color: white;
-            border: none;
-            box-shadow: 0px 0px 6px rgb(0 0 0 / 50%);
-            /* border: 1px solid rgb(218, 218, 218); */
-            box-sizing: border-box;
-            color: #333;
-            padding: 6px 13px 7px 10px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            margin:4px;
-        }
-
-        .filter_btn button.active,
-        .filter_btn button:hover {
-            background-color: #333;
-            color: white;
-        }
-        .filter_btn button:last-child{
-            margin-right: 25px;
-        }
-
-
+     
     </style>
 
     </style>
 </head>
 
 <body>
+    <header>
+        <p class="header_title">
+            DreamPlace
+        </p>
+        <p class="header_right">
+            <img src="/img/howto_btn.png" alt="guide_btn">
+        </p>
+
+    </header>
+    <!-- Guide Notice -->
+   <!--  <div class="guide_wrap">
+        p.
+    </div> -->
 
     <!-- 멤버 필터 버튼 -->
     <div class="filter_btn">
@@ -251,6 +327,7 @@
         <button data-filter="다미">🐼다미</button>
         <button data-filter="가현">🦊가현</button>
         <button data-filter="드림캐쳐">드림캐쳐</button>
+        <div class="right_arrow"></div>
     </div>
 
     <!-- 방명록 버튼 -->
@@ -579,8 +656,6 @@
                 });
             });
         });
-
-        
     </script>
 </body>
 
