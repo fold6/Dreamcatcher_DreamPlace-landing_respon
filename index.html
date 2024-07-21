@@ -144,14 +144,13 @@
             background: #0059ff url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png) no-repeat right 14px center;
             text-decoration: none;
             color: #fff;
-            padding: 10px 36px 10px 10px;
+            padding: 10px 23px 10px 10px;
             font-size: 14px;
             border-radius: 6px 6px 0 0;
         }
 
         .overlay_info a strong {
             padding: 10px 24px;
-            white-space: normal;
         }
 
         .overlay_info a strong.def_place {
@@ -443,6 +442,7 @@
             border-radius: 15px;
             width: calc(100% - 20px);
             padding: 35px 0 20px 0;
+            /* min-height: 370px; */
         }
 
         .guide_tit {
@@ -531,37 +531,38 @@
                 <p class="guide_tit"><span class="col_big">DreamPlace</span> 로 <br> 드캐투어 가보자고!</p>
                 <p class="sub_text">DreamPlace는 드림캐쳐가<br>방문했던 장소를 표기해주는 지도에요</p>
                 <div class="g_img_wrap">
-                    <img src="/img/DC_guide/g4.png" alt="guide_img"></img>
+                    <img src="/img/DC_guide/g1.png" alt="guide_img"></img>
                 </div>
                 <p class="mini_text">* 팬 메이드 사이트 이므로 잘못된 정보가 있을 수 있습니다<br>&nbsp &nbsp 문의는 맵 오른쪽 하단의 '방명록' 을 이용해 주세요.</p>
             </div>
             <!-- 2 -->
             <div class="guide_box">
-                <p class="guide_tit"><span class="col_big">DreamPlace</span> 로 <br> 드캐투어 가보자고!</p>
-                <p class="sub_text">DreamPlace는 드림캐쳐가<br>방문했던 장소를 표기해주는 지도에요</p>
+                <p class="guide_tit"><span class="col_big">장소정보</span>와 <br> <span class="col_big">컨텐츠</span>를 볼 수 있어요
+                </p>
+                <p class="sub_text">장소이름 클릭 시 정보(영업시간 등)를,<br>컨텐츠 클릭 시 드림캐쳐의 모습을 볼 수 있어요</p>
                 <div class="g_img_wrap">
-                    <img src="/img/DC_guide/g4.png" alt="guide_img"></img>
+                    <img src="/img/DC_guide/g2.png" alt="guide_img"></img>
                 </div>
-                <p class="mini_text">* 팬 메이드 사이트 입니다 , 문의 시 ' 방명록 ' 이용요망</p>
+                <p class="mini_text">* 맵 오른쪽 하단의 '방명록' 에서 더 많은 장소 제보를 기다려요</p>
             </div>
             <!-- 3 -->
             <div class="guide_box">
-                <p class="guide_tit"><span class="col_big">DreamPlace</span> 로 <br> 드캐투어 가보자고!</p>
-                <p class="sub_text">DreamPlace는 드림캐쳐가<br>방문했던 장소를 표기해주는 지도에요</p>
+                <p class="guide_tit"><span class="col_big">멤버 별</span> 방문장소<br><span class="col_big">필터링!</span></p>
+                <p class="sub_text">각 멤버별로 방문한 장소를 필터링 해서<br>원하는 장소만 볼 수 있어요!</p>
                 <div class="g_img_wrap">
-                    <img src="/img/DC_guide/g4.png" alt="guide_img"></img>
+                    <img src="/img/DC_guide/g3.png" alt="guide_img"></img>
                 </div>
-                <p class="mini_text">* 팬 메이드 사이트 입니다 , 문의 시 ' 방명록 ' 이용요망</p>
+                <p class="mini_text">* 표기장소가 많아지면 지역별 필터링을 추가 예정이에요</p>
             </div>
             <!-- 4 -->
             <div class="guide_box">
                 <p class="guide_tit"><span class="col_big">방명록</span> 에서<br> <span class="col_big">InSomnia Talk!</span>
                 </p>
-                <p class="sub_text">DreamPlace는 드림캐쳐가<br>방문했던 장소를 표기해주는 지도에요</p>
+                <p class="sub_text">방문후기 및 지도 표기요청 등<br>로그인 없이 다양한 이야기를 할 수 있어요!</p>
                 <div class="g_img_wrap">
                     <img src="/img/DC_guide/g4.png" alt="guide_img"></img>
                 </div>
-                <p class="mini_text">* 팬 메이드 사이트 입니다 , 문의 시 ' 방명록 ' 이용요망</p>
+                <p class="mini_text">* ‘비회원으로 작성하겠습니다’ 에 체크 후 댓글을 작성해주세요</p>
             </div>
         </div>
         <div class="bk_common_bg"></div>
@@ -586,7 +587,14 @@
 
         var overlays = []; // 커스텀 오버레이를 저장할 배열
 
-        var places = [{
+        var places = [
+            
+
+            // |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+            //           드림캐쳐 Place Start!
+            // |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+            // \ (•◡•) /
+            {
                 position: new kakao.maps.LatLng(37.5111592, 127.044415),
                 content: {
                     url: "https://place.map.kakao.com/13031133",
@@ -608,6 +616,18 @@
                     members: ["드림캐쳐"],
                     detail: "VersuS 방 탈출 체험",
                     videoUrl: "https://youtu.be/Os-k4dSnx_s?si=e-Zkhor0GbkHRwkb"
+                }
+            },
+            {
+                position: new kakao.maps.LatLng(37.5948266,127.1054298),
+                content: {
+                    url: "https://place.map.kakao.com/1210528477",
+                    className: "def_place",
+                    title: "용마랜드",
+                    thumbnail: "/img/DC_thum/dc_because_mv.jpg",
+                    members: ["드림캐쳐"],
+                    detail: "BEcause MV <br>촬영지",
+                    videoUrl: "https://youtu.be/PEKkdIT8JPM?si=-KcH4AWwa8fYgAbd"
                 }
             },
 
@@ -745,7 +765,7 @@
                     url: "https://place.map.kakao.com/8173212",
                     className: "def_place",
                     title: "경기미래교육 파주캠퍼스",
-                    thumbnail: "/img/DC_thum/gah-mv1.jpg",
+                    thumbnail: "/img/DC_thum/gah-playground-mv.jpg",
                     members: ["가현"],
                     detail: "Playground MV <br>촬영지",
                     videoUrl: "https://youtu.be/iYvErpLnQ-8?si=dWprY3sdAa6-lgOJ"
@@ -825,12 +845,24 @@
                 position: new kakao.maps.LatLng(37.7534235, 127.3596855),
                 content: {
                     url: "https://place.map.kakao.com/8096714",
-                    className: "culture_place",
+                    className: "def_place",
                     title: "취옹예술관",
-                    thumbnail: "/img/DC_thum/si-mv1.jpg",
+                    thumbnail: "/img/DC_thum/si-entrance-mv.jpg",
                     members: ["시연"],
                     detail: "황홀경 MV 촬영지",
                     videoUrl: "https://youtu.be/CowRTDlxbWg?si=ZeKNLxIfXBroGvYU"
+                }
+            },
+            {
+                position: new kakao.maps.LatLng(37.725518, 126.6546851),
+                content: {
+                    url: "https://place.map.kakao.com/399973971",
+                    className: "def_place",
+                    title: "여울지 숲속 캠핑장-헤밍웨이의 카라반",
+                    thumbnail: "/img/DC_thum/si-su-oort-mv.jpg",
+                    members: ["수아", "시연"],
+                    detail: "오르트구름 Cover 촬영지",
+                    videoUrl: "https://youtu.be/uGuu_vDF8f4?si=B3QiNFW75kVdoIl1"
                 }
             },
         ];
