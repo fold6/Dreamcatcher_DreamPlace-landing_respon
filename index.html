@@ -6,6 +6,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 슬릭 슬라이더 -->
+    <link href="/lib/slick/slick.css" rel="stylesheet" />
+    <link href="/lib/slick/slick-theme.css" rel="stylesheet" />
 
     <!-- Jquery  -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -44,21 +47,25 @@
             -webkit-backdrop-filter: blur(5px);
             backdrop-filter: blur(5px);
         }
+
         .header_title {
             text-align: center;
             font-weight: 500;
             color: #333;
             font-size: 14px;
         }
-        .header_right{
+
+        .header_right {
             position: absolute;
             right: 10px;
             top: 5px;
             width: 25px;
         }
-        .header_right img{
+
+        .header_right img {
             width: 100%;
         }
+
         .header_right:hover {
             filter: drop-shadow(0px 0px 2px #3333334f);
             transition: ease-in-out 0.2s;
@@ -259,7 +266,7 @@
             position: fixed;
             right: 20px;
             bottom: 20px;
-            z-index: 999;
+            z-index: 500;
             filter: drop-shadow(0px 0px 3px #33333393);
             transition: ease-in-out 0.2s;
         }
@@ -281,21 +288,169 @@
             }
         }
 
-        .guide_wrap{
+        /* 팝업 */
+        .popup_wrap_inner {
             position: fixed;
-            top: 20%;
+            z-index: 900;
+            width: 100%;
+        }
+
+        /* 팝업닫기 */
+        .close_btn {
+            position: fixed;
+            z-index: 9999;
+            top: 9%;
+            left: 50%;
+            transform: translateX(130px);
+            width: 30px;
+        }
+
+        .close_btn img {
+            width: 100%;
+        }
+
+        .guide_slide_wrap {
+            position: fixed;
+            top: 10%;
             left: 50%;
             transform: translateX(-50%);
-            width: calc(100% - 40px);
-            z-index: 99;
+            width: 300px;
+            text-align: center;
+            z-index: 999;
+        }
+
+        /* 슬릭 dot  */
+        .slick-dots li button:before {
+            font-family: 'slick';
+            font-size: 12px;
+            line-height: 28px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 20px;
+            height: 20px;
+            content: '•';
+            text-align: center;
+            opacity: .4;
+            color: rgb(0 0 0 / 70%);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .slick-dots li.slick-active button:before {
+            opacity: .75;
+            color: #0059ff;
+        }
+
+        /* 슬릭슬라이드 화살표 */
+        .slick-prev {
+            left: -10px;
+            display: block !important;
+            position: absolute;
+            z-index: 500;
+            top: 50%;
+            -webkit-transform: none;
+            -ms-transform: none;
+            transform: none;
+            background: none;
+            width: 30px;
+            height: 50px;
+        }
+
+        .slick-next {
+            display: block !important;
+            position: absolute;
+            z-index: 500;
+            top: 50%;
+            right: -3%;
+            -webkit-transform: none;
+            -ms-transform: none;
+            transform: none;
+            background: none;
+            width: 30px;
+            height: 50px;
+            filter: brightness(20);
+        }
+
+        .slick-next:before {
+            content: url(/img/arrow_btn.png);
+            display: inline-block;
+            transform: rotateY(180deg);
+        }
+
+        .slick-prev:before {
+            content: url(/img/arrow_btn.png);
+            display: inline-block;
+            /* transform: rotateY(180deg); */
+        }
+
+      /*   .slick-prev:before,
+        .slick-next:before {
+            font-family: 'slick';
+            font-size: 20px;
+            line-height: 1;
+            opacity: 1;
+            color: rgb(73, 73, 73);
+            filter: drop-shadow(0px 0px 1px #333);
+        } */
+
+        .bk_common_bg {
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.4);
+            position: fixed;
+            z-index: 12;
+            width: 100%;
+        }
+
+        /* 슬라이드 박스 안 */
+        .guide_box {
             background-color: #ffffffef;
-            height: 300px;
-            border-radius:  10px;
             box-shadow: 0px 0px 5px rgb(0 0 0 / 50%);
             -webkit-backdrop-filter: blur(5px);
             backdrop-filter: blur(5px);
+            border-radius: 15px;
+            width: calc(100% - 20px);
+            padding: 35px 0 20px 0;
         }
-     
+
+        .guide_tit {
+            font-size: 23px;
+            line-height: 25px;
+            font-weight: 900;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .col_big {
+            color: #0059ff;
+            font-weight: inherit;
+        }
+
+        .sub_text {
+            font-size: 14px;
+            color: #666;
+            line-height: 20px;
+            margin-bottom: 20px;
+        }
+
+        .g_img_wrap {
+            width: 280px;
+            text-align: center;
+            display: inline-block;
+
+        }
+
+        .g_img_wrap img {
+            width: 100%;
+        }
+
+        .mini_text {
+            font-size: 11px;
+            text-align: right;
+            margin-right: 20px;
+            margin-top: 20px;
+            color: #888;
+        }
     </style>
 
     </style>
@@ -311,10 +466,7 @@
         </p>
 
     </header>
-    <!-- Guide Notice -->
-   <!--  <div class="guide_wrap">
-        p.
-    </div> -->
+
 
     <!-- 멤버 필터 버튼 -->
     <div class="filter_btn">
@@ -335,6 +487,53 @@
         <img src="/img/comment_btn.png">
     </a>
 
+    <!-- 바텀시트 -->
+    <div class="popup_wrap_inner">
+        <!-- Guide Notice -->
+        <div class="close_btn"><img src="/img/close_btn.png"></div>
+        <div class="guide_slide_wrap">
+            <!-- 1 -->
+            <div class="guide_box">
+                <p class="guide_tit"><span class="col_big">DreamPlace</span> 로 <br> 드캐투어 가보자고!</p>
+                <p class="sub_text">DreamPlace는 드림캐쳐가<br>방문했던 장소를 표기해주는 지도에요</p>
+                <div class="g_img_wrap">
+                    <img src="/img/DC_guide/g4.png" alt="guide_img"></img>
+                </div>
+                <p class="mini_text">* 팬 메이드 사이트 입니다 , 문의 시 ' 방명록 ' 이용요망</p>
+            </div>
+            <!-- 2 -->
+            <div class="guide_box">
+                <p class="guide_tit"><span class="col_big">DreamPlace</span> 로 <br> 드캐투어 가보자고!</p>
+                <p class="sub_text">DreamPlace는 드림캐쳐가<br>방문했던 장소를 표기해주는 지도에요</p>
+                <div class="g_img_wrap">
+                    <img src="/img/DC_guide/g4.png" alt="guide_img"></img>
+                </div>
+                <p class="mini_text">* 팬 메이드 사이트 입니다 , 문의 시 ' 방명록 ' 이용요망</p>
+            </div>
+            <!-- 3 -->
+            <div class="guide_box">
+                <p class="guide_tit"><span class="col_big">DreamPlace</span> 로 <br> 드캐투어 가보자고!</p>
+                <p class="sub_text">DreamPlace는 드림캐쳐가<br>방문했던 장소를 표기해주는 지도에요</p>
+                <div class="g_img_wrap">
+                    <img src="/img/DC_guide/g4.png" alt="guide_img"></img>
+                </div>
+                <p class="mini_text">* 팬 메이드 사이트 입니다 , 문의 시 ' 방명록 ' 이용요망</p>
+            </div>
+            <!-- 4 -->
+            <div class="guide_box">
+                <p class="guide_tit"><span class="col_big">방명록</span> 에서<br> <span class="col_big">InSomnia Talk!</span>
+                </p>
+                <p class="sub_text">DreamPlace는 드림캐쳐가<br>방문했던 장소를 표기해주는 지도에요</p>
+                <div class="g_img_wrap">
+                    <img src="/img/DC_guide/g4.png" alt="guide_img"></img>
+                </div>
+                <p class="mini_text">* 팬 메이드 사이트 입니다 , 문의 시 ' 방명록 ' 이용요망</p>
+            </div>
+        </div>
+        <div class="bk_common_bg"></div>
+    </div>
+
+    <!-- KAKAP map -->
     <div id="map" style="width:100%;height:100vh;"></div>
 
     <!-- KAKAO map API -->
@@ -657,6 +856,8 @@
             });
         });
     </script>
+    <!-- 슬릭 슬라이드 -->
+    <script src="/lib/slick/slick.js"></script>
 </body>
 
 </html>
