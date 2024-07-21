@@ -60,6 +60,7 @@
             right: 10px;
             top: 5px;
             width: 25px;
+            transition: ease-in-out 0.2s;
         }
 
         .header_right img {
@@ -69,6 +70,7 @@
         .header_right:hover {
             filter: drop-shadow(0px 0px 2px #3333334f);
             transition: ease-in-out 0.2s;
+            filter: brightness(125%);
         }
 
         /* 멤버 필터 버튼 */
@@ -91,7 +93,7 @@
             /* border: 1px solid rgb(218, 218, 218); */
             box-sizing: border-box;
             color: #333;
-            padding: 6px 13px 7px 10px;
+            padding: 5px 13px 7px 10px;
             border-radius: 20px;
             cursor: pointer;
             font-size: 16px;
@@ -106,9 +108,14 @@
             color: white;
         }
 
-        .filter_btn button:last-child {
-            margin-right: 25px;
+        .filter_btn .text_btn {
+            padding: 6px 11px 7px 12px;
         }
+
+        .filter_btn .text_btn.last_margin {
+            margin-right: 20px;
+        }
+
 
 
         /* 지도 마커 */
@@ -303,6 +310,12 @@
             left: 50%;
             transform: translateX(130px);
             width: 30px;
+            transition: ease-in-out 0.2s;
+        }
+
+        .close_btn:hover {
+            filter: drop-shadow(0px 0px 2px #333333a4);
+            transition: ease-in-out 0.2s;
         }
 
         .close_btn img {
@@ -331,24 +344,53 @@
             height: 20px;
             content: '•';
             text-align: center;
-            opacity: .4;
-            color: rgb(0 0 0 / 70%);
+            opacity: .6;
+            /* color: rgb(0 0 0 / 70%); */
+            color: #fff;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
 
         .slick-dots li.slick-active button:before {
-            opacity: .75;
+            opacity: 1;
             color: #0059ff;
+            font-size: 21px;
+            line-height: 28px;
+            width: 20px;
+            height: 20px;
+            content: '•';
+            text-align: center;
         }
 
         /* 슬릭슬라이드 화살표 */
-        .slick-prev {
-            left: -10px;
+        .slick-prev,
+        .slick-next {
+            display: none !important;
+            font-size: 0;
+            line-height: 0;
+            position: absolute;
+            top: 104%;
+            display: block;
+            width: 20px;
+            height: 20px;
+            padding: 0;
+            -webkit-transform: translate(0, -50%);
+            -ms-transform: translate(0, -50%);
+            transform: translate(0, -50%);
+            cursor: pointer;
+            color: transparent;
+            border: none;
+            outline: none;
+            background: transparent;
+        }
+
+        /* 화살표 사용시 해제 */
+        /* .slick-prev {
+            left: 23%;
             display: block !important;
             position: absolute;
             z-index: 500;
-            top: 50%;
+            bottom: 0;
             -webkit-transform: none;
             -ms-transform: none;
             transform: none;
@@ -361,38 +403,28 @@
             display: block !important;
             position: absolute;
             z-index: 500;
-            top: 50%;
-            right: -3%;
+            bottom: 0;
+            right: 23%;
             -webkit-transform: none;
             -ms-transform: none;
             transform: none;
             background: none;
-            width: 30px;
+            width: 50px;
             height: 50px;
-            filter: brightness(20);
         }
-
+ 
         .slick-next:before {
-            content: url(/img/arrow_btn.png);
+            content: url(/img/arrow_btn.png) ;
             display: inline-block;
             transform: rotateY(180deg);
+         
         }
 
         .slick-prev:before {
             content: url(/img/arrow_btn.png);
             display: inline-block;
-            /* transform: rotateY(180deg); */
-        }
-
-      /*   .slick-prev:before,
-        .slick-next:before {
-            font-family: 'slick';
-            font-size: 20px;
-            line-height: 1;
-            opacity: 1;
-            color: rgb(73, 73, 73);
-            filter: drop-shadow(0px 0px 1px #333);
         } */
+
 
         .bk_common_bg {
             height: 100vh;
@@ -446,10 +478,12 @@
 
         .mini_text {
             font-size: 11px;
-            text-align: right;
-            margin-right: 20px;
+            text-align: left;
+            margin-left: 20px;
             margin-top: 20px;
-            color: #888;
+            line-height: 16px;
+            font-weight: 400;
+            color: #666;
         }
     </style>
 
@@ -470,7 +504,7 @@
 
     <!-- 멤버 필터 버튼 -->
     <div class="filter_btn">
-        <button class="active" data-filter="ALL">ALL</button>
+        <button class="active text_btn" data-filter="ALL">ALL</button>
         <button data-filter="지유">🐰지유</button>
         <button data-filter="수아">🐥수아</button>
         <button data-filter="시연">🐺시연</button>
@@ -478,7 +512,7 @@
         <button data-filter="유현">🐶유현</button>
         <button data-filter="다미">🐼다미</button>
         <button data-filter="가현">🦊가현</button>
-        <button data-filter="드림캐쳐">드림캐쳐</button>
+        <button data-filter="드림캐쳐" class="text_btn last_margin">드림캐쳐</button>
         <div class="right_arrow"></div>
     </div>
 
@@ -499,7 +533,7 @@
                 <div class="g_img_wrap">
                     <img src="/img/DC_guide/g4.png" alt="guide_img"></img>
                 </div>
-                <p class="mini_text">* 팬 메이드 사이트 입니다 , 문의 시 ' 방명록 ' 이용요망</p>
+                <p class="mini_text">* 팬 메이드 사이트 이므로 잘못된 정보가 있을 수 있습니다<br>&nbsp &nbsp 문의는 맵 오른쪽 하단의 '방명록' 을 이용해 주세요.</p>
             </div>
             <!-- 2 -->
             <div class="guide_box">
@@ -534,7 +568,7 @@
     </div>
 
     <!-- KAKAP map -->
-    <div id="map" style="width:100%;height:100vh;"></div>
+    <div id="map" style="width:100%;height:100vh;background-color: #fff;"></div>
 
     <!-- KAKAO map API -->
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7166c690e996b32aca00f91aa4705858">
@@ -780,6 +814,23 @@
                     members: ["수아"],
                     detail: "[트래블 서울] 수아 영천시장 편-최가상회",
                     videoUrl: "https://youtu.be/a1cvNr-uBg8?si=n-Or8xQ7OjTCQNMx&t=738"
+                }
+            },
+
+            // |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+            //           시연 Place Start!
+            // |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+            // \ (•◡•) /
+            {
+                position: new kakao.maps.LatLng(37.7534235, 127.3596855),
+                content: {
+                    url: "https://place.map.kakao.com/8096714",
+                    className: "culture_place",
+                    title: "취옹예술관",
+                    thumbnail: "/img/DC_thum/si-mv1.jpg",
+                    members: ["시연"],
+                    detail: "황홀경 MV 촬영지",
+                    videoUrl: "https://youtu.be/CowRTDlxbWg?si=ZeKNLxIfXBroGvYU"
                 }
             },
         ];
