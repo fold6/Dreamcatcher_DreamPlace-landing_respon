@@ -13,6 +13,8 @@
     <!-- Jquery  -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <!-- 쿠키는 제이쿼리보다 밑에 있어야 동작함 -->
 
     <!-- CSS  -->
     <link href="/css/font.css" rel="stylesheet">
@@ -321,6 +323,21 @@
             width: 100%;
         }
 
+        /* 쿠키체크버튼 */
+        .chk_text {
+            position: fixed;
+            z-index: 9999;
+            top: 68px;
+            left: 50%;
+            transform: translateX(-140px);
+            width: 100%;
+            transition: ease-in-out 0.2s;
+        }
+
+        .pop_cookie_text {
+            color: #fff;
+        }
+
         .guide_slide_wrap {
             position: fixed;
             top: 10%;
@@ -343,11 +360,17 @@
             height: 20px;
             content: '•';
             text-align: center;
-            opacity: .6;
+            opacity: .8;
             /* color: rgb(0 0 0 / 70%); */
             color: #fff;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+        }
+
+        .slick-track {/* 
+            opacity: 1 !important;
+            width: 2700px !important;
+            transform: translate3d(-300px, 0px, 0px) !important; */
         }
 
         .slick-dots li.slick-active button:before {
@@ -501,7 +524,6 @@
 
     </header>
 
-
     <!-- 멤버 필터 버튼 -->
     <div class="filter_btn">
         <button class="active text_btn" data-filter="ALL">ALL</button>
@@ -521,10 +543,12 @@
         <img src="/img/comment_btn.png">
     </a>
 
-    <!-- 바텀시트 -->
-    <div class="popup_wrap_inner">
+    <!-- 팝업 -->
+    <div class="popup_wrap_inner" id="pop">
+
+        <div class="close_btn"><img src="/img/close_btn.png">
+        </div>
         <!-- Guide Notice -->
-        <div class="close_btn"><img src="/img/close_btn.png"></div>
         <div class="guide_slide_wrap">
             <!-- 1 -->
             <div class="guide_box">
@@ -533,7 +557,7 @@
                 <div class="g_img_wrap">
                     <img src="/img/DC_guide/g1.png" alt="guide_img"></img>
                 </div>
-                <p class="mini_text">* 팬 메이드 사이트 이므로 잘못된 정보가 있을 수 있습니다<br>&nbsp &nbsp 문의는 맵 오른쪽 하단의 '방명록' 을 이용해 주세요.</p>
+                <p class="mini_text">* 오정보,오류 등 문의는 오른쪽 하단의 '방명록'을 이용해주세요</p>
             </div>
             <!-- 2 -->
             <div class="guide_box">
@@ -588,7 +612,7 @@
         var overlays = []; // 커스텀 오버레이를 저장할 배열
 
         var places = [
-            
+
 
             // |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
             //           드림캐쳐 Place Start!
@@ -619,7 +643,7 @@
                 }
             },
             {
-                position: new kakao.maps.LatLng(37.5948266,127.1054298),
+                position: new kakao.maps.LatLng(37.5948266, 127.1054298),
                 content: {
                     url: "https://place.map.kakao.com/1210528477",
                     className: "def_place",
@@ -738,6 +762,30 @@
                     members: ["유현"],
                     detail: "What Are YOO Doing EP.01",
                     videoUrl: "https://youtu.be/6_uSMl60I7I?si=XdHnT0KJ9VeyOvXz"
+                }
+            },
+            {
+                position: new kakao.maps.LatLng(37.5027673, 127.0266352),
+                content: {
+                    url: "https://place.map.kakao.com/426256498",
+                    className: "culture_place",
+                    title: "집사의 하루 강남역점",
+                    thumbnail: "/img/DC_thum/yoo-ym1.jpg",
+                    members: ["유현"],
+                    detail: "유현이의 무난한 하루 : 유기묘 카페 편",
+                    videoUrl: "https://youtu.be/ssU8yFzwHbE?si=kNGF85xwBicWVgPo&t=74"
+                }
+            },
+            {
+                position: new kakao.maps.LatLng(37.499912, 127.0280998),
+                content: {
+                    url: "https://place.map.kakao.com/2023940427",
+                    className: "food_place",
+                    title: "정통집 강남직영점",
+                    thumbnail: "/img/DC_thum/yoo-ym2.jpg",
+                    members: ["유현"],
+                    detail: "유현이의 무난한 하루 : 유기묘 카페 편",
+                    videoUrl: "https://youtu.be/ssU8yFzwHbE?si=3fs4v8RLs-T0UhNb&t=411"
                 }
             },
 
@@ -937,6 +985,22 @@
                     });
                 });
             });
+        });
+
+        $(document).ready(function () {
+            var popDisplay = $.cookie('popDisplay');
+
+            if (!popDisplay) {
+                // If no cookie, this is the first visit
+                $('#pop').show(100);
+                // Set a cookie so the next visit knows this isn't the first visit
+                $.cookie('popDisplay', 'none', {
+                    path: '/'
+                });
+            } else {
+                // If the cookie exists, hide the pop-up
+                $('#pop').hide(100);
+            }
         });
     </script>
     <!-- 슬릭 슬라이드 -->
