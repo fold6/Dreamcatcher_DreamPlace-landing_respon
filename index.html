@@ -6,19 +6,20 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- 슬릭 슬라이더 -->
-    <link href="/lib/slick/slick.css" rel="stylesheet" />
-    <link href="/lib/slick/slick-theme.css" rel="stylesheet" />
+
+    <!-- 스와이퍼 -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
 
     <!-- Jquery  -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-    <!-- 쿠키는 제이쿼리보다 밑에 있어야 동작함 -->
+    <!-- 쿠키는 제이쿼리보다 밑에 있어야 동작 -->
 
     <!-- CSS  -->
     <link href="/css/font.css" rel="stylesheet">
     <link href="/css/reset.css" rel="stylesheet">
+    <link href="/css/index.css" rel="stylesheet">
 
     <!-- 커서용 Jquery JS (안에 CDN 연결)-->
     <script src="/lib/index.js"></script>
@@ -26,491 +27,6 @@
     <!-- Google tag (gtag.js) -->
     <!--✅✅✅✅✅✅✅✅ 구글 애널리틱스 넣기 ✅✅✅✅✅✅✅✅ -->
 
-    <style>
-        /* 모바일 맵 grab */
-        #map {
-            width: 100%;
-            height: 100vh;
-            touch-action: none;
-        }
-
-        /* 헤더 */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 99;
-            background-color: #ffffffb8;
-            height: 35px;
-            line-height: 35px;
-            border-radius: 0 0 10px 10px;
-            box-shadow: 0px 0px 5px rgb(0 0 0 / 70%);
-            -webkit-backdrop-filter: blur(5px);
-            backdrop-filter: blur(5px);
-        }
-
-        .header_title {
-            text-align: center;
-            font-weight: 500;
-            color: #333;
-            font-size: 14px;
-        }
-
-        .header_right {
-            position: absolute;
-            right: 10px;
-            top: 5px;
-            width: 25px;
-            transition: ease-in-out 0.2s;
-        }
-
-        .header_right img {
-            width: 100%;
-        }
-
-        .header_right:hover {
-            filter: drop-shadow(0px 0px 2px #3333334f);
-            transition: ease-in-out 0.2s;
-            filter: brightness(125%);
-        }
-
-        /* 멤버 필터 버튼 */
-        /* 버튼 스타일 */
-        .filter_btn {
-            position: fixed;
-            top: 40px;
-            left: 10px;
-            z-index: 10;
-            overflow-x: auto;
-            white-space: nowrap;
-            box-sizing: border-box;
-            width: 100%;
-        }
-
-        .filter_btn button {
-            background-color: white;
-            border: none;
-            box-shadow: 0px 0px 4px rgb(0 0 0 / 40%);
-            /* border: 1px solid rgb(218, 218, 218); */
-            box-sizing: border-box;
-            color: #333;
-            padding: 5px 13px 7px 10px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            margin: 4px;
-
-        }
-
-        .filter_btn button.active,
-        .filter_btn button:hover {
-            background-color: #333;
-            color: white;
-        }
-
-        .filter_btn .text_btn {
-            padding: 6px 11px 7px 12px;
-        }
-
-        .filter_btn .text_btn.last_margin {
-            margin-right: 20px;
-        }
-
-
-
-        /* 지도 마커 */
-        .overlay_info {
-            border-radius: 6px;
-            margin-bottom: 12px;
-            float: left;
-            position: relative;
-            border: 1px solid #ccc;
-            border-bottom: 2px solid #ddd;
-            background-color: #fff;
-            cursor: pointer;
-            border: 0;
-            box-shadow: 0px 1px 2px #888;
-
-        }
-
-        .map_go:hover {
-            transition: ease-in-out 0.2s;
-            filter: brightness(125%);
-        }
-
-        .overlay_info a {
-            display: block;
-            background: #0059ff;
-            background: #0059ff url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png) no-repeat right 14px center;
-            text-decoration: none;
-            color: #fff;
-            padding: 10px 23px 10px 10px;
-            font-size: 14px;
-            border-radius: 6px 6px 0 0;
-        }
-
-        .overlay_info a strong {
-            padding: 10px 24px;
-        }
-
-        .overlay_info a strong.def_place {
-            background: url(/img/DC_ICON/icon_dc.png) no-repeat left 0 center;
-            background-size: 19px;
-        }
-
-        .overlay_info a strong.food_place {
-            background: url(/img/DC_ICON/icon_food.png) no-repeat left 0 center;
-            background-size: 19px;
-        }
-
-        .overlay_info a strong.cafe_place {
-            background: url(/img/DC_ICON/icon_cafe.png) no-repeat left 0 center;
-            background-size: 19px;
-        }
-
-        .overlay_info a strong.culture_place {
-            background: url(/img/DC_ICON/icon_culture.png) no-repeat left 0 center;
-            background-size: 19px;
-        }
-
-        .overlay_info a strong.drinks_place {
-            background: url(/img/DC_ICON/icon_drinks.png) no-repeat left 0 center;
-            background-size: 19px;
-        }
-
-        .overlay_info .desc {
-            padding: 8px;
-            position: relative;
-            min-width: 210px;
-            height: 60px;
-        }
-
-        .thum_wrap {
-            width: 90px;
-            height: 100%;
-            border-radius: 10px;
-            overflow: hidden;
-            box-sizing: border-box;
-            display: block;
-            position: relative;
-        }
-
-        .thum_wrap .thum_img {
-            border-radius: 5px;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            object-fit: cover;
-            object-position: center center;
-            box-sizing: border-box;
-        }
-
-        .overlay_info .mem_cate_wrap {
-            position: absolute;
-            left: 105px;
-            font-size: 10px;
-            top: 10px;
-        }
-
-        .overlay_info .mem_cate_wrap span {
-            display: inline-block;
-            margin-left: 3px;
-            background-color: #0059ff1a;
-            color: #0059ff;
-            padding: 0 6px;
-            height: 16px;
-            border-radius: 8px;
-            line-height: 17px;
-            white-space: normal;
-        }
-
-        .overlay_info .mem_cate_wrap span:first-child {
-            margin-left: 0;
-        }
-
-        .overlay_info .detail {
-            font-size: 13px;
-            color: #333;
-            position: absolute;
-            left: 108px;
-            top: 31px;
-            white-space: normal;
-            padding-right: 9px;
-        }
-
-        .play_btn {
-            position: absolute;
-            bottom: -15px;
-            right: -10px;
-            display: inline-block;
-            filter: drop-shadow(0px 0px 3px #33333393);
-            transition: ease-in-out 0.2s;
-        }
-
-        .play_btn:hover {
-            filter: drop-shadow(0px 0px 3px #303030);
-            transition: ease-in-out 0.2s;
-        }
-
-        .play_btn img {
-            width: 30px;
-        }
-
-        .overlay_info:after {
-            content: '';
-            position: absolute;
-            margin-left: -11px;
-            left: 50%;
-            bottom: -11px;
-            width: 22px;
-            height: 12px;
-            background: url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png) no-repeat 0 bottom;
-        }
-
-        /* 댓글 */
-        .comments_btn {
-            position: fixed;
-            right: 20px;
-            bottom: 20px;
-            z-index: 500;
-            filter: drop-shadow(0px 0px 3px #33333393);
-            transition: ease-in-out 0.2s;
-        }
-
-        .comments_btn img {
-            width: 50px;
-        }
-
-        .comments_btn:hover {
-            filter: drop-shadow(0px 0px 3px #001e55);
-            transition: ease-in-out 0.2s;
-        }
-
-
-        /* Tb. Ver. */
-        @media (max-width:768px) {
-            .filter_btn button {
-                font-size: 14px;
-            }
-        }
-
-        /* 팝업 */
-        .popup_wrap_inner {
-            position: fixed;
-            z-index: 900;
-            width: 100%;
-        }
-
-        /* 팝업닫기 */
-        .close_btn {
-            position: fixed;
-            z-index: 9999;
-            top: 9%;
-            left: 50%;
-            transform: translateX(130px);
-            width: 30px;
-            transition: ease-in-out 0.2s;
-        }
-
-        .close_btn:hover {
-            filter: drop-shadow(0px 0px 2px #333333a4);
-            transition: ease-in-out 0.2s;
-        }
-
-        .close_btn img {
-            width: 100%;
-        }
-
-        /* 쿠키체크버튼 */
-        .chk_text {
-            position: fixed;
-            z-index: 9999;
-            top: 68px;
-            left: 50%;
-            transform: translateX(-140px);
-            width: 100%;
-            transition: ease-in-out 0.2s;
-        }
-
-        .pop_cookie_text {
-            color: #fff;
-        }
-
-        .guide_slide_wrap {
-            position: fixed;
-            top: 10%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 300px;
-            text-align: center;
-            z-index: 999;
-        }
-
-        /* 슬릭 dot  */
-        .slick-dots li button:before {
-            font-family: 'slick';
-            font-size: 12px;
-            line-height: 28px;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 20px;
-            height: 20px;
-            content: '•';
-            text-align: center;
-            opacity: .8;
-            /* color: rgb(0 0 0 / 70%); */
-            color: #fff;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        .slick-track {/* 
-            opacity: 1 !important;
-            width: 2700px !important;
-            transform: translate3d(-300px, 0px, 0px) !important; */
-        }
-
-        .slick-dots li.slick-active button:before {
-            opacity: 1;
-            color: #0059ff;
-            font-size: 21px;
-            line-height: 28px;
-            width: 20px;
-            height: 20px;
-            content: '•';
-            text-align: center;
-        }
-
-        /* 슬릭슬라이드 화살표 */
-        .slick-prev,
-        .slick-next {
-            display: none !important;
-            font-size: 0;
-            line-height: 0;
-            position: absolute;
-            top: 104%;
-            display: block;
-            width: 20px;
-            height: 20px;
-            padding: 0;
-            -webkit-transform: translate(0, -50%);
-            -ms-transform: translate(0, -50%);
-            transform: translate(0, -50%);
-            cursor: pointer;
-            color: transparent;
-            border: none;
-            outline: none;
-            background: transparent;
-        }
-
-        /* 화살표 사용시 해제 */
-        /* .slick-prev {
-            left: 23%;
-            display: block !important;
-            position: absolute;
-            z-index: 500;
-            bottom: 0;
-            -webkit-transform: none;
-            -ms-transform: none;
-            transform: none;
-            background: none;
-            width: 30px;
-            height: 50px;
-        }
-
-        .slick-next {
-            display: block !important;
-            position: absolute;
-            z-index: 500;
-            bottom: 0;
-            right: 23%;
-            -webkit-transform: none;
-            -ms-transform: none;
-            transform: none;
-            background: none;
-            width: 50px;
-            height: 50px;
-        }
- 
-        .slick-next:before {
-            content: url(/img/arrow_btn.png) ;
-            display: inline-block;
-            transform: rotateY(180deg);
-         
-        }
-
-        .slick-prev:before {
-            content: url(/img/arrow_btn.png);
-            display: inline-block;
-        } */
-
-
-        .bk_common_bg {
-            height: 100vh;
-            background-color: rgba(0, 0, 0, 0.4);
-            position: fixed;
-            z-index: 12;
-            width: 100%;
-        }
-
-        /* 슬라이드 박스 안 */
-        .guide_box {
-            background-color: #ffffffef;
-            box-shadow: 0px 0px 5px rgb(0 0 0 / 50%);
-            -webkit-backdrop-filter: blur(5px);
-            backdrop-filter: blur(5px);
-            border-radius: 15px;
-            width: calc(100% - 20px);
-            padding: 35px 0 20px 0;
-            /* min-height: 370px; */
-        }
-
-        .guide_tit {
-            font-size: 23px;
-            line-height: 25px;
-            font-weight: 900;
-            color: #333;
-            margin-bottom: 10px;
-        }
-
-        .col_big {
-            color: #0059ff;
-            font-weight: inherit;
-        }
-
-        .sub_text {
-            font-size: 14px;
-            color: #666;
-            line-height: 20px;
-            margin-bottom: 20px;
-        }
-
-        .g_img_wrap {
-            width: 280px;
-            text-align: center;
-            display: inline-block;
-
-        }
-
-        .g_img_wrap img {
-            width: 100%;
-        }
-
-        .mini_text {
-            font-size: 11px;
-            text-align: left;
-            margin-left: 20px;
-            margin-top: 20px;
-            line-height: 16px;
-            font-weight: 400;
-            color: #666;
-        }
-    </style>
-
-    </style>
 </head>
 
 <body>
@@ -538,59 +54,71 @@
         <div class="right_arrow"></div>
     </div>
 
-    <!-- 방명록 버튼 -->
-    <a class="comments_btn" href="/comment.html" target="_blank">
-        <img src="/img/comment_btn.png">
-    </a>
 
-    <!-- 팝업 -->
-    <div class="popup_wrap_inner" id="pop">
+        <!-- 방명록 버튼 -->
+        <a class="comments_btn" href="/comment.html" target="_blank">
+            <img src="/img/comment_btn.png">
+        </a>
 
-        <div class="close_btn"><img src="/img/close_btn.png">
+        <!-- 팝업 -->
+        <div class="popup_wrap_inner" id="pop">
+
+            <div class="close_btn"><img src="/img/close_btn.png"></div>
+            <!-- Guide Notice -->
+            <swiper-container pagination="true" pagination-clickable="true" navigation="true" space-between="30" loop="true"
+                class="guide_slide_wrap">
+                <!-- 1 -->
+                <swiper-slide>
+                    <div class="guide_box">
+                        <p class="guide_tit"><span class="col_big">DreamPlace</span> 로 <br> 드캐투어 가보자고!</p>
+                        <p class="sub_text">DreamPlace는 드림캐쳐가<br>방문했던 장소를 표기해주는 지도에요</p>
+                        <div class="g_img_wrap">
+                            <img src="/img/DC_guide/g1.png" alt="guide_img"></img>
+                        </div>
+                        <p class="mini_text">* 오정보,오류 등 문의는 오른쪽 하단의 '방명록'을 이용해주세요</p>
+                    </div>
+                </swiper-slide>
+                <!-- 2 -->
+                <swiper-slide>
+                    <div class="guide_box">
+                        <p class="guide_tit"><span class="col_big">장소정보</span>와 <br> <span class="col_big">컨텐츠</span>를 볼 수
+                            있어요
+                        </p>
+                        <p class="sub_text">장소이름 클릭 시 정보(영업시간 등)를,<br>컨텐츠 클릭 시 드림캐쳐의 모습을 볼 수 있어요</p>
+                        <div class="g_img_wrap">
+                            <img src="/img/DC_guide/g2.png" alt="guide_img"></img>
+                        </div>
+                        <p class="mini_text">* 맵 오른쪽 하단의 '방명록' 에서 더 많은 장소 제보를 기다려요</p>
+                    </div>
+                </swiper-slide>
+                <!-- 3 -->
+                <swiper-slide>
+                    <div class="guide_box">
+                        <p class="guide_tit"><span class="col_big">멤버 별</span> 방문장소<br><span class="col_big">필터링!</span></p>
+                        <p class="sub_text">각 멤버별로 방문한 장소를 필터링 해서<br>원하는 장소만 볼 수 있어요!</p>
+                        <div class="g_img_wrap">
+                            <img src="/img/DC_guide/g3.png" alt="guide_img"></img>
+                        </div>
+                        <p class="mini_text">* 표기장소가 많아지면 지역별 필터링을 추가 예정이에요</p>
+                    </div>
+                </swiper-slide>
+                <!-- 4 -->
+                <swiper-slide>
+                    <div class="guide_box">
+                        <p class="guide_tit"><span class="col_big">방명록</span> 에서<br> <span class="col_big">InSomnia
+                                Talk!</span>
+                        </p>
+                        <p class="sub_text">방문후기 및 지도 표기요청 등<br>로그인 없이 다양한 이야기를 할 수 있어요!</p>
+                        <div class="g_img_wrap">
+                            <img src="/img/DC_guide/g4.png" alt="guide_img"></img>
+                        </div>
+                        <p class="mini_text">* ‘비회원으로 작성하겠습니다’ 에 체크 후 댓글을 작성해주세요</p>
+                    </div>
+                </swiper-slide>
+            </swiper-container>
+            <div class="bk_common_bg"></div>
         </div>
-        <!-- Guide Notice -->
-        <div class="guide_slide_wrap">
-            <!-- 1 -->
-            <div class="guide_box">
-                <p class="guide_tit"><span class="col_big">DreamPlace</span> 로 <br> 드캐투어 가보자고!</p>
-                <p class="sub_text">DreamPlace는 드림캐쳐가<br>방문했던 장소를 표기해주는 지도에요</p>
-                <div class="g_img_wrap">
-                    <img src="/img/DC_guide/g1.png" alt="guide_img"></img>
-                </div>
-                <p class="mini_text">* 오정보,오류 등 문의는 오른쪽 하단의 '방명록'을 이용해주세요</p>
-            </div>
-            <!-- 2 -->
-            <div class="guide_box">
-                <p class="guide_tit"><span class="col_big">장소정보</span>와 <br> <span class="col_big">컨텐츠</span>를 볼 수 있어요
-                </p>
-                <p class="sub_text">장소이름 클릭 시 정보(영업시간 등)를,<br>컨텐츠 클릭 시 드림캐쳐의 모습을 볼 수 있어요</p>
-                <div class="g_img_wrap">
-                    <img src="/img/DC_guide/g2.png" alt="guide_img"></img>
-                </div>
-                <p class="mini_text">* 맵 오른쪽 하단의 '방명록' 에서 더 많은 장소 제보를 기다려요</p>
-            </div>
-            <!-- 3 -->
-            <div class="guide_box">
-                <p class="guide_tit"><span class="col_big">멤버 별</span> 방문장소<br><span class="col_big">필터링!</span></p>
-                <p class="sub_text">각 멤버별로 방문한 장소를 필터링 해서<br>원하는 장소만 볼 수 있어요!</p>
-                <div class="g_img_wrap">
-                    <img src="/img/DC_guide/g3.png" alt="guide_img"></img>
-                </div>
-                <p class="mini_text">* 표기장소가 많아지면 지역별 필터링을 추가 예정이에요</p>
-            </div>
-            <!-- 4 -->
-            <div class="guide_box">
-                <p class="guide_tit"><span class="col_big">방명록</span> 에서<br> <span class="col_big">InSomnia Talk!</span>
-                </p>
-                <p class="sub_text">방문후기 및 지도 표기요청 등<br>로그인 없이 다양한 이야기를 할 수 있어요!</p>
-                <div class="g_img_wrap">
-                    <img src="/img/DC_guide/g4.png" alt="guide_img"></img>
-                </div>
-                <p class="mini_text">* ‘비회원으로 작성하겠습니다’ 에 체크 후 댓글을 작성해주세요</p>
-            </div>
-        </div>
-        <div class="bk_common_bg"></div>
-    </div>
+        <!-- popup_wrap_inner END -->
 
     <!-- KAKAP map -->
     <div id="map" style="width:100%;height:100vh;background-color: #fff;"></div>
