@@ -7,8 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
     <!-- 스와이퍼 -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11.1.7/swiper-element-bundle.js"></script>
+    <!-- 스와이퍼 CSS -->
+    <link href="/css/swiper-bundle.css" rel="stylesheet">
 
     <!-- Jquery  -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -20,6 +23,7 @@
     <link href="/css/font.css" rel="stylesheet">
     <link href="/css/reset.css" rel="stylesheet">
     <link href="/css/index.css" rel="stylesheet">
+
 
     <!-- 커서용 Jquery JS (안에 CDN 연결)-->
     <script src="/lib/index.js"></script>
@@ -55,70 +59,71 @@
     </div>
 
 
-        <!-- 방명록 버튼 -->
-        <a class="comments_btn" href="/comment.html" target="_blank">
-            <img src="/img/comment_btn.png">
-        </a>
+    <!-- 방명록 버튼 -->
+    <a class="comments_btn" href="/comment.html" target="_blank">
+        <img src="/img/comment_btn.png">
+    </a>
 
-        <!-- 팝업 -->
-        <div class="popup_wrap_inner" id="pop">
+    <!-- 팝업 -->
+    <div class="popup_wrap_inner" id="pop">
 
-            <div class="close_btn"><img src="/img/close_btn.png"></div>
-            <!-- Guide Notice -->
-            <swiper-container pagination="true" pagination-clickable="true" navigation="true" space-between="30" loop="true"
-                class="guide_slide_wrap">
-                <!-- 1 -->
-                <swiper-slide>
-                    <div class="guide_box">
-                        <p class="guide_tit"><span class="col_big">DreamPlace</span> 로 <br> 드캐투어 가보자고!</p>
-                        <p class="sub_text">DreamPlace는 드림캐쳐가<br>방문했던 장소를 표기해주는 지도에요</p>
-                        <div class="g_img_wrap">
-                            <img src="/img/DC_guide/g1.png" alt="guide_img"></img>
-                        </div>
-                        <p class="mini_text">* 오정보,오류 등 문의는 오른쪽 하단의 '방명록'을 이용해주세요</p>
+        <div class="close_btn"><img src="/img/close_btn.png"></div>
+        <!-- Guide Notice -->
+        <swiper-container class="guide_slide_wrap" pagination="true">
+            <!-- 1 -->
+            <swiper-slide>
+                <div class="guide_box">
+                    <p class="guide_tit"><span class="col_big">DreamPlace</span> 로 <br> 드캐투어 가보자고!</p>
+                    <p class="sub_text">DreamPlace는 드림캐쳐가<br>방문했던 장소를 표기해주는 지도에요</p>
+                    <div class="g_img_wrap">
+                        <img src="/img/DC_guide/g1.png" alt="guide_img"></img>
                     </div>
-                </swiper-slide>
-                <!-- 2 -->
-                <swiper-slide>
-                    <div class="guide_box">
-                        <p class="guide_tit"><span class="col_big">장소정보</span>와 <br> <span class="col_big">컨텐츠</span>를 볼 수
-                            있어요
-                        </p>
-                        <p class="sub_text">장소이름 클릭 시 정보(영업시간 등)를,<br>컨텐츠 클릭 시 드림캐쳐의 모습을 볼 수 있어요</p>
-                        <div class="g_img_wrap">
-                            <img src="/img/DC_guide/g2.png" alt="guide_img"></img>
-                        </div>
-                        <p class="mini_text">* 맵 오른쪽 하단의 '방명록' 에서 더 많은 장소 제보를 기다려요</p>
+                    <p class="mini_text">* 오정보,오류 등 문의는 오른쪽 하단의 '방명록'을 이용해주세요</p>
+                </div>
+            </swiper-slide>
+            <!-- 2 -->
+            <swiper-slide>
+                <div class="guide_box">
+                    <p class="guide_tit"><span class="col_big">장소정보</span>와 <br> <span class="col_big">컨텐츠</span>를 볼 수
+                        있어요
+                    </p>
+                    <p class="sub_text">장소이름 클릭 시 정보(영업시간 등)를,<br>컨텐츠 클릭 시 드림캐쳐의 모습을 볼 수 있어요</p>
+                    <div class="g_img_wrap">
+                        <img src="/img/DC_guide/g2.png" alt="guide_img"></img>
                     </div>
-                </swiper-slide>
-                <!-- 3 -->
-                <swiper-slide>
-                    <div class="guide_box">
-                        <p class="guide_tit"><span class="col_big">멤버 별</span> 방문장소<br><span class="col_big">필터링!</span></p>
-                        <p class="sub_text">각 멤버별로 방문한 장소를 필터링 해서<br>원하는 장소만 볼 수 있어요!</p>
-                        <div class="g_img_wrap">
-                            <img src="/img/DC_guide/g3.png" alt="guide_img"></img>
-                        </div>
-                        <p class="mini_text">* 표기장소가 많아지면 지역별 필터링을 추가 예정이에요</p>
+                    <p class="mini_text">* 맵 오른쪽 하단의 '방명록' 에서 더 많은 장소 제보를 기다려요</p>
+                </div>
+            </swiper-slide>
+            <!-- 3 -->
+            <swiper-slide>
+                <div class="guide_box">
+                    <p class="guide_tit"><span class="col_big">멤버 별</span> 방문장소<br><span class="col_big">필터링!</span></p>
+                    <p class="sub_text">각 멤버별로 방문한 장소를 필터링 해서<br>원하는 장소만 볼 수 있어요!</p>
+                    <div class="g_img_wrap">
+                        <img src="/img/DC_guide/g3.png" alt="guide_img"></img>
                     </div>
-                </swiper-slide>
-                <!-- 4 -->
-                <swiper-slide>
-                    <div class="guide_box">
-                        <p class="guide_tit"><span class="col_big">방명록</span> 에서<br> <span class="col_big">InSomnia
-                                Talk!</span>
-                        </p>
-                        <p class="sub_text">방문후기 및 지도 표기요청 등<br>로그인 없이 다양한 이야기를 할 수 있어요!</p>
-                        <div class="g_img_wrap">
-                            <img src="/img/DC_guide/g4.png" alt="guide_img"></img>
-                        </div>
-                        <p class="mini_text">* ‘비회원으로 작성하겠습니다’ 에 체크 후 댓글을 작성해주세요</p>
+                    <p class="mini_text">* 표기장소가 많아지면 지역별 필터링을 추가 예정이에요</p>
+                </div>
+            </swiper-slide>
+            <!-- 4 -->
+            <swiper-slide>
+                <div class="guide_box">
+                    <p class="guide_tit"><span class="col_big">방명록</span> 에서<br> <span class="col_big">InSomnia
+                            Talk!</span>
+                    </p>
+                    <p class="sub_text">방문후기 및 지도 표기요청 등<br>로그인 없이 다양한 이야기를 할 수 있어요!</p>
+                    <div class="g_img_wrap">
+                        <img src="/img/DC_guide/g4.png" alt="guide_img"></img>
                     </div>
-                </swiper-slide>
-            </swiper-container>
-            <div class="bk_common_bg"></div>
-        </div>
-        <!-- popup_wrap_inner END -->
+                    <p class="mini_text">* ‘비회원으로 작성하겠습니다’ 에 체크 후 댓글을 작성해주세요</p>
+                </div>
+        </swiper-container>
+        <!-- If we need pagination -->
+        <!-- <div class="swiper-pagination" style="background-color: black!important;"></div> -->
+        </swiper-slide>
+        <div class="bk_common_bg"></div>
+    </div>
+    <!-- popup_wrap_inner END -->
 
     <!-- KAKAP map -->
     <div id="map" style="width:100%;height:100vh;background-color: #fff;"></div>
@@ -447,6 +452,10 @@
 
 
 
+        // |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+        //        지도 커스텀 오버레이 추가html
+        // |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+        // \ (•◡•) /
 
         // places 배열의 각 요소에 대해 커스텀 오버레이를 생성하고 지도에 추가
         places.forEach(function (place) {
@@ -483,7 +492,12 @@
             });
         });
 
-        // 멤버 필터버튼 클릭 이벤트 핸들러
+
+
+        // |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+        //     멤버 필터버튼 클릭 이벤트 핸들러
+        // |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+        // \ (•◡•) /
         // overlays 배열: 각 오버레이와 관련된 멤버 정보를 저장합니다.이렇게 하면 필터를 적용할 때 참조할 수 있습니다.
         // places.forEach: 각 장소에 대해 커스텀 오버레이를 생성하고 overlays 배열에 추가합니다.
         // 필터 버튼 클릭 이벤트: 버튼 클릭 시 선택된 필터에 따라 오버레이를 지도에 표시하거나 숨깁니다.
@@ -515,24 +529,29 @@
             });
         });
 
-        $(document).ready(function () {
-            var popDisplay = $.cookie('popDisplay');
+        // |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
+        //     첫 진입시에만 팝업, 이후 숨김
+        // |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
+        // \ (•◡•) /
+        // $(document).ready(function () {
+        //     var popDisplay = $.cookie('popDisplay');
 
-            if (!popDisplay) {
-                // If no cookie, this is the first visit
-                $('#pop').show(100);
-                // Set a cookie so the next visit knows this isn't the first visit
-                $.cookie('popDisplay', 'none', {
-                    path: '/'
-                });
-            } else {
-                // If the cookie exists, hide the pop-up
-                $('#pop').hide(100);
-            }
-        });
+        //     if (!popDisplay) {
+        //         $('#pop').show(100);
+        //         $.cookie('popDisplay', 'none', {
+        //             path: '/'
+        //         });
+        //     } else {
+        //         $('#pop').hide(100);
+        //     }
+        // });
+
+        /* 
+                let swiper = new Swiper('.guide_slide_wrap', {
+                    spaceBetween: 5,
+                    threshold: 100, 
+                }); */
     </script>
-    <!-- 슬릭 슬라이드 -->
-    <script src="/lib/slick/slick.js"></script>
 </body>
 
 </html>

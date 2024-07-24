@@ -319,9 +319,7 @@ header {
     width: 300px;
     text-align: center;
     z-index: 999;
-    /*슬릭로딩전개 수정*/
-    height: 50%;
-    overflow: hidden;
+    height: 53%;
 }
 
 .guide_slide_wrap div:first-child {
@@ -345,6 +343,17 @@ swiper-slide {
     align-items: center;
 }
 
+/* pagination 수정 */
+
+.popup_wrap_inner .swiper-pagination {
+    position: absolute;
+    text-align: center;
+    transition: .3s opacity;
+    transform: translate3d(0, 0, 0);
+    z-index: 10;
+    bottom: 50px !important;
+}
+
 .bk_common_bg {
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.4);
@@ -360,10 +369,10 @@ swiper-slide {
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
     border-radius: 15px;
-    width: calc(100% - 20px);
-    padding: 35px 0 20px 0;
-    /* min-height: 370px; */
+    width: calc(100% - 5px);
+    padding: 35px 0 45px 0;
 }
+
 
 .guide_tit {
     font-size: 23px;
@@ -386,7 +395,7 @@ swiper-slide {
 }
 
 .g_img_wrap {
-    width: 280px;
+    width: 100%;
     text-align: center;
     display: inline-block;
 
