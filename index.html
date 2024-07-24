@@ -533,24 +533,19 @@
         //     첫 진입시에만 팝업, 이후 숨김
         // |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
         // \ (•◡•) /
-        // $(document).ready(function () {
-        //     var popDisplay = $.cookie('popDisplay');
+        $(document).ready(function () {
+            var popDisplay = $.cookie('popDisplay');
 
-        //     if (!popDisplay) {
-        //         $('#pop').show(100);
-        //         $.cookie('popDisplay', 'none', {
-        //             path: '/'
-        //         });
-        //     } else {
-        //         $('#pop').hide(100);
-        //     }
-        // });
+            if (!popDisplay) {
+                $('#pop').show(100);
+                $.cookie('popDisplay', 'none', {
+                    path: '/'
+                });
+            } else {
+                $('#pop').hide(100);
+            }
+        });
 
-        /* 
-                let swiper = new Swiper('.guide_slide_wrap', {
-                    spaceBetween: 5,
-                    threshold: 100, 
-                }); */
     </script>
 </body>
 
