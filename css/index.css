@@ -117,7 +117,6 @@ header {
     display: block;
     background: #0059ff;
     background: #0059ff url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png) no-repeat right 14px center;
-    text-decoration: none;
     color: #fff;
     padding: 10px 23px 10px 10px;
     font-size: 14px;
@@ -129,39 +128,44 @@ header {
 }
 
 .overlay_info a strong.def_place {
-    background: url(/img/DC_ICON/icon_dc.png) no-repeat left 0 center;
+    background: url(/img/DC_cate_icon/icon_dc.png) no-repeat left 0 center;
     background-size: 19px;
 }
 
 .overlay_info a strong.food_place {
-    background: url(/img/DC_ICON/icon_food.png) no-repeat left 0 center;
+    background: url(/img/DC_cate_icon/icon_food.png) no-repeat left 0 center;
     background-size: 19px;
 }
 
 .overlay_info a strong.cafe_place {
-    background: url(/img/DC_ICON/icon_cafe.png) no-repeat left 0 center;
+    background: url(/img/DC_cate_icon/icon_cafe.png) no-repeat left 0 center;
     background-size: 19px;
 }
 
 .overlay_info a strong.culture_place {
-    background: url(/img/DC_ICON/icon_culture.png) no-repeat left 0 center;
+    background: url(/img/DC_cate_icon/icon_culture.png) no-repeat left 0 center;
     background-size: 19px;
 }
 
 .overlay_info a strong.drinks_place {
-    background: url(/img/DC_ICON/icon_drinks.png) no-repeat left 0 center;
+    background: url(/img/DC_cate_icon/icon_drinks.png) no-repeat left 0 center;
     background-size: 19px;
 }
 
+
+/* 포지션없애기 */
 .overlay_info .desc {
-    padding: 8px;
     position: relative;
-    min-width: 210px;
+    padding: 8px;
+    min-width: 220px;
     height: 60px;
+    display: flex;
+    align-items: center;
 }
 
 .thum_wrap {
     width: 90px;
+    min-width: 90px;
     height: 100%;
     border-radius: 10px;
     overflow: hidden;
@@ -203,15 +207,28 @@ header {
     margin-left: 0;
 }
 
+/* 이부분하기 */
 .overlay_info .detail {
     font-size: 13px;
     color: #333;
-    position: absolute;
-    left: 108px;
-    top: 31px;
-    white-space: normal;
-    padding-right: 9px;
+    word-break: break-word;
+    text-align: left;
+    margin-left: 10px;
+    max-width: 190px;
+    margin-top: 20px;
+    width: 100%;
+    display: inline-block;
+    line-height: 17px;
+    white-space: pre-wrap;
+    vertical-align: top;
+    height: 35px;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
 }
+
 
 .play_btn {
     position: absolute;
@@ -274,7 +291,7 @@ header {
     position: fixed;
     z-index: 900;
     width: 100%;
-    display: none;  
+    display: none;
     /* 숨겨놓고 JS와 쿠키로 보임/숨김 실행 */
 }
 
@@ -325,7 +342,7 @@ swiper-container {
 swiper-slide {
     text-align: center;
     font-size: 18px;
-/*     display: flex;
+    /*     display: flex;
     justify-content: center;
     align-items: center; */
 }
@@ -333,7 +350,7 @@ swiper-slide {
 /* pagination 수정 */
 
 .swiper-pagination {
-    position: fixed!important;
+    position: fixed !important;
     text-align: center;
     transition: .3s opacity;
     transform: translate3d(0, 0, 0);

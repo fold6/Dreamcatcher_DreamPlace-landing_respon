@@ -2,11 +2,12 @@
 <html lang="ko">
 
 <head>
-    <title>Dream Places🗺️</title>
+    <title>Dream Place</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="/파일 경로">
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
 
     <!-- 스와이퍼 -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11.1.7/swiper-element-bundle.js"></script>
@@ -28,7 +29,8 @@
     <!-- 공통사항 Jquery JS 포함 (안에 CDN 연결/커서/팝업숨기기 및 쿠키)-->
     <script src="/lib/index.js"></script>
 
-    <!-- Google tag (gtag.js) -->
+  
+    
     <!--✅✅✅✅✅✅✅✅ 구글 애널리틱스 넣기 ✅✅✅✅✅✅✅✅ -->
 
 </head>
@@ -36,12 +38,11 @@
 <body>
     <header>
         <p class="header_title">
-            DreamPlace
+            Dream Place
         </p>
         <p class="header_right">
-            <img src="/img/howto_btn.png" alt="guide_btn">
+            <img src="/img/DC_icon/howto_btn.png" alt="guide_btn">
         </p>
-
     </header>
 
     <!-- 멤버 필터 버튼 -->
@@ -61,14 +62,14 @@
 
     <!-- 방명록 버튼 -->
     <a class="comments_btn" href="/comment.html" target="_blank">
-        <img src="/img/comment_btn.png">
+        <img src="/img/DC_icon/comment_btn.png">
     </a>
 
     <!-- 팝업 -->
     <div class="popup_wrap_inner" id="pop">
 
         <!-- Guide Notice -->
-        <div class="close_btn"><img src="/img/close_btn.png"></div>
+        <div class="close_btn"><img src="/img/DC_icon/close_btn.png"></div>
         <swiper-container class="guide_slide_wrap" pagination="true">
             <!-- 1 -->
             <swiper-slide>
@@ -336,7 +337,7 @@
                     title: "컬러 플레이스",
                     thumbnail: "/img/DC_thum/gah-anda1.jpg",
                     members: ["가현"],
-                    detail: "안녕하세요 이가현입니다: 퍼스널컬러편",
+                    detail: "안녕하세요 이가현입니다: 퍼스널컬러 편 ",
                     videoUrl: "https://youtu.be/-W2yOM3ARsg?si=Z8Ch0MIDpKdaYsPh"
                 }
             },
@@ -466,7 +467,7 @@
             content += '    <div class="desc" onclick="window.open(\'' + (place.content.videoUrl || place
                 .content.url) + '\', \'_blank\')">';
             if (place.content.videoUrl) {
-                content += '        <div class="play_btn"><img src="/img/play_btn.png"></div>';
+                content += '        <div class="play_btn"><img src="/img/DC_icon/play_btn.png"></div>';
             }
             content += '        <div class="thum_wrap"><img class="thum_img" src="' + place.content.thumbnail +
                 '"></div>';
