@@ -128,27 +128,27 @@ header {
 }
 
 .overlay_info a strong.def_place {
-    background: url(/img/DC_cate_icon/icon_dc.png) no-repeat left 0 center;
+    background: url(img/DC_cate_icon/icon_dc.png) no-repeat left 0 center;
     background-size: 19px;
 }
 
 .overlay_info a strong.food_place {
-    background: url(/img/DC_cate_icon/icon_food.png) no-repeat left 0 center;
+    background: url(img/DC_cate_icon/icon_food.png) no-repeat left 0 center;
     background-size: 19px;
 }
 
 .overlay_info a strong.cafe_place {
-    background: url(/img/DC_cate_icon/icon_cafe.png) no-repeat left 0 center;
+    background: url(img/DC_cate_icon/icon_cafe.png) no-repeat left 0 center;
     background-size: 19px;
 }
 
 .overlay_info a strong.culture_place {
-    background: url(/img/DC_cate_icon/icon_culture.png) no-repeat left 0 center;
+    background: url(img/DC_cate_icon/icon_culture.png) no-repeat left 0 center;
     background-size: 19px;
 }
 
 .overlay_info a strong.drinks_place {
-    background: url(/img/DC_cate_icon/icon_drinks.png) no-repeat left 0 center;
+    background: url(img/DC_cate_icon/icon_drinks.png) no-repeat left 0 center;
     background-size: 19px;
 }
 
