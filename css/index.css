@@ -274,6 +274,8 @@ header {
     position: fixed;
     z-index: 900;
     width: 100%;
+    display: none;  
+    /* 숨겨놓고 JS와 쿠키로 보임/숨김 실행 */
 }
 
 /* 팝업닫기 */
@@ -296,21 +298,6 @@ header {
     width: 100%;
 }
 
-/* 쿠키체크버튼 */
-.chk_text {
-    position: fixed;
-    z-index: 9999;
-    top: 68px;
-    left: 50%;
-    transform: translateX(-140px);
-    width: 100%;
-    transition: ease-in-out 0.2s;
-}
-
-.pop_cookie_text {
-    color: #fff;
-}
-
 .guide_slide_wrap {
     position: fixed;
     top: 10%;
@@ -319,7 +306,7 @@ header {
     width: 300px;
     text-align: center;
     z-index: 999;
-    height: 53%;
+    height: 450px;
 }
 
 .guide_slide_wrap div:first-child {
@@ -338,20 +325,20 @@ swiper-container {
 swiper-slide {
     text-align: center;
     font-size: 18px;
-    display: flex;
+/*     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
 }
 
 /* pagination 수정 */
 
-.popup_wrap_inner .swiper-pagination {
-    position: absolute;
+.swiper-pagination {
+    position: fixed!important;
     text-align: center;
     transition: .3s opacity;
     transform: translate3d(0, 0, 0);
     z-index: 10;
-    bottom: 50px !important;
+    bottom: 30px !important;
 }
 
 .bk_common_bg {
@@ -365,12 +352,11 @@ swiper-slide {
 /* 슬라이드 박스 안 */
 .guide_box {
     background-color: #ffffffef;
-    box-shadow: 0px 0px 5px rgb(0 0 0 / 50%);
-    -webkit-backdrop-filter: blur(5px);
-    backdrop-filter: blur(5px);
+    filter: drop-shadow(0px 0px 2px #333);
     border-radius: 15px;
-    width: calc(100% - 5px);
-    padding: 35px 0 45px 0;
+    width: calc(100% - 10px);
+    padding: 35px 0 41px 0;
+    margin: 0 auto;
 }
 
 

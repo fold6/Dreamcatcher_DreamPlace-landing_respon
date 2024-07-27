@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link rel="icon" href="/파일 경로">
 
     <!-- 스와이퍼 -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11.1.7/swiper-element-bundle.js"></script>
@@ -25,7 +25,7 @@
     <link href="/css/index.css" rel="stylesheet">
 
 
-    <!-- 커서용 Jquery JS (안에 CDN 연결)-->
+    <!-- 공통사항 Jquery JS 포함 (안에 CDN 연결/커서/팝업숨기기 및 쿠키)-->
     <script src="/lib/index.js"></script>
 
     <!-- Google tag (gtag.js) -->
@@ -67,8 +67,8 @@
     <!-- 팝업 -->
     <div class="popup_wrap_inner" id="pop">
 
-        <div class="close_btn"><img src="/img/close_btn.png"></div>
         <!-- Guide Notice -->
+        <div class="close_btn"><img src="/img/close_btn.png"></div>
         <swiper-container class="guide_slide_wrap" pagination="true">
             <!-- 1 -->
             <swiper-slide>
@@ -529,22 +529,6 @@
             });
         });
 
-        // |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|
-        //     첫 진입시에만 팝업, 이후 숨김
-        // |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|
-        // \ (•◡•) /
-        $(document).ready(function () {
-            var popDisplay = $.cookie('popDisplay');
-
-            if (!popDisplay) {
-                $('#pop').show(100);
-                $.cookie('popDisplay', 'none', {
-                    path: '/'
-                });
-            } else {
-                $('#pop').hide(100);
-            }
-        });
 
     </script>
 </body>
