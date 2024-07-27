@@ -2,7 +2,7 @@
 드림캐쳐가 다녀간곳을 카카오 맵에서 확인하고, 해당장소에서의 촬영된 콘텐츠를 볼 수 있는 '드림캐쳐 투어' 맵 페이지 (디자인 및 퍼블리싱)<br>
 (A 'Dreamcatcher Tour' map page where you can check the places Dreamcatcher has visited on Kakao Map and view the content filmed at those locations)<br><br>
 📌[홈페이지 바로가기](https://fold6.github.io/Dreamcatcher_DreamPlace-landing_respon/index.html)<br>
-
+※ 로컬/깃헙 수정 시 kakao developers 플랫폼의 사이트 도메인 수정필요<br>
 <br>
 <br>
 
