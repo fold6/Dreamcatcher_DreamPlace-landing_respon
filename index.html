@@ -29,10 +29,21 @@
     <!-- 공통사항 Jquery JS 포함 (안에 CDN 연결/커서/팝업숨기기 및 쿠키)-->
     <script src="/lib/index.js"></script>
 
-  
-    
-    <!--✅✅✅✅✅✅✅✅ 구글 애널리틱스 넣기 ✅✅✅✅✅✅✅✅ -->
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3M9F0P47R9"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-3M9F0P47R9');
+    </script>
+
+    
 </head>
 
 <body>
@@ -529,8 +540,6 @@
                 });
             });
         });
-
-
     </script>
 </body>
 
