@@ -128,7 +128,7 @@ header {
 }
 
 .overlay_info a strong.def_place {
-    background: url(img/DC_cate_icon/icon_dc.png) no-repeat left 0 center;
+    background: url(/img/DC_cate_icon/icon_dc.png) no-repeat left 0 center;
     background-size: 19px;
 }
 
