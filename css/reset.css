@@ -3,6 +3,7 @@
 * {
     margin: 0;
     padding: 0;
+    outline: none !important;
 }
 
 body,
@@ -11,6 +12,11 @@ html {
     margin: 0 auto;
     background-color: #f9f9f9;
     -webkit-tap-highlight-color: transparent;
+    -ms-overflow-style: none;
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
 
 li {
@@ -40,9 +46,3 @@ p {
 img {
     border: 0;
 }
-
-
-* {
-    outline: none !important;
-}
-

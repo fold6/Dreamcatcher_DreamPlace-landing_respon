@@ -124,6 +124,7 @@ header {
 .overlay_info a strong {
     padding: 10px 24px;
 }
+
 .overlay_info a strong.def_place {
     background: url(../img/DC_cate_icon/icon_dc.png?ver) no-repeat left center;
     background-size: 19px;
@@ -322,6 +323,7 @@ header {
     text-align: center;
     z-index: 999;
     height: 465px;
+    /* height: 100vh; */
 }
 
 .guide_slide_wrap div:first-child {
@@ -340,9 +342,7 @@ swiper-container {
 swiper-slide {
     text-align: center;
     font-size: 18px;
-    /*     display: flex;
-    justify-content: center;
-    align-items: center; */
+    overflow: auto;
 }
 
 /* pagination 수정 */
@@ -381,6 +381,8 @@ swiper-slide {
     font-weight: 900;
     color: #333;
     margin-bottom: 10px;
+    white-space: pre-line;
+    padding: 0 15px;
 }
 
 .col_big {
@@ -393,6 +395,7 @@ swiper-slide {
     color: #666;
     line-height: 20px;
     margin-bottom: 20px;
+    padding: 0 15px;
 }
 
 .g_img_wrap {
