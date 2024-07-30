@@ -30,6 +30,18 @@ header {
     font-size: 14px;
 }
 
+.header_title {
+    position: absolute;
+    width: 102px;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 3px;
+}
+
+.header_title img {
+    width: 100%;
+}
+
 .header_right {
     position: absolute;
     right: 10px;
